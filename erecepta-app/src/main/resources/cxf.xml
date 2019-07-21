@@ -11,6 +11,8 @@ http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schema
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+
     <context:property-placeholder location="classpath:cxf.properties"/>
 
     <jaxws:client id="obslugaReceptyWSClient"
@@ -31,6 +33,34 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
                 <property name="prettyLogging" value="true"/>
             </bean>
         </jaxws:features>
+        <jaxws:dataBinding>
+            <bean class="org.apache.cxf.jaxb.JAXBDataBinding">
+                <property name="namespaceMap">
+                    <map>
+                        <entry>
+                            <key>
+                                <value>http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd</value>
+                            </key>
+                            <value>wsu</value>
+                        </entry>
+                    </map>
+                </property>
+            </bean>
+        </jaxws:dataBinding>
+        <jaxws:outInterceptors>
+            <bean class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
+                <constructor-arg>
+                    <map>
+                        <entry key="action" value="Signature"/>
+                        <entry key="user" value="podmiot_leczniczy_106-uwierzytelnienie danych"/>
+                        <entry key="signaturePropFile" value="clientKeystore.properties"/>
+                        <entry key="passwordCallbackClass" value="pl.konczak.nzoz.ereceptaapp.ClientKeystorePasswordCallback"/>
+                        <entry key="signatureParts" value="{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body;{Element}{http://csioz.gov.pl/p1/kontekst/mt/v20170510}kontekstWywolania;"/>
+                        <entry key="signatureKeyIdentifier" value="DirectReference"/>
+                    </map>
+                </constructor-arg>
+            </bean>
+        </jaxws:outInterceptors>
     </jaxws:client>
 
     <!--TODO find out whether conduit should being placed in separate XML file?-->
