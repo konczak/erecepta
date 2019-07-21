@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:cxf.properties"/>
+
+    <jaxws:client id="obslugaReceptyWSClient"
+                  serviceClass="pl.gov.csioz.p1.erecepta.ws.v20170510.ObslugaReceptyWS"
+                  address="https://ws-int-p1.csioz.gov.pl/services/ObslugaReceptyWS">
+        <jaxws:features>
+            <bean class="org.apache.cxf.ext.logging.LoggingFeature">
+                <property name="prettyLogging" value="true"/>
+            </bean>
+        </jaxws:features>
+    </jaxws:client>
+
+</beans>
