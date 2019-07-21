@@ -16,6 +16,16 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <jaxws:client id="obslugaReceptyWSClient"
                   serviceClass="pl.gov.csioz.p1.erecepta.ws.v20170510.ObslugaReceptyWS"
                   address="https://ws-int-p1.csioz.gov.pl/services/ObslugaReceptyWS">
+        <jaxws:properties>
+            <entry key="soap.env.ns.map">
+                <map>
+                    <entry key="soapenv" value="http://schemas.xmlsoap.org/soap/envelope/"/>
+                    <entry key="v20" value="http://csioz.gov.pl/p1/erecepta/ws/v20170510"/>
+                    <entry key="v201" value="http://csioz.gov.pl/p1/kontekst/mt/v20170510"/>
+                    <entry key="v202" value="http://csioz.gov.pl/p1/erecepta/mt/v20170510"/>
+                </map>
+            </entry>
+        </jaxws:properties>
         <jaxws:features>
             <bean class="org.apache.cxf.ext.logging.LoggingFeature">
                 <property name="prettyLogging" value="true"/>
