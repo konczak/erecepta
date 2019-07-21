@@ -18,12 +18,16 @@ public class EreceptaApplication
     @Autowired
     private ObslugaReceptyWS obslugaReceptyWSclient;
 
+    @Autowired
+    private KontekstMTFactory kontekstMTFactory;
+
     public static void main(String[] args) {
         SpringApplication.run(EreceptaApplication.class, args);
     }
 
 
     public void run(final String... args) throws Exception {
-        obslugaReceptyWSclient.zapisPakietuRecept(new ZapisPakietuReceptRequest(), new KontekstMT());
+        KontekstMT kontekstMT = kontekstMTFactory.create();
+        obslugaReceptyWSclient.zapisPakietuRecept(new ZapisPakietuReceptRequest(), kontekstMT);
     }
 }
