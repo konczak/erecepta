@@ -2,8 +2,12 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jaxws="http://cxf.apache.org/jaxws"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:sec="http://cxf.apache.org/configuration/security"
+       xmlns:http="http://cxf.apache.org/transports/http/configuration"
        xsi:schemaLocation="
 http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+http://cxf.apache.org/configuration/security http://cxf.apache.org/schemas/configuration/security.xsd
+http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -18,5 +22,23 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
             </bean>
         </jaxws:features>
     </jaxws:client>
+
+    <!--TODO find out whether conduit should being placed in separate XML file?-->
+    <!--TODO why there is required Port suffix while in WSDL and service it is missing?-->
+    <!--    <http:conduit name="https://ws-int-p1.csioz.gov.pl/services/.*">-->
+    <http:conduit name="{http://csioz.gov.pl/p1/erecepta/ws/v20170510}ObslugaReceptyWSPort.http-conduit">
+        <http:tlsClientParameters>
+            <sec:keyManagers keyPassword="UXG9DxASCm">
+                <sec:keyStore file="d:\programowanie\zarnow\nzoz\e-recepty\KOMPLET_DANYCH_SZPL_NR_106\Podmiot_leczniczy_106-tls.p12"
+                              type="PKCS12"
+                              password="UXG9DxASCm"/>
+            </sec:keyManagers>
+            <sec:trustManagers>
+                <sec:keyStore file="d:\programowanie\zarnow\nzoz\e-recepty\KOMPLET_DANYCH_SZPL_NR_106\csiozTrustStore2.jks"
+                              type="JKS"
+                              password="changeit"/>
+            </sec:trustManagers>
+        </http:tlsClientParameters>
+    </http:conduit>
 
 </beans>
