@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://csioz.gov.pl/p1/wspolne/mt/v20170510" xmlns="http://csioz.gov.pl/p1/wspolne/mt/v20170510" xmlns:wsp="http://csioz.gov.pl/p1/wspolne/mt/v20170510" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:complexType name="WynikMT">
+		<xs:annotation>
+			<xs:documentation>Klasa z wynikiem wykonania operacji biznesowej. Lista kodów operacji (major, minor) oraz komunikatów jest dostępna w dokumentacji integracyjnej.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="major" type="xs:anyURI" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>kod główny wyniku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="minor" type="xs:anyURI" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>uzupełniający kod wyniku</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="komunikat" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>treść komunikatu związanego z wynikiem operacji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorUslugodawcyOIDMT">
+		<xs:annotation>
+			<xs:documentation>Identyfikator usługodawcy.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentyfikatorOIDMT">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorUslugobiorcyOIDMT">
+		<xs:annotation>
+			<xs:documentation>Identyfikator usługobiorcy. W polu root przekazywany jest typ identyfikatora, a w polu extension konkretna wartość dla danego typu. Np. dla numeru PESEL, w polu root należy podać 2.16.840.1.113883.3.4424.1.1.616, a w polu extension konkretny numer PESEL.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentyfikatorOIDMT">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorPracownikaMedycznegoOIDMT">
+		<xs:annotation>
+			<xs:documentation>Identyfikator pracownika medycznego.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentyfikatorOIDMT">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorPodmiotuOIDMT">
+		<xs:annotation>
+			<xs:documentation>Identyfikator podmiotu medycznego.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentyfikatorOIDMT">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorOIDMT">
+		<xs:annotation>
+			<xs:documentation>Identyfikator zgodny z OID</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="extension" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator unikalny w ramach węzła OID.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="root" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Węzeł OID</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorDokumentuOIDMT">
+		<xs:annotation>
+			<xs:documentation>Identyfikator dokumentu usługodawcy (np. numer recepty nadany przez usługodawcę).</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="IdentyfikatorOIDMT">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorZadaniaMT">
+		<xs:annotation>
+			<xs:documentation>Identyfikator zadania otrzymany z P1. Wskazuje na zadanie,  w ramach którego odbywa się weryfikacja lub zapis przekazanych recept.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence/>
+		<xs:attribute name="idZadania" use="required" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Identyfikator zadania nadany przez P1.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+</xs:schema>

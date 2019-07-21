@@ -11,9 +11,11 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <cxf.version>3.3.2</cxf.version>
     </properties>
 
     <modules>
+        <module>erecepta-client</module>
     </modules>
 
 </project>

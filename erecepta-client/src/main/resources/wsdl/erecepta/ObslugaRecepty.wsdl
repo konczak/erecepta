@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="ObslugaRecepty" targetNamespace="http://csioz.gov.pl/p1/erecepta/ws/v20170510" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://csioz.gov.pl/p1/erecepta/ws/v20170510" xmlns:r="http://csioz.gov.pl/p1/erecepta/mt/v20170510" xmlns:w="http://csioz.gov.pl/p1/erecepta/wyjatki/mt/v20170510" xmlns:wsp="http://csioz.gov.pl/p1/wspolne/mt/v20170510" xmlns:k="http://csioz.gov.pl/p1/kontekst/mt/v20170510">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://csioz.gov.pl/p1/erecepta/ws/v20170510" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://csioz.gov.pl/p1/erecepta/ws/v20170510" xmlns:r="http://csioz.gov.pl/p1/erecepta/mt/v20170510" xmlns:wsp="http://csioz.gov.pl/p1/wspolne/mt/v20170510" xmlns:w="http://csioz.gov.pl/p1/wyjatki/mt/v20170510">
+			<xs:import namespace="http://csioz.gov.pl/p1/wyjatki/mt/v20170510" schemaLocation="wyjatki.xsd"/>
+			<xs:import namespace="http://csioz.gov.pl/p1/wspolne/mt/v20170510" schemaLocation="wspolne.xsd"/>
+			<xs:import namespace="http://csioz.gov.pl/p1/erecepta/mt/v20170510" schemaLocation="recepta.xsd"/>
+			<xs:import namespace="http://csioz.gov.pl/p1/kontekst/mt/v20170510" schemaLocation="kontekst.xsd"/>
+			<xs:element name="OdczytDokumentuRealizacjiReceptyRequest" type="ns:OdczytDokumentuRealizacjiReceptyRequest"/>
+			<xs:complexType name="OdczytDokumentuRealizacjiReceptyRequest">
+				<xs:sequence>
+					<xs:element name="identyfikatorDokumentuRealizacjiRecepty" type="r:IdentyfikatorDokumentuRealizacjiReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieReceptUslugobiorcyDoKonsultacjiRequest" type="ns:WyszukanieReceptUslugobiorcyDoKonsultacjiRequest"/>
+			<xs:complexType name="WyszukanieReceptUslugobiorcyDoKonsultacjiRequest">
+				<xs:sequence>
+					<xs:element name="kryteriaWyszukwianiaReceptUslugobiorcy" type="r:KryteriaWyszukiwaniaReceptUslugobiorcyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytReceptyDoKonsultacjiRequest" type="ns:OdczytReceptyDoKonsultacjiRequest"/>
+			<xs:complexType name="OdczytReceptyDoKonsultacjiRequest">
+				<xs:sequence>
+					<xs:element name="numerRecepty" type="r:NumerReceptyOIDMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieRealizacjiReceptDoKonsultacjiRequest" type="ns:WyszukanieRealizacjiReceptDoKonsultacjiRequest"/>
+			<xs:complexType name="WyszukanieRealizacjiReceptDoKonsultacjiRequest">
+				<xs:sequence>
+					<xs:element name="kryteriaWyszukiwaniaRealizacjiReceptDoKonsultacji" type="r:KryteriaWyszukiwaniaRealizacjiReceptDoKonsultacjiMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytPakietuReceptDoRealizacjiResponse" type="ns:OdczytPakietuReceptDoRealizacjiResponse"/>
+			<xs:complexType name="OdczytPakietuReceptDoRealizacjiResponse">
+				<xs:sequence>
+					<xs:element name="receptyDoRealizacji" type="r:ReceptyIRealizacjeMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieReceptUslugobiorcyDoKonsultacjiResponse" type="ns:WyszukanieReceptUslugobiorcyDoKonsultacjiResponse"/>
+			<xs:complexType name="WyszukanieReceptUslugobiorcyDoKonsultacjiResponse">
+				<xs:sequence>
+					<xs:element name="wynikiWyszukiwaniaReceptUslugobiorcyDoKonsultacji" type="r:WynikiWyszukiwaniaReceptUslugobiorcyDoKonsultacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytReceptyDoKonsultacjiResponse" type="ns:OdczytReceptyDoKonsultacjiResponse"/>
+			<xs:complexType name="OdczytReceptyDoKonsultacjiResponse">
+				<xs:sequence>
+					<xs:element name="wynikOdczytuReceptyDoKonsultacji" type="r:WynikOdczytuReceptyDoKonsultacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieRealizacjiReceptDoKonsultacjiResponse" type="ns:WyszukanieRealizacjiReceptDoKonsultacjiResponse"/>
+			<xs:complexType name="WyszukanieRealizacjiReceptDoKonsultacjiResponse">
+				<xs:sequence>
+					<xs:element name="wynikWyszukiwaniaRealizacjiReceptUslugobiorcyDoKonsultacji" type="r:WynikWyszukiwaniaRealizacjiReceptUslugobiorcyDoKonsultacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytReceptyDoRealizacjiRequest" type="ns:OdczytReceptyDoRealizacjiRequest"/>
+			<xs:complexType name="OdczytReceptyDoRealizacjiRequest">
+				<xs:sequence>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytReceptyDoRealizacjiResponse" type="ns:OdczytReceptyDoRealizacjiResponse"/>
+			<xs:complexType name="OdczytReceptyDoRealizacjiResponse">
+				<xs:sequence>
+					<xs:element name="receptaDoRealizacji" type="r:ReceptaIRealizacjaMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RezygnacjaZRealizacjiReceptyNaLekRecepturowyRequest" type="ns:RezygnacjaZRealizacjiReceptyNaLekRecepturowyRequest"/>
+			<xs:complexType name="RezygnacjaZRealizacjiReceptyNaLekRecepturowyRequest">
+				<xs:choice>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="numerIPozycjaReceptyPapierowej" type="r:NumerIPozycjaReceptyPapierowejMT" minOccurs="0" maxOccurs="1"/>
+				</xs:choice>
+			</xs:complexType>
+			<xs:element name="WyszukanieReceptWystawiajacegoResponse" type="ns:WyszukanieReceptWystawiajacegoResponse"/>
+			<xs:complexType name="WyszukanieReceptWystawiajacegoResponse">
+				<xs:sequence>
+					<xs:element name="wynikiWyszukiwaniaRecept" type="r:WynikiWyszukiwaniaReceptMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieReceptUslugobiorcyResponse" type="ns:WyszukanieReceptUslugobiorcyResponse"/>
+			<xs:complexType name="WyszukanieReceptUslugobiorcyResponse">
+				<xs:sequence>
+					<xs:element name="wynikiWyszukiwaniaReceptUslugobiorcy" type="r:WynikiWyszukiwaniaReceptUslugobiorcyMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZablokowanieReceptyResponse" type="ns:ZablokowanieReceptyResponse"/>
+			<xs:complexType name="ZablokowanieReceptyResponse">
+				<xs:sequence>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisDokumentuAnulowaniaReceptyFarmaceutycznejRequest" type="ns:ZapisDokumentuAnulowaniaReceptyFarmaceutycznejRequest"/>
+			<xs:complexType name="ZapisDokumentuAnulowaniaReceptyFarmaceutycznejRequest">
+				<xs:sequence>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="dokumentAnulowaniaRecepty" type="r:DokumentAnulowaniaReceptyMT" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="dokumentRealizacjiRecepty" type="r:DokumentRealizacjiReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisDokumentuAnulowaniaReceptyFarmaceutycznejResponse" type="ns:ZapisDokumentuAnulowaniaReceptyFarmaceutycznejResponse"/>
+			<xs:complexType name="ZapisDokumentuAnulowaniaReceptyFarmaceutycznejResponse">
+				<xs:sequence>
+					<xs:element name="wynikiWeryfikacjiDokumentuAnulowania" type="r:WynikiWeryfikacjiDokumentuAnulowaniaMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynikiWeryfikacjiDokumentuRealizacji" type="r:WynikiWeryfikacjiDokumentuRealizacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisDokumentuAnulowaniaReceptyResponse" type="ns:ZapisDokumentuAnulowaniaReceptyResponse"/>
+			<xs:complexType name="ZapisDokumentuAnulowaniaReceptyResponse">
+				<xs:sequence>
+					<xs:element name="wynikiWeryfikacjiDokumentuAnulowania" type="r:WynikiWeryfikacjiDokumentuAnulowaniaMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisPakietuReceptRequest" type="ns:ZapisPakietuReceptRequest"/>
+			<xs:complexType name="ZapisPakietuReceptRequest">
+				<xs:sequence>
+					<xs:element name="pakietRecept" type="r:PakietReceptMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisPakietuReceptResponse" type="ns:ZapisPakietuReceptResponse"/>
+			<xs:complexType name="ZapisPakietuReceptResponse">
+				<xs:sequence>
+					<xs:element name="potwierdzenieOperacjiZapisu" type="r:PotwierdzenieOperacjiZapisuMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisPakietuRealizacjiReceptRequest" type="ns:ZapisPakietuRealizacjiReceptRequest"/>
+			<xs:complexType name="ZapisPakietuRealizacjiReceptRequest">
+				<xs:sequence>
+					<xs:element name="pakietRealizacjiRecept" type="r:PakietRealizacjiReceptMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisPakietuRealizacjiReceptResponse" type="ns:ZapisPakietuRealizacjiReceptResponse"/>
+			<xs:complexType name="ZapisPakietuRealizacjiReceptResponse">
+				<xs:sequence>
+					<xs:annotation>
+						<xs:documentation>
+							Komunikat zawiera:
+							- wynik
+							- wynik zapisu pakietu realizacji recept.
+							Wynik składa się z komunikatu oraz kodu wyniku operacji major i minor.
+							Wynik zapisu pakietu realizacji recept składa się z wyniku weryfikacji każdej z realizacji recept.
+						</xs:documentation>
+					</xs:annotation>
+					<xs:element name="wynikZapisuPakietuRealizacjiRecept" type="r:WynikZapisuPakietuRealizacjiReceptMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisRealizacjiReceptyFarmaceutycznejRequest" type="ns:ZapisRealizacjiReceptyFarmaceutycznejRequest"/>
+			<xs:complexType name="ZapisRealizacjiReceptyFarmaceutycznejRequest">
+				<xs:sequence>
+					<xs:element name="dokumentRecepty" type="r:DokumentReceptyMT" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="dokumentRealizacjiRecepty" type="r:DokumentRealizacjiReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisRealizacjiReceptyFarmaceutycznejResponse" type="ns:ZapisRealizacjiReceptyFarmaceutycznejResponse"/>
+			<xs:complexType name="ZapisRealizacjiReceptyFarmaceutycznejResponse">
+				<xs:sequence>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynikiWeryfikacjiDokumentuRecepty" type="r:WynikiWeryfikacjiDokumentuReceptyMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynikiWeryfikacjiDokumentuRealizacji" type="r:WynikiWeryfikacjiDokumentuRealizacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisRealizacjiReceptyResponse" type="ns:ZapisRealizacjiReceptyResponse"/>
+			<xs:complexType name="ZapisRealizacjiReceptyResponse">
+				<xs:sequence>
+					<xs:element name="wynikiWeryfikacjiDokumentuRealizacji" type="r:WynikiWeryfikacjiDokumentuRealizacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisRealizacjiReceptyRequest" type="ns:ZapisRealizacjiReceptyRequest"/>
+			<xs:complexType name="ZapisRealizacjiReceptyRequest">
+				<xs:sequence>
+					<xs:element name="dokumentRealizacjiRecepty" type="r:DokumentRealizacjiReceptyMT" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisDokumentuAnulowaniaReceptyRequest" type="ns:ZapisDokumentuAnulowaniaReceptyRequest"/>
+			<xs:complexType name="ZapisDokumentuAnulowaniaReceptyRequest">
+				<xs:sequence>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="dokumentAnulowaniaRecepty" type="r:DokumentAnulowaniaReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZablokowanieReceptyRequest" type="ns:ZablokowanieReceptyRequest"/>
+			<xs:complexType name="ZablokowanieReceptyRequest">
+				<xs:sequence>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="przyczynaZablokowaniaRecepty" type="r:PrzyczynaZablokowaniaReceptyEnumMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieReceptWystawiajacegoRequest" type="ns:WyszukanieReceptWystawiajacegoRequest"/>
+			<xs:complexType name="WyszukanieReceptWystawiajacegoRequest">
+				<xs:sequence>
+					<xs:element name="kryteriaWyszukiwaniaRecept" type="r:KryteriaWyszukiwaniaReceptMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieReceptUslugobiorcyRequest" type="ns:WyszukanieReceptUslugobiorcyRequest"/>
+			<xs:complexType name="WyszukanieReceptUslugobiorcyRequest">
+				<xs:sequence>
+					<xs:element name="kryteriaWyszukiwaniaReceptUslugobiorcy" type="r:KryteriaWyszukiwaniaReceptUslugobiorcyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieDokumentowRealizacjiReceptResponse" type="ns:WyszukanieDokumentowRealizacjiReceptResponse"/>
+			<xs:complexType name="WyszukanieDokumentowRealizacjiReceptResponse">
+				<xs:sequence>
+					<xs:element name="wynikiWyszukiwaniaDokumentowRealizacji" type="r:WynikiWyszukiwaniaDokumentowRealizacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieDokumentowRealizacjiReceptRequest" type="ns:WyszukanieDokumentowRealizacjiReceptRequest"/>
+			<xs:complexType name="WyszukanieDokumentowRealizacjiReceptRequest">
+				<xs:sequence>
+					<xs:element name="kryteriaWyszukiwaniaDokumentowRealizacji" type="r:KryteriaWyszukiwaniaDokumentowRealizacjiMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieDokumentowAnulowaniaReceptResponse" type="ns:WyszukanieDokumentowAnulowaniaReceptResponse"/>
+			<xs:complexType name="WyszukanieDokumentowAnulowaniaReceptResponse">
+				<xs:sequence>
+					<xs:element name="wynikiWyszukiwaniaDokumentowAnulowania" type="r:WynikiWyszukiwaniaDokumentowAnulowaniaMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WyszukanieDokumentowAnulowaniaReceptRequest" type="ns:WyszukanieDokumentowAnulowaniaReceptRequest"/>
+			<xs:complexType name="WyszukanieDokumentowAnulowaniaReceptRequest">
+				<xs:sequence>
+					<xs:element name="kryteriaWyszukiwaniaDokumentowAnulowania" type="r:KryteriaWyszukiwaniaDokumentowAnulowaniaMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WeryfikacjaPakietuReceptResponse" type="ns:WeryfikacjaPakietuReceptResponse"/>
+			<xs:complexType name="WeryfikacjaPakietuReceptResponse">
+				<xs:sequence>
+					<xs:element name="potwierdzenieOperacjiWeryfikacji" type="r:PotwierdzenieOperacjiWeryfikacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="WeryfikacjaPakietuReceptRequest" type="ns:WeryfikacjaPakietuReceptRequest"/>
+			<xs:complexType name="WeryfikacjaPakietuReceptRequest">
+				<xs:sequence>
+					<xs:element name="pakietRecept" type="r:PakietReceptMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="RezygnacjaZRealizacjiReceptyNaLekRecepturowyResponse" type="ns:RezygnacjaZRealizacjiReceptyNaLekRecepturowyResponse"/>
+			<xs:complexType name="RezygnacjaZRealizacjiReceptyNaLekRecepturowyResponse">
+				<xs:sequence>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="PrzyjecieDoRealizacjiReceptyNaLekRecepturowyResponse" type="ns:PrzyjecieDoRealizacjiReceptyNaLekRecepturowyResponse"/>
+			<xs:complexType name="PrzyjecieDoRealizacjiReceptyNaLekRecepturowyResponse">
+				<xs:sequence>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="PrzyjecieDoRealizacjiReceptyNaLekRecepturowyRequest" type="ns:PrzyjecieDoRealizacjiReceptyNaLekRecepturowyRequest"/>
+			<xs:complexType name="PrzyjecieDoRealizacjiReceptyNaLekRecepturowyRequest">
+				<xs:choice>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="numerIPozycjaReceptyPapierowej" type="r:NumerIPozycjaReceptyPapierowejMT" minOccurs="0" maxOccurs="1"/>
+				</xs:choice>
+			</xs:complexType>
+			<xs:element name="OdczytReceptyResponse" type="ns:OdczytReceptyResponse"/>
+			<xs:complexType name="OdczytReceptyResponse">
+				<xs:sequence>
+					<xs:element name="receptaIWynikWeryfikacji" type="r:ReceptaIWynikWeryfikacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytReceptyRequest" type="ns:OdczytReceptyRequest"/>
+			<xs:complexType name="OdczytReceptyRequest">
+				<xs:sequence>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytPakietuReceptResponse" type="ns:OdczytPakietuReceptResponse"/>
+			<xs:complexType name="OdczytPakietuReceptResponse">
+				<xs:sequence>
+					<xs:element name="pakietReceptIWynikowWeryfikacji" type="r:PakietReceptIWynikowWeryfikacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytPakietuReceptRequest" type="ns:OdczytPakietuReceptRequest"/>
+			<xs:complexType name="OdczytPakietuReceptRequest">
+				<xs:sequence>
+					<xs:element name="kluczPakietuRecept" type="r:KluczPakietuReceptMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytPakietuReceptDoRealizacjiRequest" type="ns:OdczytPakietuReceptDoRealizacjiRequest"/>
+			<xs:complexType name="OdczytPakietuReceptDoRealizacjiRequest">
+				<xs:sequence>
+					<xs:element name="kryteriaOdczytuPakietuRecept" type="r:KryteriaOdczytuPakietuReceptMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytDokumentuRealizacjiReceptyResponse" type="ns:OdczytDokumentuRealizacjiReceptyResponse"/>
+			<xs:complexType name="OdczytDokumentuRealizacjiReceptyResponse">
+				<xs:sequence>
+					<xs:element name="realizacjaRecepty" type="r:RealizacjaReceptyMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytDokumentuAnulowaniaReceptyResponse" type="ns:OdczytDokumentuAnulowaniaReceptyResponse"/>
+			<xs:complexType name="OdczytDokumentuAnulowaniaReceptyResponse">
+				<xs:sequence>
+					<xs:element name="dokumentAnulowaniaRecepty" type="r:DokumentAnulowaniaReceptyMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytDokumentuAnulowaniaReceptyRequest" type="ns:OdczytDokumentuAnulowaniaReceptyRequest"/>
+			<xs:complexType name="OdczytDokumentuAnulowaniaReceptyRequest">
+				<xs:sequence>
+					<xs:element name="identyfikatorDokumentuAnulowaniaRecepty" type="r:IdentyfikatorDokumentuAnulowaniaReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytDanychDostepowychPakietuReceptResponse" type="ns:OdczytDanychDostepowychPakietuReceptResponse"/>
+			<xs:complexType name="OdczytDanychDostepowychPakietuReceptResponse">
+				<xs:sequence>
+					<xs:element name="kodIKluczePakietuIRecept" type="r:KodIKluczePakietuIReceptMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdczytDanychDostepowychPakietuReceptRequest" type="ns:OdczytDanychDostepowychPakietuReceptRequest"/>
+			<xs:complexType name="OdczytDanychDostepowychPakietuReceptRequest">
+				<xs:sequence>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdblokowanieReceptyResponse" type="ns:OdblokowanieReceptyResponse"/>
+			<xs:complexType name="OdblokowanieReceptyResponse">
+				<xs:sequence>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="OdblokowanieReceptyRequest" type="ns:OdblokowanieReceptyRequest"/>
+			<xs:complexType name="OdblokowanieReceptyRequest">
+				<xs:sequence>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisKorektyDokumentuRealizacjiReceptyResponse" type="ns:ZapisKorektyDokumentuRealizacjiReceptyResponse"/>
+			<xs:complexType name="ZapisKorektyDokumentuRealizacjiReceptyResponse">
+				<xs:sequence>
+					<xs:element name="wynikiWeryfikacjiKorektyDokumentuRealizacji" type="r:WynikiWeryfikacjiKorektyDokumentuRealizacjiMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="wynik" type="wsp:WynikMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ZapisKorektyDokumentuRealizacjiReceptyRequest" type="ns:ZapisKorektyDokumentuRealizacjiReceptyRequest"/>
+			<xs:complexType name="ZapisKorektyDokumentuRealizacjiReceptyRequest">
+				<xs:sequence>
+					<xs:element name="kluczRecepty" type="r:KluczReceptyMT" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="dokumentRealizacjiRecepty" type="r:DokumentRealizacjiReceptyMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="bledyOperacji" type="ns:BledyOperacji"/>
+			<xs:complexType name="BledyOperacji">
+				<xs:sequence>
+					<xs:element name="blad" type="w:BladMT" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="przyjecieDoRealizacjiReceptyNaLekRecepturowyResponse">
+		<wsdl:part name="przyjecieDoRealizacjiReceptyNaLekRecepturowyResponse" element="ns:PrzyjecieDoRealizacjiReceptyNaLekRecepturowyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="weryfikacjaPakietuReceptResponse">
+		<wsdl:part name="weryfikacjaPakietuReceptResponse" element="ns:WeryfikacjaPakietuReceptResponse"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieReceptUslugobiorcyDoKonsultacjiResponse">
+		<wsdl:part name="wyszukanieReceptUslugobiorcyDoKonsultacjiResponse" element="ns:WyszukanieReceptUslugobiorcyDoKonsultacjiResponse"/>
+	</wsdl:message>
+	<wsdl:message name="odczytReceptyDoKonsultacjiResponse">
+		<wsdl:part name="odczytReceptyDoKonsultacjiResponse" element="ns:OdczytReceptyDoKonsultacjiResponse"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieRealizacjiReceptDoKonsultacjiResponse">
+		<wsdl:part name="wyszukanieRealizacjiReceptDoKonsultacjiResponse" element="ns:WyszukanieRealizacjiReceptDoKonsultacjiResponse"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieReceptUslugobiorcyDoKonsultacjiRequest">
+		<wsdl:part name="WyszukanieReceptUslugobiorcyDoKonsultacji" element="ns:WyszukanieReceptUslugobiorcyDoKonsultacjiRequest"/>
+	</wsdl:message>
+	<wsdl:message name="odczytReceptyDoKonsultacjiRequest">
+		<wsdl:part name="OdczytReceptyDoKonsultacji" element="ns:OdczytReceptyDoKonsultacjiRequest"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieRealizacjiReceptDoKonsultacjiRequest">
+		<wsdl:part name="WyszukanieRealizacjiReceptDoKonsultacji" element="ns:WyszukanieRealizacjiReceptDoKonsultacjiRequest"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieReceptWystawiajacegoRequest">
+		<wsdl:part name="wyszukanieReceptWystawiajacego" element="ns:WyszukanieReceptWystawiajacegoRequest"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieReceptUslugobiorcyRequest">
+		<wsdl:part name="wyszukanieReceptUslugobiorcy" element="ns:WyszukanieReceptUslugobiorcyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieDokumentowRealizacjiReceptResponse">
+		<wsdl:part name="wyszukanieDokumentowRealizacjiReceptResponse" element="ns:WyszukanieDokumentowRealizacjiReceptResponse"/>
+	</wsdl:message>
+	<wsdl:message name="zablokowanieReceptyRequest">
+		<wsdl:part name="zablokowanieRecepty" element="ns:ZablokowanieReceptyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="zapisDokumentuAnulowaniaReceptyRequest">
+		<wsdl:part name="zapisDokumentuAnulowaniaRecepty" element="ns:ZapisDokumentuAnulowaniaReceptyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="zapisDokumentuAnulowaniaReceptyResponse">
+		<wsdl:part name="zapisDokumentuAnulowaniaReceptyResponse" element="ns:ZapisDokumentuAnulowaniaReceptyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="zapisPakietuReceptResponse">
+		<wsdl:part name="zapisPakietuReceptResponse" element="ns:ZapisPakietuReceptResponse"/>
+	</wsdl:message>
+	<wsdl:message name="zapisPakietuRealizacjiReceptResponse">
+		<wsdl:part name="zapisPakietuRealizacjiReceptResponse" element="ns:ZapisPakietuRealizacjiReceptResponse"/>
+	</wsdl:message>
+	<wsdl:message name="zapisRealizacjiReceptyResponse">
+		<wsdl:part name="zapisRealizacjiReceptyResponse" element="ns:ZapisRealizacjiReceptyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="zapisRealizacjiReceptyFarmaceutycznejRequest">
+		<wsdl:part name="zapisRealizacjiReceptyFarmaceutycznej" element="ns:ZapisRealizacjiReceptyFarmaceutycznejRequest"/>
+	</wsdl:message>
+	<wsdl:message name="zapisRealizacjiReceptyFarmaceutycznejResponse">
+		<wsdl:part name="zapisRealizacjiReceptyFarmaceutycznejResponse" element="ns:ZapisRealizacjiReceptyFarmaceutycznejResponse"/>
+	</wsdl:message>
+	<wsdl:message name="zapisRealizacjiReceptyRequest">
+		<wsdl:part name="zapisRealizacjiRecepty" element="ns:ZapisRealizacjiReceptyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="zapisPakietuReceptRequest">
+		<wsdl:part name="zapisPakietuRecept" element="ns:ZapisPakietuReceptRequest"/>
+	</wsdl:message>
+	<wsdl:message name="zapisPakietuRealizacjiReceptRequest">
+		<wsdl:part name="zapisPakietuRealizacjiRecept" element="ns:ZapisPakietuRealizacjiReceptRequest"/>
+	</wsdl:message>
+	<wsdl:message name="zapisDokumentuAnulowaniaReceptyFarmaceutycznejResponse">
+		<wsdl:part name="zapisDokumentuAnulowaniaReceptyFarmaceutycznejResponse" element="ns:ZapisDokumentuAnulowaniaReceptyFarmaceutycznejResponse"/>
+	</wsdl:message>
+	<wsdl:message name="zapisDokumentuAnulowaniaReceptyFarmaceutycznejRequest">
+		<wsdl:part name="zapisDokumentuAnulowaniaReceptyFarmaceutycznej" element="ns:ZapisDokumentuAnulowaniaReceptyFarmaceutycznejRequest"/>
+	</wsdl:message>
+	<wsdl:message name="zablokowanieReceptyResponse">
+		<wsdl:part name="zablokowanieReceptyResponse" element="ns:ZablokowanieReceptyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieDokumentowRealizacjiReceptRequest">
+		<wsdl:part name="wyszukanieDokumentowRealizacjiRecept" element="ns:WyszukanieDokumentowRealizacjiReceptRequest"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieReceptWystawiajacegoResponse">
+		<wsdl:part name="wyszukanieReceptWystawiajacegoResponse" element="ns:WyszukanieReceptWystawiajacegoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieReceptUslugobiorcyResponse">
+		<wsdl:part name="wyszukanieReceptUslugobiorcyResponse" element="ns:WyszukanieReceptUslugobiorcyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieDokumentowAnulowaniaReceptResponse">
+		<wsdl:part name="wyszukanieDokumentowAnulowaniaReceptResponse" element="ns:WyszukanieDokumentowAnulowaniaReceptResponse"/>
+	</wsdl:message>
+	<wsdl:message name="wyszukanieDokumentowAnulowaniaReceptRequest">
+		<wsdl:part name="wyszukanieDokumentowAnulowaniaRecept" element="ns:WyszukanieDokumentowAnulowaniaReceptRequest"/>
+	</wsdl:message>
+	<wsdl:message name="weryfikacjaPakietuReceptRequest">
+		<wsdl:part name="weryfikacjaPakietuRecept" element="ns:WeryfikacjaPakietuReceptRequest"/>
+	</wsdl:message>
+	<wsdl:message name="rezygnacjaZRealizacjiReceptyNaLekRecepturowyResponse">
+		<wsdl:part name="rezygnacjaZRealizacjiReceptyNaLekRecepturowyResponse" element="ns:RezygnacjaZRealizacjiReceptyNaLekRecepturowyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="rezygnacjaZRealizacjiReceptyNaLekRecepturowyRequest">
+		<wsdl:part name="rezygnacjaZRealizacjiReceptyNaLekRecepturowy" element="ns:RezygnacjaZRealizacjiReceptyNaLekRecepturowyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="przyjecieDoRealizacjiReceptyNaLekRecepturowyRequest">
+		<wsdl:part name="przyjecieDoRealizacjiReceptyNaLekRecepturowy" element="ns:PrzyjecieDoRealizacjiReceptyNaLekRecepturowyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="odczytReceptyDoRealizacjiResponse">
+		<wsdl:part name="odczytReceptyDoRealizacjiResponse" element="ns:OdczytReceptyDoRealizacjiResponse"/>
+	</wsdl:message>
+	<wsdl:message name="odczytReceptyDoRealizacjiRequest">
+		<wsdl:part name="odczytReceptyDoRealizacji" element="ns:OdczytReceptyDoRealizacjiRequest"/>
+	</wsdl:message>
+	<wsdl:message name="odczytPakietuReceptDoRealizacjiResponse">
+		<wsdl:part name="odczytPakietuReceptDoRealizacjiResponse" element="ns:OdczytPakietuReceptDoRealizacjiResponse"/>
+	</wsdl:message>
+	<wsdl:message name="odczytPakietuReceptDoRealizacjiRequest">
+		<wsdl:part name="odczytPakietuReceptDoRealizacji" element="ns:OdczytPakietuReceptDoRealizacjiRequest"/>
+	</wsdl:message>
+	<wsdl:message name="odczytReceptyResponse">
+		<wsdl:part name="odczytReceptyResponse" element="ns:OdczytReceptyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="odczytReceptyRequest">
+		<wsdl:part name="odczytRecepty" element="ns:OdczytReceptyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="odczytPakietuReceptResponse">
+		<wsdl:part name="odczytPakietuReceptResponse" element="ns:OdczytPakietuReceptResponse"/>
+	</wsdl:message>
+	<wsdl:message name="odczytPakietuReceptRequest">
+		<wsdl:part name="odczytPakietuRecept" element="ns:OdczytPakietuReceptRequest"/>
+	</wsdl:message>
+	<wsdl:message name="odczytDokumentuRealizacjiReceptyResponse">
+		<wsdl:part name="odczytDokumentuRealizacjiReceptyResponse" element="ns:OdczytDokumentuRealizacjiReceptyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="odczytDokumentuRealizacjiReceptyRequest">
+		<wsdl:part name="odczytDokumentuRealizacjiRecept" element="ns:OdczytDokumentuRealizacjiReceptyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="odczytDokumentuAnulowaniaReceptyResponse">
+		<wsdl:part name="odczytDokumentuAnulowaniaReceptyResponse" element="ns:OdczytDokumentuAnulowaniaReceptyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="odczytDokumentuAnulowaniaReceptyRequest">
+		<wsdl:part name="odczytDokumentuAnulowaniaRecepty" element="ns:OdczytDokumentuAnulowaniaReceptyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="odczytDanychDostepowychPakietuReceptResponse">
+		<wsdl:part name="odczytDanychDostepowychPakietuReceptResponse" element="ns:OdczytDanychDostepowychPakietuReceptResponse"/>
+	</wsdl:message>
+	<wsdl:message name="odczytDanychDostepowychPakietuReceptRequest">
+		<wsdl:part name="odczytDanychDostepowychPakietuRecept" element="ns:OdczytDanychDostepowychPakietuReceptRequest"/>
+	</wsdl:message>
+	<wsdl:message name="odblokowanieReceptyResponse">
+		<wsdl:part name="odblokowanieReceptyResponse" element="ns:OdblokowanieReceptyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="odblokowanieReceptyRequest">
+		<wsdl:part name="odblokowanieRecepty" element="ns:OdblokowanieReceptyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="zapisKorektyDokumentuRealizacjiReceptyResponse">
+		<wsdl:part name="zapisKorektyDokumentuRealizacjiReceptyResponse" element="ns:ZapisKorektyDokumentuRealizacjiReceptyResponse"/>
+	</wsdl:message>
+	<wsdl:message name="zapisKorektyDokumentuRealizacjiReceptyRequest">
+		<wsdl:part name="zapisKorektyDokumentuRealizacjiRecepty" element="ns:ZapisKorektyDokumentuRealizacjiReceptyRequest"/>
+	</wsdl:message>
+	<wsdl:message name="bledyOperacji">
+		<wsdl:part name="fault" element="ns:bledyOperacji"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="kontekstWywolania">
+		<wsdl:part name="kontekstWywolania" element="k:kontekstWywolania"/>
+	</wsdl:message>
+	<wsdl:portType name="ObslugaReceptyWS">
+		<wsdl:documentation>Interfejs udostępnia operacje związane z obsługą recept.</wsdl:documentation>
+		<wsdl:operation name="zapisRealizacjiReceptyFarmaceutycznej">
+			<wsdl:documentation>Realizacja recepty farmaceutycznej elektronicznej. Parametrem wejściowym jest para: dokument recepty (XML, HL7 CDA) i dokument realizacji recepty (XML, HL7 CDA). Operacja udostępniana realizatorom recept (systemy apteczne).</wsdl:documentation>
+			<wsdl:input name="zapisRealizacjiReceptyFarmaceutycznejRequestRequest" message="ns:zapisRealizacjiReceptyFarmaceutycznejRequest"/>
+			<wsdl:output name="zapisRealizacjiReceptyFarmaceutycznejRequestResponse" message="ns:zapisRealizacjiReceptyFarmaceutycznejResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="zapisRealizacjiRecepty">
+			<wsdl:documentation>Realizacja recepty elektronicznej i papierowej. Parametrem wejściowym jest dokument realizacji recepty (XML, HL7 CDA). Operacja udostępniana realizatorom recept (systemy apteczne).</wsdl:documentation>
+			<wsdl:input name="zapisRealizacjiReceptyRequestRequest" message="ns:zapisRealizacjiReceptyRequest"/>
+			<wsdl:output name="zapisRealizacjiReceptyRequestResponse" message="ns:zapisRealizacjiReceptyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="zapisPakietuRecept">
+			<wsdl:documentation>Zapis listy recept elektronicznych w systemie. Parametry wejściowe to podpisane elektronicznie recepty w formacie HL7 CDA. Wynikiem jest identyfikator zadania uruchomionego w P1 (w przypadku gdy operacja nie mogła być zakończona synchronicznie) albo kod pakietu recept, klucze recept i pakietu recept oraz wyniki weryfikacji każdej z przekazanych recept.</wsdl:documentation>
+			<wsdl:input name="zapisPakietuReceptRequestRequest" message="ns:zapisPakietuReceptRequest"/>
+			<wsdl:output name="zapisPakietuReceptRequestResponse" message="ns:zapisPakietuReceptResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="zapisPakietuRealizacjiRecept">
+			<wsdl:documentation>Zapis listy realizacji recept w systemie. Parametry wejściowe to podpisane elektronicznie realizacje recepty w formacie HL7 CDA.
+				Na wyjściu otrzymujemy wyniki weryfikacji każdej z przekazanych realizacji recept.</wsdl:documentation>
+			<wsdl:input name="zapisPakietuRealizacjiReceptRequestRequest" message="ns:zapisPakietuRealizacjiReceptRequest"/>
+			<wsdl:output name="zapisPakietuRealizacjiReceptRequestResponse" message="ns:zapisPakietuRealizacjiReceptResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="zapisDokumentuAnulowaniaReceptyFarmaceutycznej">
+			<wsdl:documentation>Zapisanie dokumentu anulowania recepty farmaceutycznej. Parametry wejściowe to para dokumentów: dokument anulowania recepty oraz dokument korekty realizacji recepty. Wynikiem operacji są wyniki weryfikacji przesłanej pary dokumentów.</wsdl:documentation>
+			<wsdl:input name="zapisDokumentuAnulowaniaReceptyFarmaceutycznejRequestRequest" message="ns:zapisDokumentuAnulowaniaReceptyFarmaceutycznejRequest"/>
+			<wsdl:output name="zapisDokumentuAnulowaniaReceptyFarmaceutycznejRequestResponse" message="ns:zapisDokumentuAnulowaniaReceptyFarmaceutycznejResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="zapisDokumentuAnulowaniaRecepty">
+			<wsdl:documentation>Zapisanie dokumentu anulowania recepty. Parametry wejściowe to klucz recepty, której dotyczy dokument anulowania oraz dokument anulowania wskazanej recepty. Wynikiem operacji są wyniki weryfikacji przesłanego dokumentu anulowania.</wsdl:documentation>
+			<wsdl:input name="zapisDokumentuAnulowaniaReceptyRequestRequest" message="ns:zapisDokumentuAnulowaniaReceptyRequest"/>
+			<wsdl:output name="zapisDokumentuAnulowaniaReceptyRequestResponse" message="ns:zapisDokumentuAnulowaniaReceptyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="zablokowanieRecepty">
+			<wsdl:documentation>Zablokowanie recepty. Parametry wejściowe to klucz recepty oraz przyczyna zablokowania recepty (enum). W wyniku zwracane jest potwierdzenie wykonania operacji.</wsdl:documentation>
+			<wsdl:input name="zablokowanieReceptyRequestRequest" message="ns:zablokowanieReceptyRequest"/>
+			<wsdl:output name="zablokowanieReceptyRequestResponse" message="ns:zablokowanieReceptyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieDokumentowRealizacjiRecept">
+			<wsdl:documentation>Wyszukanie dokumentów realizacji recept na podstawie podanych w zapytaniu kryteriów wyszukiwania. Operacja przeznaczona dla usługodawców realizujących recepty. Wynikiem operacji jest lista informacji o dokumentach realizacji recept, które spełniają kryteria wyszukiwania oraz zostały wystawione przez usługodawcę wywołującego usługę wyszukania. Zapytanie o dokumenty realizacji recept wymaga wskazania kontekstu usługodawcy. W przypadku, gdy liczba wyników zapytania przekracza próg określony w parametrach P1 operacja kończy się błędem bez zwracania wyników.</wsdl:documentation>
+			<wsdl:input name="wyszukanieDokumentowRealizacjiReceptRequestRequest" message="ns:wyszukanieDokumentowRealizacjiReceptRequest"/>
+			<wsdl:output name="wyszukanieDokumentowRealizacjiReceptRequestResponse" message="ns:wyszukanieDokumentowRealizacjiReceptResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieReceptWystawiajacego">
+			<wsdl:documentation>Wyszukanie recept na podstawie podanych w zapytaniu kryteriów wyszukiwania. Operacja przeznaczona dla usługodawców wystawiających recepty. Wynikiem operacji jest lista informacji o receptach, które spełniają kryteria wyszukiwania. Zapytanie o recepty wymaga wskazania kontekstu usługodawcy. W przypadku gdy liczba wyników zapytania przekracza próg określony w parametrach P1 operacja kończy się błędem bez zwracania wyników. </wsdl:documentation>
+			<wsdl:input name="wyszukanieReceptWystawiajacegoRequestRequest" message="ns:wyszukanieReceptWystawiajacegoRequest"/>
+			<wsdl:output name="wyszukanieReceptWystawiajacegoRequestResponse" message="ns:wyszukanieReceptWystawiajacegoResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieReceptUslugobiorcy">
+			<wsdl:documentation>Wyszukanie recept na podstawie podanych w zapytaniu kryteriów wyszukiwania. Operacja przeznaczona dla usługodawców wystawiających recepty. Wynikiem operacji jest lista informacji o receptach, które spełniają kryteria wyszukiwania. Zapytanie o recepty wymaga wskazania kontekstu usługodawcy. W przypadku gdy liczba wyników zapytania przekracza próg określony w parametrach P1 operacja kończy się błędem bez zwracania wyników. </wsdl:documentation>
+			<wsdl:input name="wyszukanieReceptUslugobiorcyRequestRequest" message="ns:wyszukanieReceptUslugobiorcyRequest"/>
+			<wsdl:output name="wyszukanieReceptUslugobiorcyRequestResponse" message="ns:wyszukanieReceptUslugobiorcyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieReceptUslugobiorcyDoKonsultacji">
+			<wsdl:documentation>Wyszukanie recept na podstawie podanych w zapytaniu kryteriów wyszukiwania. Operacja przeznaczona dla systemów aptecznych. Wynikiem operacji jest lista informacji o receptach, które spełniają kryteria wyszukiwania. Usługodawca wywołujący usługę musi posiadać uprawnienia nadane przez usługobiorcę do dokumentu recepty. Zapytanie o recepty wymaga wskazania kontekstu usługodawcy. W przypadku gdy liczba wyników zapytania przekracza próg określony w parametrach P1 operacja kończy się błędem bez zwracania wyników. </wsdl:documentation>
+			<wsdl:input name="wyszukanieReceptUslugobiorcyDoKonsultacjiRequestRequest" message="ns:wyszukanieReceptUslugobiorcyDoKonsultacjiRequest"/>
+			<wsdl:output name="wyszukanieReceptUslugobiorcyDoKonsultacjiRequestResponse" message="ns:wyszukanieReceptUslugobiorcyDoKonsultacjiResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="odczytReceptyDoKonsultacji">
+			<wsdl:documentation>Odczyt pojedynczego dokumentu recepty na podstawie przekazanego numeru recepty. Wraz z receptą zwracany jest jej status. Nie są zwracane dokumenty realizacji i recept. Zwracane dane dotyczące realizacji recepty to: data realizacji recepty, ilość wydanego leku, nazwa leku realizacji. Usługodawca wywołujący usługę musi posiadać uprawnienia nadane przez usługobiorcę do dokumentu recepty.</wsdl:documentation>
+			<wsdl:input name="odczytReceptyDoKonsultacjiRequestRequest" message="ns:odczytReceptyDoKonsultacjiRequest"/>
+			<wsdl:output name="odczytReceptyDoKonsultacjiRequestResponse" message="ns:odczytReceptyDoKonsultacjiResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieRealizacjiReceptDoKonsultacji">
+			<wsdl:documentation>Wyszukanie dokumentów realizacji recept na podstawie podanych w zapytaniu kryteriów wyszukiwania. Operacja przeznaczona dla usługodawców realizujących recepty. Wynikiem operacji jest lista informacji o dokumentach realizacji recept, które spełniają kryteria wyszukiwania. Usługodawca wywołujący usługę musi posiadać uprawnienia nadane przez usługobiorcę do dokumentów realizacji. Zapytanie o dokumenty realizacji recept wymaga wskazania kontekstu usługodawcy. W przypadku, gdy liczba wyników zapytania przekracza próg określony w parametrach P1 operacja kończy się błędem bez zwracania wyników.</wsdl:documentation>
+			<wsdl:input name="wyszukanieRealizacjiReceptDoKonsultacjiRequestRequest" message="ns:wyszukanieRealizacjiReceptDoKonsultacjiRequest"/>
+			<wsdl:output name="wyszukanieRealizacjiReceptDoKonsultacjiRequestResponse" message="ns:wyszukanieRealizacjiReceptDoKonsultacjiResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieDokumentowAnulowaniaRecept">
+			<wsdl:documentation>Wyszukanie dokumentów anulowania recept. Parametry wejściowe to kryteria wyszukiwania dokumentów anulowania. W wyniku zwracana jest lista informacji o dokumentach anulowania spełniających kryteria wyszukiwania.</wsdl:documentation>
+			<wsdl:input name="wyszukanieDokumentowAnulowaniaReceptRequestRequest" message="ns:wyszukanieDokumentowAnulowaniaReceptRequest"/>
+			<wsdl:output name="wyszukanieDokumentowAnulowaniaReceptRequestResponse" message="ns:wyszukanieDokumentowAnulowaniaReceptResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="weryfikacjaPakietuRecept">
+			<wsdl:documentation>Weryfikacja listy recept elektronicznych w systemie. Parametry wejściowe to recepty w formacie HL7 CDA (bez podpisu elektronicznego). Wynikiem jest identyfikator zadania uruchomionego w P1 (w przypadku gdy operacja nie mogła być zakończona synchronicznie) albo wyniki weryfikacji każdej z przekazanych recept.</wsdl:documentation>
+			<wsdl:input name="weryfikacjaPakietuReceptRequestRequest" message="ns:weryfikacjaPakietuReceptRequest"/>
+			<wsdl:output name="weryfikacjaPakietuReceptRequestResponse" message="ns:weryfikacjaPakietuReceptResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="rezygnacjaZRealizacjiReceptyNaLekRecepturowy">
+			<wsdl:documentation>Rezygnacja z realizacji recepty na lek recepturowy. Parametrami wejściowymi są klucz recepty lub klucz pakietu lub kod dostepu do pakietu lub numer recepty papierowej. Operacja odblokowuje w systemie daną receptę co wiąze się ze zmianą jej statusu z Zablokowna na Wystawiona.</wsdl:documentation>
+			<wsdl:input name="rezygnacjaZRealizacjiReceptyNaLekRecepturowyRequestRequest" message="ns:rezygnacjaZRealizacjiReceptyNaLekRecepturowyRequest"/>
+			<wsdl:output name="rezygnacjaZRealizacjiReceptyNaLekRecepturowyRequestResponse" message="ns:rezygnacjaZRealizacjiReceptyNaLekRecepturowyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="przyjecieDoRealizacjiReceptyNaLekRecepturowy">
+			<wsdl:documentation>Przyjęcie do realizacji recepty na lek recepturowy. Parametrem wejściowym jest klucz recepty elektronicznej albo numer recepty papierowej i pozycja na recepcie papierowej. Operacja blokuje w systemie daną receptę do realizacji (zmienia statusu recepty z Wystawiona na Zablokowana).</wsdl:documentation>
+			<wsdl:input name="przyjecieDoRealizacjiReceptyNaLekRecepturowyRequestRequest" message="ns:przyjecieDoRealizacjiReceptyNaLekRecepturowyRequest"/>
+			<wsdl:output name="przyjecieDoRealizacjiReceptyNaLekRecepturowyRequestResponse" message="ns:przyjecieDoRealizacjiReceptyNaLekRecepturowyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="odczytReceptyDoRealizacji">
+			<wsdl:documentation>Odczyt pojedynczej recepty elektronicznej na podstawie przekazanego klucza recepty. Razem z receptą zwracane są wyniki weryfikacji recepty oraz dokumenty realizacji recepty.</wsdl:documentation>
+			<wsdl:input name="odczytReceptyDoRealizacjiRequestRequest" message="ns:odczytReceptyDoRealizacjiRequest"/>
+			<wsdl:output name="odczytReceptyDoRealizacjiRequestResponse" message="ns:odczytReceptyDoRealizacjiResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="odczytPakietuReceptDoRealizacji">
+			<wsdl:documentation>Odczyt wszystkich recept elektronicznych pakietu recept na podstawie przekazanego klucza lub kodu pakietu. Razem z receptami zwracane są wyniki weryfikacji recept oraz dokumenty realizacji recept.</wsdl:documentation>
+			<wsdl:input name="odczytPakietuReceptDoRealizacjiRequestRequest" message="ns:odczytPakietuReceptDoRealizacjiRequest"/>
+			<wsdl:output name="odczytPakietuReceptDoRealizacjiRequestResponse" message="ns:odczytPakietuReceptDoRealizacjiResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="odczytRecepty">
+			<wsdl:documentation>Odczyt pojedynczej recepty elektronicznej na podstawie przekazanego klucza recepty. Wraz z receptą zwracany jest jej status oraz dokumenty realizacji i anulowania.</wsdl:documentation>
+			<wsdl:input name="odczytReceptyRequestRequest" message="ns:odczytReceptyRequest"/>
+			<wsdl:output name="odczytReceptyRequestResponse" message="ns:odczytReceptyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="odczytPakietuRecept">
+			<wsdl:documentation>Odczyt pakietu recept na podstawie klucza pakietu ALBO kodu pakietu. (w przypadku przekazania obu parametrów operacja kończy się błędem). W przypadku wywołania operacji przez system usługodawcy wystawiającego recepty obowiązkowym parametrem jest identyfikator pracownika medycznego, który wywołał operację.</wsdl:documentation>
+			<wsdl:input name="odczytPakietuReceptRequestRequest" message="ns:odczytPakietuReceptRequest"/>
+			<wsdl:output name="odczytPakietuReceptRequestResponse" message="ns:odczytPakietuReceptResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="odczytDokumentuRealizacjiRecepty">
+			<wsdl:documentation>Odczyt pojedynczego dokumentu realizacji recepty na podstawie przekazanego identyfikatora dokumentu. Zwracany jest również status dokumentu realizacji recepty.</wsdl:documentation>
+			<wsdl:input name="odczytDokumentuRealizacjiReceptyRequestRequest" message="ns:odczytDokumentuRealizacjiReceptyRequest"/>
+			<wsdl:output name="odczytDokumentuRealizacjiReceptyRequestResponse" message="ns:odczytDokumentuRealizacjiReceptyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="odczytDokumentuAnulowaniaRecepty">
+			<wsdl:documentation>Odczyt pojedynczego dokumentu anulowania recepty na podstawie przekazanego identyfikatora dokumentu.</wsdl:documentation>
+			<wsdl:input name="odczytDokumentuAnulowaniaReceptyRequestRequest" message="ns:odczytDokumentuAnulowaniaReceptyRequest"/>
+			<wsdl:output name="odczytDokumentuAnulowaniaReceptyRequestResponse" message="ns:odczytDokumentuAnulowaniaReceptyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="odczytDanychDostepowychPakietuRecept">
+			<wsdl:documentation>Odczyt danych dostępowych do pakietu recept. Dane wejściowe to klucz jednej z recept w pakiecie oraz identyfikator pracownika medycznego, który wywołał operację. Wynikiem jest kod i klucz pakietu recept oraz klucze do wszystkich recept w pakiecie.</wsdl:documentation>
+			<wsdl:input name="odczytDanychDostepowychPakietuReceptRequestRequest" message="ns:odczytDanychDostepowychPakietuReceptRequest"/>
+			<wsdl:output name="odczytDanychDostepowychPakietuReceptRequestResponse" message="ns:odczytDanychDostepowychPakietuReceptResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="odblokowanieRecepty">
+			<wsdl:documentation>Odblokowanie zablokowanej recepty. Parametrem wejściowym jest klucz zablokowanej recepty. W wyniku zwracane jest potwierdzenie wykonania operacji.</wsdl:documentation>
+			<wsdl:input name="odblokowanieReceptyRequestRequest" message="ns:odblokowanieReceptyRequest"/>
+			<wsdl:output name="odblokowanieReceptyRequestResponse" message="ns:odblokowanieReceptyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+		<wsdl:operation name="zapisKorektyDokumentuRealizacjiRecepty">
+			<wsdl:documentation>Zapisanie korekty dokumentu realizacji recepty. Parametry wejściowe to klucz korygowanej recepty elektronicznej i dokument korekty realizacji wskazanej recepty. W przypadku korekty realizacji recepty papierowej, nie przekazuje się klucza recepty. Wynikiem operacji są wyniki weryfikacji przesłanego dokumentu korekty.</wsdl:documentation>
+			<wsdl:input name="zapisKorektyDokumentuRealizacjiReceptyRequestRequest" message="ns:zapisKorektyDokumentuRealizacjiReceptyRequest"/>
+			<wsdl:output name="zapisKorektyDokumentuRealizacjiReceptyRequestResponse" message="ns:zapisKorektyDokumentuRealizacjiReceptyResponse"/>
+			<wsdl:fault name="bledyOperacji" message="ns:bledyOperacji"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="ObslugaReceptyWS" type="ns:ObslugaReceptyWS">
+		<wsdl:documentation>Interfejs udostępnia operacje związane z obsługą recept.</wsdl:documentation>
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="odczytPakietuRecept">
+			<soap:operation soapAction="urn:odczytPakietuRecept" style="document"/>
+			<wsdl:input name="odczytPakietuReceptRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="odczytPakietuReceptRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="odczytRecepty">
+			<soap:operation soapAction="urn:odczytRecepty" style="document"/>
+			<wsdl:input name="odczytReceptyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="odczytReceptyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="odczytPakietuReceptDoRealizacji">
+			<soap:operation soapAction="urn:odczytPakietuReceptDoRealizacji" style="document"/>
+			<wsdl:input name="odczytPakietuReceptDoRealizacjiRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="odczytPakietuReceptDoRealizacjiRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="odczytReceptyDoRealizacji">
+			<soap:operation soapAction="urn:odczytReceptyDoRealizacji" style="document"/>
+			<wsdl:input name="odczytReceptyDoRealizacjiRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="odczytReceptyDoRealizacjiRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="odczytReceptyDoKonsultacji">
+			<soap:operation soapAction="urn:odczytReceptyDoKonsultacji" style="document"/>
+			<wsdl:input name="odczytReceptyDoKonsultacjiRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="odczytReceptyDoKonsultacjiRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="przyjecieDoRealizacjiReceptyNaLekRecepturowy">
+			<soap:operation soapAction="urn:przyjecieDoRealizacjiReceptyNaLekRecepturowy" style="document"/>
+			<wsdl:input name="przyjecieDoRealizacjiReceptyNaLekRecepturowyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="przyjecieDoRealizacjiReceptyNaLekRecepturowyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="rezygnacjaZRealizacjiReceptyNaLekRecepturowy">
+			<soap:operation soapAction="urn:rezygnacjaZRealizacjiReceptyNaLekRecepturowy" style="document"/>
+			<wsdl:input name="rezygnacjaZRealizacjiReceptyNaLekRecepturowyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="rezygnacjaZRealizacjiReceptyNaLekRecepturowyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="weryfikacjaPakietuRecept">
+			<soap:operation soapAction="urn:weryfikacjaPakietuRecept" style="document"/>
+			<wsdl:input name="weryfikacjaPakietuReceptRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="weryfikacjaPakietuReceptRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="zapisRealizacjiReceptyFarmaceutycznej">
+			<soap:operation soapAction="urn:zapisRealizacjiReceptyFarmaceutycznej" style="document"/>
+			<wsdl:input name="zapisRealizacjiReceptyFarmaceutycznejRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="zapisRealizacjiReceptyFarmaceutycznejRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="zapisRealizacjiRecepty">
+			<soap:operation soapAction="urn:zapisRealizacjiRecepty" style="document"/>
+			<wsdl:input name="zapisRealizacjiReceptyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="zapisRealizacjiReceptyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="zapisPakietuRecept">
+			<soap:operation soapAction="urn:zapisPakietuRecept" style="document"/>
+			<wsdl:input name="zapisPakietuReceptRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="zapisPakietuReceptRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="zapisPakietuRealizacjiRecept">
+			<soap:operation soapAction="urn:zapisPakietuRealizacjiRecept" style="document"/>
+			<wsdl:input name="zapisPakietuRealizacjiReceptRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="zapisPakietuRealizacjiReceptRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="zapisDokumentuAnulowaniaReceptyFarmaceutycznej">
+			<soap:operation soapAction="urn:zapisDokumentuAnulowaniaReceptyFarmaceutycznej" style="document"/>
+			<wsdl:input name="zapisDokumentuAnulowaniaReceptyFarmaceutycznejRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="zapisDokumentuAnulowaniaReceptyFarmaceutycznejRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="zapisDokumentuAnulowaniaRecepty">
+			<soap:operation soapAction="urn:zapisDokumentuAnulowaniaRecepty" style="document"/>
+			<wsdl:input name="zapisDokumentuAnulowaniaReceptyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="zapisDokumentuAnulowaniaReceptyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieDokumentowRealizacjiRecept">
+			<soap:operation soapAction="urn:wyszukanieDokumentowRealizacjiRecept" style="document"/>
+			<wsdl:input name="wyszukanieDokumentowRealizacjiReceptRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="wyszukanieDokumentowRealizacjiReceptRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="zablokowanieRecepty">
+			<soap:operation soapAction="urn:zablokowanieRecepty" style="document"/>
+			<wsdl:input name="zablokowanieReceptyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="zablokowanieReceptyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieReceptWystawiajacego">
+			<soap:operation soapAction="urn:wyszukanieReceptWystawiajacego" style="document"/>
+			<wsdl:input name="wyszukanieReceptWystawiajacegoRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="wyszukanieReceptWystawiajacegoRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieReceptUslugobiorcyDoKonsultacji">
+			<soap:operation soapAction="urn:wyszukanieReceptUslugobiorcyDoKonsultacji" style="document"/>
+			<wsdl:input name="wyszukanieReceptUslugobiorcyDoKonsultacjiRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="wyszukanieReceptUslugobiorcyDoKonsultacjiRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieRealizacjiReceptDoKonsultacji">
+			<soap:operation soapAction="urn:wyszukanieRealizacjiReceptDoKonsultacji" style="document"/>
+			<wsdl:input name="wyszukanieRealizacjiReceptDoKonsultacjiRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="wyszukanieRealizacjiReceptDoKonsultacjiRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieReceptUslugobiorcy">
+			<soap:operation soapAction="urn:wyszukanieReceptUslugobiorcy" style="document"/>
+			<wsdl:input name="wyszukanieReceptUslugobiorcyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="wyszukanieReceptUslugobiorcyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="wyszukanieDokumentowAnulowaniaRecept">
+			<soap:operation soapAction="urn:wyszukanieDokumentowAnulowaniaRecept" style="document"/>
+			<wsdl:input name="wyszukanieDokumentowAnulowaniaReceptRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="wyszukanieDokumentowAnulowaniaReceptRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="zapisKorektyDokumentuRealizacjiRecepty">
+			<soap:operation soapAction="urn:zapisKorektyDokumentuRealizacjiRecepty" style="document"/>
+			<wsdl:input name="zapisKorektyDokumentuRealizacjiReceptyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="zapisKorektyDokumentuRealizacjiReceptyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="odblokowanieRecepty">
+			<soap:operation soapAction="urn:odblokowanieRecepty" style="document"/>
+			<wsdl:input name="odblokowanieReceptyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="odblokowanieReceptyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="odczytDanychDostepowychPakietuRecept">
+			<soap:operation soapAction="urn:odczytDanychDostepowychPakietuRecept" style="document"/>
+			<wsdl:input name="odczytDanychDostepowychPakietuReceptRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="odczytDanychDostepowychPakietuReceptRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="odczytDokumentuAnulowaniaRecepty">
+			<soap:operation soapAction="urn:odczytDokumentuAnulowaniaRecepty" style="document"/>
+			<wsdl:input name="odczytDokumentuAnulowaniaReceptyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="odczytDokumentuAnulowaniaReceptyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="odczytDokumentuRealizacjiRecepty">
+			<soap:operation soapAction="urn:odczytDokumentuRealizacjiRecepty" style="document"/>
+			<wsdl:input name="odczytDokumentuRealizacjiReceptyRequestRequest">
+				<soap:header message="ns:kontekstWywolania" part="kontekstWywolania" use="literal"/>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="odczytDokumentuRealizacjiReceptyRequestResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ObslugaRecepty">
+		<wsdl:port name="ObslugaReceptyWS" binding="ns:ObslugaReceptyWS">
+			<soap:address location="www.exampleLocation.com/Port1"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

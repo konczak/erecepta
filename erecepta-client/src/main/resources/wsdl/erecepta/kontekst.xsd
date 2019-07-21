@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://csioz.gov.pl/p1/kontekst/mt/v20170510" xmlns="http://csioz.gov.pl/p1/kontekst/mt/v20170510" xmlns:k="http://csioz.gov.pl/p1/kontekst/mt/v20170510" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" elementFormDefault="qualified">
+
+<xs:import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" schemaLocation="../wspolne/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+
+
+	<xs:simpleType name="RolaBiznesowaMT">
+		<xs:annotation>
+			<xs:documentation>Dopuszczalne wartości dla atrybutu kontekstu:
+urn:csioz:p1:erecepta:kontekst:rolabiznesowa</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="LEKARZ_LEK_DENTYSTA_FELCZER"/>
+			<xs:enumeration value="PIELEGNIARKA_POLOZNA"/>
+			<xs:enumeration value="FARMACEUTA"/>
+			<xs:enumeration value="TECHNIK_FARMACEUTYCZNY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NazwaAtrybutuKontekstuMT">
+		<xs:annotation>
+			<xs:documentation>Dopuszczalne nazwy atrybutów kontekstu.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="urn:csioz:p1:erecepta:kontekst:idPodmiotuOidRoot">
+				<xs:annotation>
+					<xs:documentation>oid:root</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="urn:csioz:p1:erecepta:kontekst:idPodmiotuOidExt">
+				<xs:annotation>
+					<xs:documentation>oid:extension</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="urn:csioz:p1:erecepta:kontekst:idUzytkownikaOidRoot">
+				<xs:annotation>
+					<xs:documentation>oid:root</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="urn:csioz:p1:erecepta:kontekst:idUzytkownikaOidExt">
+				<xs:annotation>
+					<xs:documentation>oid:extension</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="urn:csioz:p1:erecepta:kontekst:idMiejscaPracyOidRoot">
+				<xs:annotation>
+					<xs:documentation>oid:root</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="urn:csioz:p1:erecepta:kontekst:idMiejscaPracyOidExt">
+				<xs:annotation>
+					<xs:documentation>oid:extension</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="urn:csioz:p1:erecepta:kontekst:rolaBiznesowa"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WartoscAtrybutuMT">
+		<xs:annotation>
+			<xs:documentation>Wartość atrybutu kontekstu.</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="KontekstMT">
+		<xs:annotation>
+			<xs:documentation>Kontekst wywołania usługi. Realizowany w postaci ws-security custom token.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="atrybut" type="AtrybutMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute ref="wsu:Id" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="AtrybutMT">
+		<xs:annotation>
+			<xs:documentation>Atrybut kontekstu.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="wartosc" type="WartoscAtrybutuMT" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="nazwa" use="optional" type="xs:anyURI">
+			<xs:annotation>
+				<xs:documentation>Nazwa jako atrybutu elementu.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="kontekstWywolania" type="KontekstMT"/>
+</xs:schema>

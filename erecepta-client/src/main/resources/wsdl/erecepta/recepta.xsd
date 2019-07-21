@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://csioz.gov.pl/p1/erecepta/mt/v20170510" xmlns="http://csioz.gov.pl/p1/erecepta/mt/v20170510" xmlns:r="http://csioz.gov.pl/p1/erecepta/mt/v20170510" xmlns:wsp="http://csioz.gov.pl/p1/wspolne/mt/v20170510" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:import namespace="http://csioz.gov.pl/p1/wspolne/mt/v20170510" schemaLocation="wspolne.xsd"/>
+	<xs:complexType name="PotwierdzenieOperacjiZapisuMT">
+		<xs:annotation>
+			<xs:documentation>Komunikat zawiera:
+				- identyfikator zadania utworzonego w P1 związanego z obsługą zapisu pakietu recept
+				ALBO
+				- wynik zapisu pakietu recept.
+				Na wynik zapisu pakietu recept składają się:
+				- kod i klucz pakietu recept
+				- klucz każdej z recept
+				- wynik weryfikacji każdej z recept.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="idZadania" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadany przez System P1 identyfikator zadania związanego z zapisem pakietu recept.
+						Wykorzystywany przez systemy zewnętrzne w komunikacji z systemem P1 do sprawdzania statusu przetwarzania zadania oraz pobierania jego wyników.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wynikZapisuPakietuRecept" type="WynikZapisuPakietuReceptMT" minOccurs="0" maxOccurs="1"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="RealizacjaReceptyMT">
+		<xs:annotation>
+			<xs:documentation>Informacje o dokumencie realizacji recepty i jego statusie.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dokumentRealizacjiRecepty" type="xs:base64Binary" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Treść dokumentu realizacji recepty (XML, HL7 CDA), zakodowana za pomocą base64.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status" type="StatusDokumentuRealizacjiReceptyEnumMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status dokumentu realizacji recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KryteriaOdczytuReceptyDoKonsultacjiMT">
+		<xs:annotation>
+			<xs:documentation>Kryteria odczytu recepty do konsultacji.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikOdczytuReceptyDoKonsultacjiMT">
+		<xs:annotation>
+			<xs:documentation>Wynik udostępnienia recepty usługobiorcy do konsultacji (recepta + dokument weryfikacji).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dokumentRecepty" type="xs:base64Binary" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zaszyfrowany dokument recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="przyczynaZablokowaniaRecepty" type="PrzyczynaZablokowaniaReceptyEnumMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Przyczyna zablokowania recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusRecepty" type="StatusReceptyEnumMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="DaneRealizacjiDoKonsultacjiMT" type="DaneRealizacjiDoKonsultacjiMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DaneRealizacjiDoKonsultacjiMT">
+		<xs:annotation>
+			<xs:documentation>Dane pojedynczej recepty w ramach udostępnianego pakietu recept usługobiorcy do konsultacji.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dataRealizacjiRecepty" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia dokumentu realizacji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ilośćWydanegoLeku" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Ilośc wydanego leku w ramach realizacji</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="nazwaLekuRealizacja" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nazwa leku wydanego.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikiWyszukiwaniaReceptUslugobiorcyDoKonsultacjiMT">
+		<xs:annotation>
+			<xs:documentation>Lista wyników wyszukiwania recept usługobiorcy do konsultacji.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="WynikWyszukiwaniaReceptUslugobiorcyDoKonsultacjiMT" type="WynikWyszukiwaniaReceptUslugobiorcyDoKonsultacjiMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikWyszukiwaniaReceptUslugobiorcyDoKonsultacjiMT">
+		<xs:annotation>
+			<xs:documentation>Pojedynczy wynik wyszukiwania recepty usługobiorcy do konsultacji.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dataWystawieniaRecepty" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia recepty (przez datę wystawienia recepty rozumie się moment zapisu recepty w Systemie P1).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identyfikatorPodmiotuWystawcy" type="wsp:IdentyfikatorPodmiotuOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator podmiotu wystawcy dokumentu recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identyfikatorPracownikaWystawcy" type="wsp:IdentyfikatorPracownikaMedycznegoOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator pracownika medycznego wystawcy dokumentu recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="lekNazwa" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nazwa leku w recepcie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty nadany przez usługodawcę wystawiającego receptę.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="podmiotNazwa" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nazwa podmiotu wystawcy dokumentu recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="przyczynaZablokowaniaRecepty" type="PrzyczynaZablokowaniaReceptyEnumMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Przyczyna zablokowania recepty</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusRecepty" type="StatusReceptyEnumMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wystawcaNazwa" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Imię, nazwisko pracownika medycznego wystawiajacego receptę.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KryteriaWyszukiwaniaRealizacjiReceptDoKonsultacjiMT">
+		<xs:annotation>
+			<xs:documentation>Kryteria wyszukiwania realizacji recept usługobiorcy do konsultacji.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dataRealizacjaReceptyDo" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Górne ograniczenie daty wystawienia realizacji recepty - data do kiedy wystawione mają być poszukiwane realizacje recepty. Wartość w tym polu musi być nie mniejsza niż data podana w dolnym ograniczeniu daty wystawienia realizacji recepty (o ile podano dolne ograniczenie).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataRealizacjiReceptyOd" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dolne ograniczenie daty wystawienia realizacji recepty - data od kiedy wystawione mają być poszukiwane realizacje recepty. Wartość w tym polu musi być nie większa niż data podana w górnym ograniczeniu daty wystawienia realizacji recepty (o ile podano górne ograniczenie).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="idUslugobiorcy" type="wsp:IdentyfikatorUslugobiorcyOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator usługobiorcy, dla którego została wystawiona realizacja recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty nadany przez usługodawcę wystawiającego receptę.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikWyszukiwaniaRealizacjiReceptUslugobiorcyDoKonsultacjiMT">
+		<xs:annotation>
+			<xs:documentation>wynik wyszukiwania dokumentów realizacji recepty usługobiorcy do konsultacji.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DaneRealizacjiDoKonsultacjiMT" type="DaneRealizacjiDoKonsultacjiMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikWeryfikacjiZbioruRegulMT">
+		<xs:annotation>
+			<xs:documentation>Wynik weryfikacji zbioru reguł uruchamianych w ramach weryfikacji dokumentu. Poza zbiorczym wynikiem weryfikacji jest również lista wyników z poszczególnych reguł.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="wynikWeryfikacji" type="KodWynikuWeryfikacjiEnumMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Zbiorczy wynik weryfikacji dokumentu. Jeśli co najmniej jedna reguła zbioru reguł zakończyła sie z wynikiem błędnym to zbiorczy wynik wreyfikacji również wskazuje błąd. Analogicznie obsługiwane są ostrzeżenia. Jeśli żadna reguła nie zwróciła błędu lub ostrzeżenia wówczas zbiorczy wynik weryfikacji dla dokumentu jest pozytywny.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identyfikatorZbioruRegul" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator zbioru reguł, które są uruchamiane w ramach weryfikacji dokumentu. Identyfikator pozwala na wskazanie dokładnej wersji konfiguracji, która została zastosowana. Identyfikator to ciąg x.y[.z] gdzie x-główny numer wersji; y-pomocniczy numer wersji; z - fix/build/patch (opcjonalny). pierwsza wersja 0.1, w x, y i z nie stosujemy 0 wiodących (tzn. nie tworzymy wersji 01.034 tylko 1.34).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wynikWeryfikacjiReguly" type="WynikWeryfikacjiRegulyMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="StatusReceptyEnumMT">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="WYSTAWIONA"/>
+			<xs:enumeration value="ZABLOKOWANA"/>
+			<xs:enumeration value="ZREALIZOWANA"/>
+			<xs:enumeration value="CZESCIOWO_ZREALIZOWANA"/>
+			<xs:enumeration value="ANULOWANA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StatusDokumentuRealizacjiReceptyEnumMT">
+		<xs:annotation>
+			<xs:documentation>Statusy dokumentów realizacji recepty</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="OBOWIAZUJACY"/>
+			<xs:enumeration value="SKORYGOWANY"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RodzajRealizacjiEnumMT">
+		<xs:annotation>
+			<xs:documentation>Rodzaje realizacji</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="CZESCIOWA"/>
+			<xs:enumeration value="WYCOFUJACA"/>
+			<xs:enumeration value="ZAMYKAJACA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PrzyczynaZablokowaniaReceptyEnumMT">
+		<xs:annotation>
+			<xs:documentation>Przyczyny zablokowania recepty</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="W_REALIZACJI"/>
+			<xs:enumeration value="WYDANIE_ZAGRAZA_ZYCIU_LUB_ZDROWIU">
+				<xs:annotation>
+					<xs:documentation>Wydanie leku może zagrażać życiu lub zdrowiu pacjenta.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PRODUKT_MOZE_ZOSTAC_UZYTY_W_CELU_POZAMEDYCZNYNM">
+				<xs:annotation>
+					<xs:documentation>W przypadku uzasadnionego podejrzenia, że produkt leczniczy może być zastosowany w celu pozamedycznym.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZMIANA_SKLADU_LEKU_RECEPTUROWEGO">
+				<xs:annotation>
+					<xs:documentation>Zachodzi konieczność dokonania zmian składu leku recepturowego, w recepcie, do których farmaceuta albo technik farmaceutyczny nie posiada uprawnień, i nie ma możliwości porozumienia się z osobą uprawnioną do wystawiania recept.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PRZETERMINOWANIE_LEKU">
+				<xs:annotation>
+					<xs:documentation>Od dnia sporządzenia produktu leczniczego upłynęło co najmniej 6 dni – w przypadku leku recepturowego sporządzonego na podstawie recepty lub etykiety aptecznej.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WIEK_OSOBY_DLA_KTOREJ_JEST_WYSTAWIONA_RECEPTA">
+				<xs:annotation>
+					<xs:documentation>Zachodzi uzasadnione podejrzenie co do wieku osoby, dla której została wystawiona recepta.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KodWynikuWeryfikacjiEnumMT">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="urn:csioz:p1:erecepta:kodWynikuWeryfikacji:pozytywny"/>
+			<xs:enumeration value="urn:csioz:p1:erecepta:kodWynikuWeryfikacji:blad"/>
+			<xs:enumeration value="urn:csioz:p1:erecepta:kodWynikuWeryfikacji:ostrzezenie"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="WynikiWyszukiwaniaReceptMT">
+		<xs:annotation>
+			<xs:documentation>Lista wyników wyszukiwania.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="wynikWyszukiwaniaRecept" type="WynikWyszukiwaniaReceptMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikiWyszukiwaniaReceptUslugobiorcyMT">
+		<xs:annotation>
+			<xs:documentation>Lista wyników wyszukiwania recept usługobiorcy.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="wynikWyszukiwaniaReceptUslugobiorcy" type="WynikWyszukiwaniaReceptUslugobiorcyMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikiWyszukiwaniaDokumentowRealizacjiMT">
+		<xs:annotation>
+			<xs:documentation>Lista wyników wyszukiwania dokumentów realizacji recept spełniających kryteria wyszukiwania.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="wynikWyszukiwaniaDokumentowRealizacji" type="WynikWyszukiwaniaDokumentowRealizacjiMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikiWyszukiwaniaDokumentowAnulowaniaMT">
+		<xs:sequence>
+			<xs:element name="wynikWyszukiwaniaDokumentowAnulowania" type="WynikWyszukiwaniaDokumentowAnulowaniaMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikiWeryfikacjiPakietuReceptMT">
+		<xs:sequence>
+			<xs:element name="idZadania" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="wynikWeryfikacjiDokumentu" type="IdentyfikatorDokumentuIWynikWeryfikacjiMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikiWeryfikacjiKorektyDokumentuRealizacjiMT">
+		<xs:annotation>
+			<xs:documentation>Wynik weryfikacji korekty dokumentu realizacji recepty</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="wynikWeryfikacjiZbioruRegul" type="WynikWeryfikacjiZbioruRegulMT" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikiWeryfikacjiDokumentuReceptyMT">
+		<xs:annotation>
+			<xs:documentation>wynik weryfikacji dokumentu recepty farmaceutycznej</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="wynikWeryfikacjiZbioruRegul" type="WynikWeryfikacjiZbioruRegulMT" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikiWeryfikacjiDokumentuRealizacjiMT">
+		<xs:annotation>
+			<xs:documentation>Wynik przekazania dokumentu realizacji recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="wynikWeryfikacjiZbioruRegul" type="WynikWeryfikacjiZbioruRegulMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wynik weryfikacji zbioru reguł uruchamianych w ramach weryfikacji dokumentu recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikiWeryfikacjiDokumentuAnulowaniaMT">
+		<xs:annotation>
+			<xs:documentation>Wynik przekazania dokumentu anulowania recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="wynikWeryfikacjiZbioruRegul" type="WynikWeryfikacjiZbioruRegulMT" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikZapisuPakietuReceptMT">
+		<xs:sequence>
+			<xs:element name="kluczPakietuRecept" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz pakietu recept nadany przez System P1. Klucz jest nadawany, tylko w przypadku w pozytywnej weryfikacji wszystkich recept w pakiecie (brak błędów).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="kodPakietuRecept" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation> Kod pakietu recept nadany przez System P1. Kod pakietu jest nadawany, tylko w przypadku w pozytywnej weryfikacji wszystkich recept w pakiecie (brak błędów). Kod zbudowany jest 4 cyfr i numeru PESEL usługobiorcy.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wynikWeryfikacji" type="WynikWeryfikacjiReceptMT" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikZapisuPakietuRealizacjiReceptMT">
+		<xs:annotation>
+			<xs:documentation>Wyniki weryfikacji realizacji recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="weryfikowanaRealizacja" type="WeryfikowanaRealizacjaMT" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikWyszukiwaniaReceptMT">
+		<xs:annotation>
+			<xs:documentation>Pojedynczy wynik wyszukiwania recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kluczRecepty" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz recepty spełniającej kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="kluczPakietu" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz pakietu recept zawierającego recepty spełniające kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataWystawieniaRecepty" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia recepty (przez datę wystawienia recepty rozumie się moment zapisu recepty w Systemie P1).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="statusRecepty" type="StatusReceptyEnumMT" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="przyczynaZablokowaniaRecepty" type="PrzyczynaZablokowaniaReceptyEnumMT" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikWyszukiwaniaReceptUslugobiorcyMT">
+		<xs:annotation>
+			<xs:documentation>Pojedynczy wynik wyszukiwania recepty usługobiorcy.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kluczRecepty" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz recepty spełniającej kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="kluczPakietu" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz pakietu recept zawierającego recepty spełniające kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataWystawieniaRecepty" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia recepty (przez datę wystawienia recepty rozumie się moment zapisu recepty w Systemie P1).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty spełniającej kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusRecepty" type="StatusReceptyEnumMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status recepty spełniającej kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="przyczynaZablokowaniaRecepty" type="PrzyczynaZablokowaniaReceptyEnumMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Przyczyna zablokowania recepty spełniającej kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="podmiotNazwa" type="xs:string" minOccurs="1" maxOccurs="1" >
+				<xs:annotation>
+					<xs:documentation>Nazwa podmiotu wystawiającego receptę spełniającą kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wystawcaNazwa" type="xs:string" minOccurs="1" maxOccurs="1" >
+				<xs:annotation>
+					<xs:documentation>Nazwa wystawcy recepty spełniającej kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identyfikatorPracownikaWystawcy" type="wsp:IdentyfikatorPracownikaMedycznegoOIDMT" minOccurs="1" maxOccurs="1" >
+				<xs:annotation>
+					<xs:documentation>Identyfikator pracownika wystawcy recepty spełniającej kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identyfikatorPodmiotuWystawcy" type="wsp:IdentyfikatorPodmiotuOIDMT" minOccurs="1" maxOccurs="1" >
+				<xs:annotation>
+					<xs:documentation>Identyfikator podmiotu wystawcy recepty spełniającej kryteria wyszukiwania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikWyszukiwaniaDokumentowRealizacjiMT">
+		<xs:annotation>
+			<xs:documentation>Pojedynczy wynik wyszukiwania spełniający kryteria wyszukiwania dokumentów realizacji recept.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identyfikatorDokumentuRealizacjiRecepty" type="wsp:IdentyfikatorDokumentuOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator dokumentu realizacji recepty - będący analogicznym odpowiednikiem numeru recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusDokumentuRealizacjiRecepty" type="StatusDokumentuRealizacjiReceptyEnumMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status dokumentu realizacji recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rodzajRealizacji" type="RodzajRealizacjiEnumMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Rodzaj realizacji.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataWystawienia" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia dokumentu realizacji recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identyfikatorPracownikaRealizatora" type="wsp:IdentyfikatorPracownikaMedycznegoOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator pracownika (farmaceuta, technik farmaceuta) podmiotu realizatora odpowiedzialnego za wystawienie dokumentu realizacji recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identyfikatorPodmiotuWystawcy" type="wsp:IdentyfikatorUslugodawcyOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator podmiotu wystawcy dokumentu recepty związanego z wyszukiwanym dokumentem realizacji recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="kluczRecepty" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz dokumentu recepty, którego dotyczy wyszukiwany dokument realizacji recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerReceptyPapierowej" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty papierowej, która w czasie wystawiania nie jest rejestrowana w systemie P1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerPozycjiReceptyPapierowej" type="xs:int" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer pozycji na recepcie papierowej, która w czasie wystawiania nie jest rejestrowana w systemie P1. Jeśli wynik wyszukiwania dot. dokumentu realizacji, który wskazuje na receptę papierową, to w atrybucie numerPozycjaReceptyPapierowej wskazany zostanie numer konkretnej pozycji recepty papierowej, której dotyczy dokument realizacji.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikWyszukiwaniaDokumentowAnulowaniaMT">
+		<xs:sequence>
+			<xs:element name="identyfikatorDokumentuAnulowaniaRecepty" type="IdentyfikatorDokumentuAnulowaniaReceptyMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator dokumentu anulowania recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataWystawienia" type="xs:dateTime" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia dokumentu anulowania recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="kluczRecepty" type="KluczReceptyMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz recepty powiązany z wyszukanym dokumentem anulowania.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikWeryfikacjiRegulyMT">
+		<xs:annotation>
+			<xs:documentation>Wynik weryfikacji zbioru reguł uruchamianych w ramach weryfikacji dokumentu. Poza zbiorczym wynikiem weryfikacji jest również lista wyników z poszczególnych reguł.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kodRegulyWeryfikacji" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Kod reguły</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wynikWeryfikacji" type="KodWynikuWeryfikacjiEnumMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wynik weryfikacji reguły na dokumencie</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="opisProblemu" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Opis znalezionego problemu tj. błędu lub ostrzeżenia.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="miejsceWystapieniaBledu" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wskazanie na miejsce w dokumencie, gdzie znaleziono problem tj. błąd lub ostrzeżenie.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WynikWeryfikacjiReceptMT">
+		<xs:annotation>
+			<xs:documentation>Wyniki weryfikacji recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="weryfikowanaRecepta" type="WeryfikowanaReceptaMT" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WeryfikowanaReceptaMT">
+		<xs:annotation>
+			<xs:documentation>Weryfikowany dokument recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="numerReceptyWPakiecie" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer nadany dokumentowi recepty przez system wywołujący operację. Służy do korelacji wyników weryfikacji z przekazywanym dokumentem do zapisu lub weryfikacji.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="kluczRecepty" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz dokumentu recept nadany przez System P1. Klucz jest nadawany, tylko w przypadku w pełni pozytywnej weryfikacji - tzn. recepta nie zawiera błędu i w przypadku operacji zapisu zostałaby przyjęta do Systemu P1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wynikWeryfikacjiZbioruRegul" type="WynikWeryfikacjiZbioruRegulMT" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WeryfikowanaRealizacjaMT">
+		<xs:annotation>
+			<xs:documentation>Weryfikowany dokument realzacji recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identyfikatorRealizacjiWPakiecie" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator nadany dokumentowi realizacji recepty przez system wywołujący operację. Służy do korelacji wyników weryfikacji z przekazywanym dokumentem do zapisu.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wynikWeryfikacjiZbioruRegul" type="WynikWeryfikacjiZbioruRegulMT" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReceptyMT">
+		<xs:sequence>
+			<xs:element name="recepta" type="ReceptaMT" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RealizacjeReceptWPakiecieMT">
+		<xs:sequence>
+			<xs:element name="realizacja" type="RealizacjaReceptyWPakiecieMT" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReceptyIRealizacjeMT">
+		<xs:sequence>
+			<xs:element name="receptaIRealizacja" type="ReceptaIRealizacjaMT" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReceptaMT">
+		<xs:sequence>
+			<xs:element name="identyfikatorDokumentuWPakiecie" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator recepty w pakiecie.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tresc" type="xs:base64Binary" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dokument recepty zgodny z HL7 CDA.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RealizacjaReceptyWPakiecieMT">
+		<xs:sequence>
+			<xs:element name="identyfikatorRealizacjiWPakiecie" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator realizacji w pakiecie.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="tresc" type="xs:base64Binary" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dokument realizacji recepty zgodny z HL7 CDA.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReceptaIWynikWeryfikacjiMT">
+		<xs:annotation>
+			<xs:documentation>Recepta, jej status oraz wynik weryfikacji w chwili zapisywania recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="statusRecepty" type="StatusReceptyEnumMT" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="przyczynaZablokowaniaRecepty" type="PrzyczynaZablokowaniaReceptyEnumMT" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="dokumentRealizacjiRecepty" type="DokumentRealizacjiReceptyMT" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="dokumentAnulowaniaRecepty" type="DokumentAnulowaniaReceptyMT" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="weryfikowanyDokument" type="WeryfikowanaReceptaMT" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="recepta" type="ReceptaMT" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReceptaIRealizacjaMT">
+		<xs:annotation>
+			<xs:documentation>Dokument recepty, wyniki weryfikacji recepty, istniejące dokumenty realizacji recepty, oraz ew. dokument anulowania.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kluczRecepty" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz zwracanej recepty do realizacji.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dokumentRecepty" type="DokumentReceptyMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Treść dokumentu recepty farmaceutycznej (XML, HL7 CDA), zakodowana za pomocą base64.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusRecepty" type="StatusReceptyEnumMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status dokumentu recepty w systemie P1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="przyczynaZablokowaniaRecepty" type="PrzyczynaZablokowaniaReceptyEnumMT" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="wynikWeryfikacjiRecepty" type="WynikWeryfikacjiZbioruRegulMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Wynik weryfikacji recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dokumentRealizacjiRecepty" type="DokumentRealizacjiReceptyMT" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Treść dokumentu realizacji recepty (XML, HL7 CDA), zakodowana za pomocą base64.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dokumentAnulowaniaRecepty" type="DokumentAnulowaniaReceptyMT" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PotwierdzenieOperacjiWeryfikacjiMT">
+		<xs:annotation>
+			<xs:documentation>Komunikat zawiera identyfikator zadania utworzonego w P1 związanego z obsługą weryfikacji pakietu recept, albo wynik weryfikacji pakietu recept, Na wynik weryfikacji pakietu recept składa się wynik weryfikacji każdej z recept.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="idZadania" type="xs:string" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Nadany przez System P1 identyfikator zadania związanego z weryfikacją pakietu recept. Wykorzystywany przez systemy zewnętrzne w komunikacji z Systemem P1 do sprawdzania statusu przetwarzania zadania oraz pobierania jego wyników.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wynikWeryfikacjiRecept" type="WynikWeryfikacjiReceptMT" minOccurs="0" maxOccurs="1"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PakietReceptMT">
+		<xs:annotation>
+			<xs:documentation>Pakiet recept albo identyfikator zadania utworzonego w P1 związanego z asynchroniczną obsługą zapisu lub weryfikacji pakietu recept.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="identyfikatorZadania" type="wsp:IdentyfikatorZadaniaMT" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="recepty" type="ReceptyMT" minOccurs="0" maxOccurs="1"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PakietRealizacjiReceptMT">
+		<xs:annotation>
+			<xs:documentation>Pakiet realizacji recept.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="realizacje" type="RealizacjeReceptWPakiecieMT" minOccurs="1" maxOccurs="1"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PakietReceptIWynikowWeryfikacjiMT">
+		<xs:annotation>
+			<xs:documentation>Lista recept w pakiecie wraz informacjami o statusie oraz wyniku weryfikacji każdej z recept.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="receptaIWynikWeryfikacji" type="ReceptaIWynikWeryfikacjiMT" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NumerReceptyOIDMT">
+		<xs:annotation>
+			<xs:documentation>Unikalny w ramach P1 numer recepty złożony z identyfikatora usługodawcy oraz numeru recepty w systemie usługodawcy.
+				Atrybut root musi mieć wartość 2.16.840.1.113883.3.4424.2.7.{x}.2 , gdzie x to numer usługodawcy nadany w systemie P1.
+				Atrybut extension zawiera numer recepty nadany w systemie usługodawcy.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="wsp:IdentyfikatorOIDMT">
+				<xs:sequence/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NumerIPozycjaReceptyPapierowejMT">
+		<xs:annotation>
+			<xs:documentation>Numer i pozycja recepty papierowej.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="numerReceptyPapierowej" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty papierowej.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerPozycjiReceptyPapierowej" type="xs:int" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer pozycji recepty papierowej.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KryteriaWyszukiwaniaReceptMT">
+		<xs:annotation>
+			<xs:documentation>Kryteria wyszukiwania recept.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dataWystawieniaReceptyDo" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Górne ograniczenie daty wystawienia recepty - data do kiedy wystawione mają być poszukiwane recepty. Wartość w tym polu musi być nie mniejsza niż data podana w dolnym ograniczeniu daty wystawienia recepty (o ile podano dolne ograniczenie).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataWystawieniaReceptyOd" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dolne ograniczenie daty wystawienia recepty - data od kiedy wystawione mają być poszukiwane recepty. Wartość w tym polu musi być nie większa niż data podana w górnym ograniczeniu daty wystawienia recepty (o ile podano górne ograniczenie).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="idPracownikaMedycznego" type="wsp:IdentyfikatorPracownikaMedycznegoOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator pracownika medycznego, który wystawił receptę.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="idUslugobiorcy" type="wsp:IdentyfikatorUslugobiorcyOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator usługobiorcy, dla którego została wystawiona recepta.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty nadany przez usługodawcę wystawiającego receptę.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusRecepty" type="StatusReceptyEnumMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KryteriaWyszukiwaniaReceptUslugobiorcyMT">
+		<xs:annotation>
+			<xs:documentation>Kryteria wyszukiwania recept.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dataWystawieniaReceptyDo" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Górne ograniczenie daty wystawienia recepty - data do kiedy wystawione mają być poszukiwane recepty. Wartość w tym polu musi być nie mniejsza niż data podana w dolnym ograniczeniu daty wystawienia recepty (o ile podano dolne ograniczenie).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataWystawieniaReceptyOd" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Dolne ograniczenie daty wystawienia recepty - data od kiedy wystawione mają być poszukiwane recepty. Wartość w tym polu musi być nie większa niż data podana w górnym ograniczeniu daty wystawienia recepty (o ile podano górne ograniczenie).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="idPracownikaMedycznego" type="wsp:IdentyfikatorPracownikaMedycznegoOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator pracownika medycznego, który wystawił receptę.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="idUslugobiorcy" type="wsp:IdentyfikatorUslugobiorcyOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator usługobiorcy, dla którego została wystawiona recepta.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty nadany przez usługodawcę wystawiającego receptę.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusRecepty" type="StatusReceptyEnumMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status recepty, który aktualnie posiada wyszukiwana recepta.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KryteriaWyszukiwaniaDokumentowRealizacjiMT">
+		<xs:annotation>
+			<xs:documentation>Kryteria wyszukiwania dokumentów realizacji recept.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identyfikatorPodmiotuWystawcy" type="wsp:IdentyfikatorUslugodawcyOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator wystawcy dokumentu recepty, dla którego dana apteka wystawiła dokument realizacji.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataWystawieniaOd" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia dokumentu realizacji (od).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataWystawieniaDo" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia dokumentu realizacji (do).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="identyfikatorPracownikaRealizatora" type="wsp:IdentyfikatorPracownikaMedycznegoOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator pracownika (farmaceuta, technik farmaceuta) podmiotu realizatora odpowiedzialnego za wystawienie dokumentu realizacji recepty.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="rodzajRealizacji" type="RodzajRealizacjiEnumMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Rodzaj realizacji.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="statusDokumentuRealizacjiRecepty" type="StatusDokumentuRealizacjiReceptyEnumMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Status dokumentu realizacji recepty</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KryteriaWyszukiwaniaDokumentowAnulowaniaMT">
+		<xs:annotation>
+			<xs:documentation>Kryteria wyszukiwania dokumentów anulowania recept.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dataWystawieniaOd" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia dokumentu anulowania (data OD).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="dataWystawieniaDo" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Data wystawienia dokumentu anulowania (data DO).</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty, którego dotyczy szukany dokument anulowania,</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KryteriaOdczytuPakietuReceptMT">
+		<xs:annotation>
+			<xs:documentation>Kryteria odczytu pakietu recept.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="kluczPakietuRecept" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="kodPakietuRecept" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="KodIKluczePakietuIReceptMT">
+		<xs:annotation>
+			<xs:documentation>Kod i klucz do pakietu recept oraz klucze i numery każdej recepty w pakiecie.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kluczeINumeryRecept" type="KluczeINumeryReceptMT" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="kluczIKodPakietuRecept" type="KluczIKodPakietuReceptMT" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KluczReceptyMT">
+		<xs:annotation>
+			<xs:documentation>Klucz recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kluczRecepty" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz recepty nadany przez P1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KluczPakietuReceptMT">
+		<xs:annotation>
+			<xs:documentation>Klucz (bez kodu) do pakietu recept.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kluczPakietuRecept" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KluczINumerReceptyMT">
+		<xs:annotation>
+			<xs:documentation>Klucz i numer recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kluczRecepty" type="xs:string" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Klucz recepty nadany przez P1.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="numerRecepty" type="NumerReceptyOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Numer recepty nadany przez usługodawcę.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KluczIKodPakietuReceptMT">
+		<xs:annotation>
+			<xs:documentation>Klucz i kod pakietu recept. </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="kluczPakietuRecept" type="xs:string" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="kodPakietuRecept" type="xs:string" minOccurs="1" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="KluczeINumeryReceptMT">
+		<xs:sequence>
+			<xs:element name="kluczINumerRecepty" type="KluczINumerReceptyMT" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorDokumentuRealizacjiReceptyMT">
+		<xs:annotation>
+			<xs:documentation>Identyfikator dokumentu realizacji recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identyfikatorDokumentuRealizacjiRecepty" type="wsp:IdentyfikatorDokumentuOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator dokumentu realizacji recepty nadawany przez realizatora w własnym weźle OID.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorDokumentuIWynikWeryfikacjiMT">
+		<xs:sequence>
+			<xs:element name="identyfikatorDokumentuWPakiecie" type="xs:int" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="wynikWeryfikacjiZbioruRegul" type="WynikWeryfikacjiZbioruRegulMT" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="IdentyfikatorDokumentuAnulowaniaReceptyMT">
+		<xs:annotation>
+			<xs:documentation>Identyfikator dokumentu anulowania recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="identyfikatorDokumentuAnulowaniaRecepty" type="wsp:IdentyfikatorDokumentuOIDMT" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Identyfikator dokumentu anulowania recepty nadawany przez realizatora w własnym weźle OID.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DokumentReceptyMT">
+		<xs:annotation>
+			<xs:documentation>treść recepty</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="tresc" type="xs:base64Binary" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>treść (dokument XML w postaci base64)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DokumentRealizacjiReceptyMT">
+		<xs:annotation>
+			<xs:documentation>Dokument realizacji recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="tresc" type="xs:base64Binary" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Treść dokumentu realizacji recepty (XML, HL7 CDA), zakodowana za pomocą base64.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DokumentAnulowaniaReceptyMT">
+		<xs:annotation>
+			<xs:documentation>Dokument anulowania recepty.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="tresc" type="xs:base64Binary" minOccurs="1" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Treść dokumentu anulowania recepty (XML, HL7 CDA), zakodowana za pomocą base64.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
