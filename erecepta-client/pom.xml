@@ -26,6 +26,7 @@
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>${basedir}/src/main/resources/wsdl/erecepta/ObslugaRecepty.wsdl</wsdl>
+                                    <extendedSoapHeaders>true</extendedSoapHeaders>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>

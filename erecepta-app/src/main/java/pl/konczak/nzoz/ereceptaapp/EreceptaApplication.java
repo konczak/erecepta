@@ -2,6 +2,7 @@ package pl.konczak.nzoz.ereceptaapp;
 
 import pl.gov.csioz.p1.erecepta.ws.v20170510.ObslugaReceptyWS;
 import pl.gov.csioz.p1.erecepta.ws.v20170510.ZapisPakietuReceptRequest;
+import pl.gov.csioz.p1.kontekst.mt.v20170510.KontekstMT;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,6 +24,6 @@ public class EreceptaApplication
 
 
     public void run(final String... args) throws Exception {
-        obslugaReceptyWSclient.zapisPakietuRecept(new ZapisPakietuReceptRequest());
+        obslugaReceptyWSclient.zapisPakietuRecept(new ZapisPakietuReceptRequest(), new KontekstMT());
     }
 }
