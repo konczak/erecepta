@@ -1,5 +1,7 @@
 package pl.konczak.nzoz.ereceptaapp;
 
+import org.apache.cxf.message.Message;
+import pl.gov.csioz.p1.erecepta.mt.v20170510.PakietReceptMT;
 import pl.gov.csioz.p1.erecepta.ws.v20170510.ObslugaReceptyWS;
 import pl.gov.csioz.p1.erecepta.ws.v20170510.ZapisPakietuReceptRequest;
 import pl.gov.csioz.p1.kontekst.mt.v20170510.KontekstMT;
@@ -21,6 +23,9 @@ public class EreceptaApplication
     @Autowired
     private KontekstMTFactory kontekstMTFactory;
 
+    @Autowired
+    private ZapisPakietuReceptRequestFactory zapisPakietuReceptRequestFactory;
+
     public static void main(String[] args) {
         SpringApplication.run(EreceptaApplication.class, args);
     }
@@ -28,6 +33,8 @@ public class EreceptaApplication
 
     public void run(final String... args) throws Exception {
         KontekstMT kontekstMT = kontekstMTFactory.create();
-        obslugaReceptyWSclient.zapisPakietuRecept(new ZapisPakietuReceptRequest(), kontekstMT);
+        ZapisPakietuReceptRequest zapisPakietuRecept = zapisPakietuReceptRequestFactory.create();
+
+        obslugaReceptyWSclient.zapisPakietuRecept(zapisPakietuRecept, kontekstMT);
     }
 }

@@ -27,10 +27,19 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
                     <entry key="v202" value="http://csioz.gov.pl/p1/erecepta/mt/v20170510"/>
                 </map>
             </entry>
+            <entry key="org.apache.cxf.message.Message.PROTOCOL_HEADERS" >
+                <map>
+                    <entry key="Content-Type">
+                        <list>
+                            <value>text/xml;charset=UTF-8</value>
+                        </list>
+                    </entry>
+                </map>
+            </entry>
         </jaxws:properties>
         <jaxws:features>
             <bean class="org.apache.cxf.ext.logging.LoggingFeature">
-                <property name="prettyLogging" value="true"/>
+                <property name="prettyLogging" value="false"/>
             </bean>
         </jaxws:features>
         <jaxws:dataBinding>
