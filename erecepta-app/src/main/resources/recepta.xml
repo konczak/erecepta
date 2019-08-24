@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="CDA_PL_IG_1.3.1.xsl" type="text/xsl"?><ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:extPL="http://www.csioz.gov.pl/xsd/extPL/r2" xmlns:pharm="urn:ihe:pharm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="extPL:ClinicalDocument">
+    <!-- Dokument recepty na lek OTC-->
+    <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3"/>
+    <templateId root="1.3.6.1.4.1.19376.1.9.1.1.1"/>
+    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.1"/>
+    <templateId extension="1.3.1" root="2.16.840.1.113883.3.4424.13.10.1.3"/>
+    <id displayable="true" extension="4B0A584CD5994277904631" root="2.16.840.1.113883.3.4424.2.7.201.2.1"/>
+    <code code="57833-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prescription for medication Document">
+        <translation code="04.01" codeSystem="2.16.840.1.113883.3.4424.11.1.32" codeSystemName="KLAS_DOK_P1" displayName="Recepta">
+            <qualifier>
+                <name code="KDLEK" codeSystem="2.16.840.1.113883.3.4424.13.5.1" codeSystemName="PolskieKlasyfikatoryHL7v3" displayName="Kategoria dostępności leku"/>
+                <value code="Rp" codeSystem="2.16.840.1.113883.3.4424.11.1.25"/>
+            </qualifier>
+            <qualifier>
+                <name code="RLEK" codeSystem="2.16.840.1.113883.3.4424.13.5.1" codeSystemName="PolskieKlasyfikatoryHL7v3" displayName="Rodzaj leku"/>
+                <value code="G" codeSystem="2.16.840.1.113883.3.4424.13.5.1" displayName="Lek gotowy"/>
+            </qualifier>
+            <qualifier>
+                <name code="TWREC" codeSystem="2.16.840.1.113883.3.4424.13.5.1" codeSystemName="PolskieKlasyfikatoryHL7v3" displayName="Tryb wystawienia recepty"/>
+                <value code="Z" codeSystem="2.16.840.1.113883.3.4424.13.5.1" displayName="Zwykła"/>
+            </qualifier>
+            <qualifier>
+                <name code="TRREC" codeSystem="2.16.840.1.113883.3.4424.13.5.1" codeSystemName="PolskieKlasyfikatoryHL7v3" displayName="Tryb realizacji recepty"/>
+                <value code="Z" codeSystem="2.16.840.1.113883.3.4424.13.5.1" displayName="Zwykły"/>
+            </qualifier>
+        </translation>
+    </code>
+    <title>Recepta</title>
+    <effectiveTime value="20190824102143"/>
+    <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
+    <languageCode code="pl-PL"/>
+    <setId extension="432231" root="2.16.840.1.113883.3.4424.7.2.2"/>
+    <versionNumber value="1"/>
+    <recordTarget>
+        <templateId root="2.16.840.1.113883.3.4424.13.10.2.23"/>
+        <patientRole>
+            <id displayable="false" extension="12345" root="2.16.840.1.113883.3.4424.2.7.0.17.1"/>
+            <id displayable="true" extension="64010595888" root="2.16.840.1.113883.3.4424.1.1.616"/>
+            <addr>
+                <country>Polska</country>
+                <postalCode postCity="Piaseczno" xsi:type="extPL:adxp.postalCode">03-134</postalCode>
+                <city>Warszawa</city>
+                <streetName>Odkryta</streetName>
+                <houseNumber>41</houseNumber>
+                <unitID>12</unitID>
+                <censusTract>TERYT SIMC: 987654</censusTract>
+            </addr>
+            <patient>
+                <name>
+                    <given>Jan</given>
+                    <given>Franciszek</given>
+                    <family>Kowalski</family>
+                </name>
+                <administrativeGenderCode code="M" codeSystem="2.16.840.1.113883.5.1"/>
+                <birthTime value="19620915"/>
+            </patient>
+        </patientRole>
+    </recordTarget>
+    <author>
+        <templateId root="2.16.840.1.113883.3.4424.13.10.2.82"/>
+        <functionCode code="LEK" codeSystem="2.16.840.1.113883.3.4424.11.3.18" displayName="Lekarz"/>
+        <time value="20171012"/>
+        <assignedAuthor>
+            <id displayable="true" extension="7391208" root="2.16.840.1.113883.3.4424.1.6.2"/>
+            <assignedPerson>
+                <templateId root="2.16.840.1.113883.3.4424.13.10.2.1"/>
+                <name>
+                    <given>Adam</given>
+                    <family>Kowalski</family>
+                </name>
+            </assignedPerson>
+            <representedOrganization>
+                <templateId root="2.16.840.1.113883.3.4424.13.10.2.17"/>
+                <id displayable="true" extension="000000926578-001" root="2.16.840.1.113883.3.4424.2.3.2"/>
+                <name>Poradnia POZ</name>
+                <telecom use="PUB" value="tel:22-1111123"/>
+                <addr>
+                    <postalCode>00-184</postalCode>
+                    <city>Warszawa</city>
+                    <streetName>ul. Dubois</streetName>
+                    <houseNumber>5A</houseNumber>
+                </addr>
+                <asOrganizationPartOf>
+                    <wholeOrganization>
+                        <!-- Regon przedsiębiorstwa -->
+                        <id displayable="true" extension="84094783500004" root="2.16.840.1.113883.3.4424.2.2.2"/>
+                        <asOrganizationPartOf>
+                            <!-- podmiot - nr ksiegi + regon podmiotu -->
+                            <wholeOrganization>
+                                <id displayable="true" extension="000000926578" root="2.16.840.1.113883.3.4424.2.3.1"/>
+                                <!-- <id extension="123456789" root="2.16.840.1.113883.3.4424.2.2.1" displayable="true"/> -->
+                            </wholeOrganization>
+                        </asOrganizationPartOf>
+                    </wholeOrganization>
+                </asOrganizationPartOf>
+            </representedOrganization>
+        </assignedAuthor>
+    </author>
+    <custodian>
+        <templateId root="2.16.840.1.113883.3.4424.13.10.2.20"/>
+        <assignedCustodian>
+            <representedCustodianOrganization>
+                <id assigningAuthorityName="CSIOZ" displayable="false" root="2.16.840.1.113883.3.4424"/>
+            </representedCustodianOrganization>
+        </assignedCustodian>
+    </custodian>
+    <legalAuthenticator>
+        <templateId root="2.16.840.1.113883.3.4424.13.10.2.6"/>
+        <time value="20171012"/>
+        <signatureCode code="S"/>
+        <assignedEntity>
+            <id displayable="true" extension="7391208" root="2.16.840.1.113883.3.4424.1.6.2"/>
+        </assignedEntity>
+    </legalAuthenticator>
+    <component>
+        <templateId root="2.16.840.1.113883.3.4424.13.10.2.25"/>
+        <structuredBody>
+            <component>
+                <section>
+                    <templateId root="1.3.6.1.4.1.19376.1.9.1.2.1"/>
+                    <templateId root="2.16.840.1.113883.3.4424.13.10.3.4"/>
+                    <id extension="4321" root="2.16.840.1.113883.3.4424.2.7.201.2.4"/>
+                    <code code="57828-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prescriptions"/>
+                    <title>Rp.</title>
+                    <text>
+                        <paragraph ID="SBADM_1">
+                            Zofran
+                            <br/>
+                            1 op. po 60 tabl.
+                            <br/>
+                            Odpłatność: 100%
+                            <br/>
+                            D.S. 1 x 1 tabl. rano
+                        </paragraph>
+                    </text>
+                    <entry>
+                        <substanceAdministration classCode="SBADM" moodCode="INT">
+                            <templateId root="1.3.6.1.4.1.19376.1.9.1.3.2"/>
+                            <templateId root="2.16.840.1.113883.10.20.1.24"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.9.1.3.6"/>
+                            <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
+                            <templateId root="2.16.840.1.113883.3.4424.13.10.4.3"/>
+                            <id extension="4B0A584CD5994277904631-1" root="2.16.840.1.113883.3.4424.2.7.201.2.3"/>
+                            <text>
+                                <reference value="#SBADM_1"/>
+                            </text>
+                            <statusCode code="completed"/>
+                            <effectiveTime xsi:type="IVL_TS">
+                                <low value="20171012"/>
+                                <high nullFlavor="NA"/>
+                            </effectiveTime>
+                            <repeatNumber value="1"/>
+                            <consumable>
+                                <manufacturedProduct>
+                                    <templateId root="2.16.840.1.113883.10.20.1.53"/>
+                                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.2"/>
+                                    <manufacturedMaterial>
+                                        <templateId root="1.3.6.1.4.1.19376.1.9.1.3.1"/>
+                                        <templateId root="2.16.840.1.113883.3.4424.13.10.4.54"/>
+                                        <code code="900000014" codeSystem="2.16.840.1.113883.3.4424.6.1" displayName="Zofran"/>
+                                        <name>Zofran</name>
+                                        <pharm:asContent classCode="CONT">
+                                            <pharm:containerPackagedMedicine classCode="CONT" determinerCode="INSTANCE">
+                                                <pharm:code code="09909991023652" codeSystem="1.3.160" codeSystemName="GS1"/>
+                                                <pharm:name>Zorfan</pharm:name>
+                                                <pharm:formCode code="30066000" codeSystem="0.4.0.127.0.16.1.1.2.1" displayName="Tablet container"/>
+                                                <pharm:capacityQuantity value="60"/>
+                                            </pharm:containerPackagedMedicine>
+                                        </pharm:asContent>
+                                    </manufacturedMaterial>
+                                </manufacturedProduct>
+                            </consumable>
+                            <entryRelationship typeCode="COMP">
+                                <supply classCode="SPLY" moodCode="RQO">
+                                    <templateId root="1.3.6.1.4.1.19376.1.9.1.3.8"/>
+                                    <templateId root="2.16.840.1.113883.3.4424.13.10.4.55"/>
+                                    <effectiveTime value="20190824102143"/>
+                                    <independentInd value="false"/>
+                                    <quantity value="1"/>
+                                    <product>
+                                        <manufacturedProduct>
+                                            <manufacturedLabeledDrug>
+                                                <code code="09909991023652" codeSystem="1.3.160" codeSystemName="GS1" displayName="Polocard 150mg (60 tabl.)"/>
+                                            </manufacturedLabeledDrug>
+                                        </manufacturedProduct>
+                                    </product>
+                                </supply>
+                            </entryRelationship>
+                        </substanceAdministration>
+                    </entry>
+                </section>
+            </component>
+            <component>
+                <section>
+                    <templateId root="2.16.840.1.113883.10.20.1.9"/>
+                    <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.5.3.7"/>
+                    <templateId root="2.16.840.1.113883.3.4424.13.10.3.69"/>
+                    <code code="48768-6" codeSystem="2.16.840.1.113883.6.1"/>
+                    <title>Dane o ubezpieczeniu i uprawnieniach</title>
+                    <text>
+                        <paragraph ID="ACT_2">Oddział NFZ: 07
+                            <br/>
+                            Uprawnienia dodatkowe: ZK (Nr leg.: 238/2015)
+                        </paragraph>
+                    </text>
+                    <entry>
+                        <act classCode="ACT" moodCode="DEF">
+                            <templateId root="2.16.840.1.113883.10.20.1.20"/>
+                            <templateId root="2.16.840.1.113883.3.4424.13.10.4.51"/>
+                            <id nullFlavor="NA"/>
+                            <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" displayName="Payment source"/>
+                            <text>
+                                <reference value="#ACT_2"/>
+                            </text>
+                            <statusCode code="completed"/>
+                            <entryRelationship typeCode="COMP">
+                                <act classCode="ACT" moodCode="EVN"> <!-- Uprawnienie dodatkowe -->
+                                    <templateId root="2.16.840.1.113883.10.20.1.26"/>
+                                    <templateId root="2.16.840.1.113883.3.4424.13.10.4.61"/>
+                                    <id nullFlavor="NA"/>
+                                    <code code="PUBLICPOL" codeSystem="2.16.840.1.113883.5.4">
+                                        <qualifier>
+                                            <name code="RLUD" codeSystem="2.16.840.1.113883.3.4424.13.5.1" displayName="Refundacja leków wynikająca z uprawnień dodatkowych"/>
+                                            <value code="IB" codeSystem="2.16.840.1.113883.3.4424.11.3.1" displayName="IB"/>
+                                        </qualifier>
+                                    </code>
+                                    <text>
+                                        <reference value="#ACT_2"/>
+                                    </text>
+                                    <statusCode code="completed"/>
+                                    <performer typeCode="PRF"> <!-- Dane ubezpieczyciela/płatnika -->
+                                        <assignedEntity>
+                                            <id displayable="true" extension="07" root="2.16.840.1.113883.3.4424.3.1"/>
+                                        </assignedEntity>
+                                    </performer>
+                                    <entryRelationship typeCode="REFR">
+                                        <act classCode="ACT" moodCode="EVN">
+                                            <templateId root="2.16.840.1.113883.10.20.1.19"/>
+                                            <templateId root="2.16.840.1.113883.3.4424.13.10.4.53"/>
+                                            <id nullFlavor="NA"/>
+                                            <code nullFlavor="NA"/>
+                                            <entryRelationship typeCode="SUBJ">
+                                                <substanceAdministration classCode="SBADM" moodCode="PRMS">
+                                                    <id extension="2345678-1" root="2.16.840.1.113883.3.4424.2.7.201.2.3"/>
+                                                    <consumable>
+                                                        <manufacturedProduct>
+                                                            <manufacturedMaterial nullFlavor="NA"/>
+                                                        </manufacturedProduct>
+                                                    </consumable>
+                                                </substanceAdministration>
+                                            </entryRelationship>
+                                        </act>
+                                    </entryRelationship>
+                                    <reference typeCode="REFR">
+                                        <externalDocument classCode="DOC" moodCode="EVN"> <!-- Informacja o dokumencie potwierdzającym uprawnienie dodatkowe -->
+                                            <templateId root="2.16.840.1.113883.3.4424.13.10.4.59"/>
+                                            <text>Nr leg.: 234/1992</text>
+                                        </externalDocument>
+                                    </reference>
+                                </act>
+                            </entryRelationship>
+                        </act>
+                    </entry>
+                </section>
+            </component>
+        </structuredBody>
+    </component>
+<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#" Id="xmldsig-9e03b6f7-9a6b-4615-a50c-8dce1a3fb3b7">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+<ds:Reference Id="xmldsig-9e03b6f7-9a6b-4615-a50c-8dce1a3fb3b7-ref0" URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>T2Zmm0GUteP+ez4Cguf2lyw3mLg=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference Type="http://uri.etsi.org/01903#SignedProperties" URI="#xmldsig-9e03b6f7-9a6b-4615-a50c-8dce1a3fb3b7-signedprops">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+<ds:DigestValue>G04DSxUzMfsd8bBJjYsNjRmLMwE=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue Id="xmldsig-9e03b6f7-9a6b-4615-a50c-8dce1a3fb3b7-sigvalue">
+iZiqM/QLulS9BR0Q4JkCbgWHHZaDaxMemC13iFIrGiEGnjxupuJsWEAr0k1efc0UxTrOBroVSi7F
+GhAOSvSkppRaR9n82sZBrwWHML73C49NENwc8giP0sKbpkr1o8u0hZ03MBRvExglUXyCpsNx58FD
+811fiHbTEg5bWcjviRc=
+</ds:SignatureValue>
+<ds:KeyInfo>
+<ds:X509Data>
+<ds:X509Certificate>
+MIIE3zCCAsegAwIBAgIIY4wBMG26FWAwDQYJKoZIhvcNAQENBQAwVDEbMBkGA1UEAwwSQ0MgUDEg
+U3ViQ0EgUG9kcGlzMRgwFgYDVQQLDA9QMSBJbnRlZ3JhY3lqbmUxDjAMBgNVBAoMBUNTSU9aMQsw
+CQYDVQQGEwJQTDAeFw0xOTAzMjYwNzI1MDdaFw0yMTAzMjUwNzI1MDdaMHAxGjAYBgNVBAMMEUFk
+YW0xMDYgTGVjem5pY3p5MRswGQYDVQQFExJQRVNFTDogOTgwNTE5MDMyNTExGDAWBgNVBAsMD1Ax
+IEludGVncmFjeWpuZTEOMAwGA1UECgwFQ1NJT1oxCzAJBgNVBAYTAlBMMIGfMA0GCSqGSIb3DQEB
+AQUAA4GNADCBiQKBgQCpYppoexumC154FQvKP5zKXK9IOzDnLDq7OEgtf5082Egn9xc9JtSGX1qi
+2gr7quwQ8t6q+hMH2mUKpt/+TxxWbZ2TMXPAgvGuZRwZxXBVTqJsZZF8Y1rAIuEyRFH5l2KtLt/c
+WpwP/eOlB57ynDrM7q4lEcpiICXtg8btSTe6FwIDAQABo4IBGzCCARcwHQYDVR0OBBYEFJZ9y6p+
+4qb+pJj7OTOj273xTohfMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUkkTJVLu6Q9QPD6v467g5
+6zuNBgowVwYDVR0fBFAwTjBMoEqgSIZGaHR0cDovL3dzLWludC1wMS5jc2lvei5nb3YucGwvY2Nw
+MS9jcmwvQ0NQMUludGVncmFjeWpuZVN1YkNBUG9kcGlzLmNybDAOBgNVHQ8BAf8EBAMCAuQwXgYD
+VR0lBFcwVQYIKwYBBQUHAwIGCCsGAQUFBwMEBgorBgEEAYI3FAICBgorBgEEAYI3CgMMBgorBgEE
+AYI3CgMEBgkqhkiG9y8BAQUGBysGAQUCAwQGBysGAQUCAwUwDQYJKoZIhvcNAQENBQADggIBAFTI
+VVs7xwtKD5GRuaJzZCi2V2fgRTU0LoPuf5y/A/dip7+8NBwI+fxRYLnUFWPPt3VaVZlTDdIOeRCt
+TFUwkX/DvI1MyEChkzLtSBcS3+5JmFT/WW/6cDpjc9XSgTNtQlVnRhjkRGVqdOzDhKt7JOyVJ26f
+UQ3gHSMM2z6/dX98ix5/8rksvKrTAf8DZsEzsWEUtEnlPHkZpt7n+FPUesBIiV3b+HOpNS4+8Rqo
+tK2WU+YUubvHPJcSOWXETy1h3I8OO6bkRGA2MXgBvyct/fwmI9ype/DDeuuMxXmXdgiiEnTk8f+F
+eoyAsKt33AttrKPqwUYsrWVsJsBP+/hZfnZJiqxoiM/6buZUe1bskpOK9U26/x+1d9C0Ly5HIjEy
+EDQHdMBdZz8koROsWCHbOxANtkK/zCAG3SlRKGPUT8mfyedVy7uwIz6XXTX17s8nH88PM9zsq2pj
+1LiSnFKtvmC4io8WOb8Sm0t1BeijTaiPNzMT+N/MmB4QrUwzF3gbhIRVW52yl2FYM3v9jXdYYPUw
+TuGyNDT3KKyI9MxDZS3BoPANG5ghqjTomJuu2Zyyjzz8O/JzkyIyqWF8pMUfIY7YXeuuHundPMTJ
+DobhsDcNgTniyFAo0+/f1QdUNwzf0c137DqtWki8pnXfo11sa4Auvzs+a4rEDRWVb2dapNEi
+</ds:X509Certificate>
+<ds:X509SubjectName>C=PL, O=CSIOZ, OU=P1 Integracyjne, OID.2.5.4.5=PESEL: 98051903251, CN=Adam106 Leczniczy</ds:X509SubjectName>
+<ds:X509IssuerSerial>
+<ds:X509IssuerName>C=PL,O=CSIOZ,OU=P1 Integracyjne,CN=CC P1 SubCA Podpis</ds:X509IssuerName>
+<ds:X509SerialNumber>7173109614005327200</ds:X509SerialNumber>
+</ds:X509IssuerSerial>
+</ds:X509Data>
+</ds:KeyInfo>
+<ds:Object><xades:QualifyingProperties xmlns:xades="http://uri.etsi.org/01903/v1.3.2#" xmlns:xades141="http://uri.etsi.org/01903/v1.4.1#" Target="#xmldsig-9e03b6f7-9a6b-4615-a50c-8dce1a3fb3b7"><xades:SignedProperties Id="xmldsig-9e03b6f7-9a6b-4615-a50c-8dce1a3fb3b7-signedprops"><xades:SignedSignatureProperties><xades:SigningTime>2019-08-24T10:21:44.250+02:00</xades:SigningTime><xades:SigningCertificate><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>ywDvJ4EMK7/NOpQVYoIsgJCk0IQ=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>C=PL,O=CSIOZ,OU=P1 Integracyjne,CN=CC P1 SubCA Podpis</ds:X509IssuerName><ds:X509SerialNumber>7173109614005327200</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>NlQUhRTpKSOI3gtLuGkBaQiNqmc=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>C=PL,O=CSIOZ,OU=P1 Integracyjne,CN=CC P1 RootCA</ds:X509IssuerName><ds:X509SerialNumber>2054687354297930354</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert><xades:Cert><xades:CertDigest><ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ds:DigestValue>UFPuuU3hpB13BUK2GrMY/O45pVM=</ds:DigestValue></xades:CertDigest><xades:IssuerSerial><ds:X509IssuerName>C=PL,O=CSIOZ,OU=P1 Integracyjne,CN=CC P1 RootCA</ds:X509IssuerName><ds:X509SerialNumber>7581879720630660226</ds:X509SerialNumber></xades:IssuerSerial></xades:Cert></xades:SigningCertificate></xades:SignedSignatureProperties></xades:SignedProperties></xades:QualifyingProperties></ds:Object>
+</ds:Signature></ClinicalDocument>
