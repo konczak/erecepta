@@ -69,12 +69,12 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
     <http:conduit name="{http://csioz.gov.pl/p1/erecepta/ws/v20170510}ObslugaReceptyWSPort.http-conduit">
         <http:tlsClientParameters>
             <sec:keyManagers keyPassword="UXG9DxASCm">
-                <sec:keyStore file="d:\programowanie\zarnow\nzoz\e-recepty\KOMPLET_DANYCH_SZPL_NR_106\Podmiot_leczniczy_106-tls.p12"
+                <sec:keyStore file="d:\programowanie\zarnow\nzoz\e-recepty\docs\KOMPLET_DANYCH_SZPL_NR_106\Podmiot_leczniczy_106-tls.p12"
                               type="PKCS12"
                               password="UXG9DxASCm"/>
             </sec:keyManagers>
             <sec:trustManagers>
-                <sec:keyStore file="d:\programowanie\zarnow\nzoz\e-recepty\KOMPLET_DANYCH_SZPL_NR_106\csiozTrustStore2.jks"
+                <sec:keyStore file="d:\programowanie\zarnow\nzoz\e-recepty\docs\KOMPLET_DANYCH_SZPL_NR_106\csiozTrustStore2.jks"
                               type="JKS"
                               password="changeit"/>
             </sec:trustManagers>
