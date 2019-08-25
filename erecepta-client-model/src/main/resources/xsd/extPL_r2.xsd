@@ -1,0 +1,152 @@
+<xs:schema 
+	xmlns:extPL="http://www.csioz.gov.pl/xsd/extPL/r2" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns:cda="urn:hl7-org:v3"
+	xmlns:pharm="urn:ihe:pharm"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	targetNamespace="http://www.csioz.gov.pl/xsd/extPL/r2" elementFormDefault="qualified">
+    
+    <xs:import namespace="urn:hl7-org:v3" schemaLocation="CDA_extended_pharmacy.xsd"/>
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd" />
+
+<!-- Extended V3 data types -->
+	
+	<!-- adxp.postalCode -->
+    <xs:complexType name="adxp.postalCode">
+        <xs:complexContent>
+            <xs:extension base="cda:adxp.postalCode">
+                <xs:attribute name="postCity" type="cda:st" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+	
+<!-- ExtPL domain classes -->
+	
+	<!-- InfrastructureRoot -->
+    <xs:complexType name="InfrastructureRoot">
+        <xs:sequence>
+            <xs:element name="realmCode" type="cda:CS" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="typeId" type="cda:II" minOccurs="0"/>
+            <xs:element name="templateId" type="cda:II" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+	
+<!-- Roles -->
+	<!-- PersonalRelationship -->
+    <xs:complexType name="PersonalRelationship">
+        <xs:complexContent>
+            <xs:extension base="extPL:InfrastructureRoot">
+                <xs:sequence>
+                    <xs:element name="code" type="cda:CD" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="person" type="extPL:RelatedPerson" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attribute name="classCode" type="cda:RoleClass" use="required" fixed="PRS"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+  <!-- Reimburser -->
+    <xs:complexType name="Reimburser">
+        <xs:complexContent>
+            <xs:extension base="extPL:InfrastructureRoot">
+                <xs:sequence>
+                    <xs:element name="id" type="cda:II" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attribute name="classCode" type="cda:RoleClass" use="required" fixed="UNDWRT"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+<!-- Acts -->  
+  <!-- ReimbursementRelatedContract -->
+    <xs:complexType name="ReimbursementRelatedContract">
+        <xs:complexContent>
+            <xs:extension base="extPL:InfrastructureRoot">
+                <xs:sequence>
+                    <xs:element name="id" type="cda:II" minOccurs="1" maxOccurs="1"/>
+                    <xs:element name="code" type="cda:CD" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="bounding" type="extPL:BoundingParticipation" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attribute name="classCode" type="cda:ActClass" use="required" fixed="CNTRCT"/>
+                <xs:attribute name="moodCode" type="cda:ActMood" use="required" fixed="EVN"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+  
+<!-- Entities -->
+	
+	<!-- RelatedPerson -->
+    <xs:complexType name="RelatedPerson">
+        <xs:complexContent>
+            <xs:extension base="extPL:InfrastructureRoot">
+                <xs:sequence>
+                    <xs:element name="name" type="cda:EN" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attribute name="classCode" type="cda:EntityClassLivingSubject" use="required" fixed="PSN"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+  
+<!-- Participations -->
+  
+  <!-- BoundedByParticipation -->
+    <xs:complexType name="BoundedByParticipation">
+        <xs:complexContent>
+            <xs:extension base="extPL:InfrastructureRoot">
+                <xs:sequence>
+                    <xs:element name="reimbursementRelatedContract" type="extPL:ReimbursementRelatedContract" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attribute name="typeCode" type="cda:cs" use="required" fixed="PART"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+  <!-- BoundingParticipation -->
+    <xs:complexType name="BoundingParticipation">
+        <xs:complexContent>
+            <xs:extension base="extPL:InfrastructureRoot">
+                <xs:sequence>
+                    <xs:element name="reimburser" type="extPL:Reimburser" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attribute name="typeCode" type="cda:cs" use="required" fixed="PART"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+  
+<!-- Extended CDA R-MIM classes -->
+	
+	<!-- ClinicalDocument -->
+    <xs:complexType name="ClinicalDocument">
+        <xs:complexContent>
+            <xs:extension base="cda:POCD_MT000040.ClinicalDocument">
+                <xs:sequence>
+                    <xs:element ref="ds:Signature" minOccurs="0" maxOccurs="1" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+	
+	<!-- Patient -->
+    <xs:complexType name="Patient">
+        <xs:complexContent>
+            <xs:extension base="cda:POCD_MT000040.Patient">
+                <xs:sequence>
+                    <xs:element name="multipleBirthInd" type="cda:BL" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="multipleBirthOrderNumber" type="cda:INT" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="personalRelationship" type="extPL:PersonalRelationship" minOccurs="0" maxOccurs="unbounded"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+	
+  <!-- AssignedEntity-->
+    <xs:complexType name="AssignedAuthor">
+        <xs:complexContent>
+            <xs:extension base="cda:POCD_MT000040.AssignedAuthor">
+                <xs:sequence>
+                    <xs:element name="boundedBy" type="extPL:BoundedByParticipation" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

@@ -21,6 +21,7 @@
     <modules>
         <module>erecepta-client</module>
         <module>erecepta-app</module>
+        <module>erecepta-client-model</module>
     </modules>
 
     <dependencies>
