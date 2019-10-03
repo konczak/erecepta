@@ -13,31 +13,31 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.cxf</groupId>
-                <artifactId>cxf-xjc-plugin</artifactId>
-<!--                WARN: compliant version to rest of Apache CXF 3.3.2 is not available for this plugin-->
-                <version>3.2.3</version>
-                <executions>
-                    <execution>
-                        <id>generate-sources</id>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
-                            <xsdOptions>
-                                <xsdOption>
-                                    <xsd>src/main/resources/xsd/extPL_r2.xsd</xsd>
-                                    <bindingFile>src/main/resources/xsd/POCD_MT000040_extended_pharmacy.xjb</bindingFile>
-                                    <extension>true</extension>
-                                </xsdOption>
-                            </xsdOptions>
-                        </configuration>
-                        <goals>
-                            <goal>xsdtojava</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.cxf</groupId>-->
+            <!--                <artifactId>cxf-xjc-plugin</artifactId>-->
+            <!--&lt;!&ndash;                WARN: compliant version to rest of Apache CXF 3.3.2 is not available for this plugin&ndash;&gt;-->
+            <!--                <version>3.2.3</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>generate-sources</id>-->
+            <!--                        <phase>generate-sources</phase>-->
+            <!--                        <configuration>-->
+            <!--                            <sourceRoot>${basedir}/src/main/java</sourceRoot>-->
+            <!--                            <xsdOptions>-->
+            <!--                                <xsdOption>-->
+            <!--                                    <xsd>src/main/resources/xsd/extPL_r2.xsd</xsd>-->
+            <!--                                    <bindingFile>src/main/resources/xsd/POCD_MT000040_extended_pharmacy.xjb</bindingFile>-->
+            <!--                                    <extension>true</extension>-->
+            <!--                                </xsdOption>-->
+            <!--                            </xsdOptions>-->
+            <!--                        </configuration>-->
+            <!--                        <goals>-->
+            <!--                            <goal>xsdtojava</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 
