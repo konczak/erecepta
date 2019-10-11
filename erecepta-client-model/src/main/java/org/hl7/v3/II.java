@@ -41,7 +41,8 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "II")
+@XmlType(name = "II",
+        propOrder = {"assigningAuthorityName", "displayable", "extension", "root"})
 @XmlSeeAlso({
         AllInfrastructureRootTypeId.class,
         AllInfrastructureRootTemplateId.class,
