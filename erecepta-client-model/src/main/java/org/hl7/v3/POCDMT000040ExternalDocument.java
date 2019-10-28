@@ -65,7 +65,8 @@ public class POCDMT000040ExternalDocument {
     @XmlElement(name = "id")
     protected List<II> ids;
     protected CD code;
-    protected ED text;
+    @XmlElement(name = "text", required = true)
+    protected String text;
     protected II setId;
     protected INT versionNumber;
     @XmlAttribute(name = "nullFlavor")
@@ -196,23 +197,11 @@ public class POCDMT000040ExternalDocument {
         this.code = value;
     }
 
-    /**
-     * Gets the value of the text property.
-     *
-     * @return possible object is
-     * {@link ED }
-     */
-    public ED getText() {
+    public String getText() {
         return text;
     }
 
-    /**
-     * Sets the value of the text property.
-     *
-     * @param value allowed object is
-     *              {@link ED }
-     */
-    public void setText(ED value) {
+    public void setText(String value) {
         this.text = value;
     }
 

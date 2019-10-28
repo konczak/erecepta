@@ -81,7 +81,8 @@ public class POCDMT000040Section {
     protected List<II> templateIds;
     protected II id;
     protected CE code;
-    protected ST title;
+    @XmlElement(name = "title")
+    protected String title;
     protected StrucDocText text;
     protected CE confidentialityCode;
     protected CS languageCode;
@@ -220,23 +221,11 @@ public class POCDMT000040Section {
         this.code = value;
     }
 
-    /**
-     * Gets the value of the title property.
-     *
-     * @return possible object is
-     * {@link ST }
-     */
-    public ST getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    /**
-     * Sets the value of the title property.
-     *
-     * @param value allowed object is
-     *              {@link ST }
-     */
-    public void setTitle(ST value) {
+    public void setTitle(String value) {
         this.title = value;
     }
 

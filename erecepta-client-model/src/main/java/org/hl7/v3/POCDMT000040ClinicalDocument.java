@@ -111,7 +111,8 @@ public class POCDMT000040ClinicalDocument {
     protected II id;
     @XmlElement(required = true)
     protected CE code;
-    protected ST title;
+    @XmlElement(name = "title", required = true)
+    protected String title;
     @XmlElement(required = true)
     protected TS effectiveTime;
     @XmlElement(required = true)
@@ -268,23 +269,11 @@ public class POCDMT000040ClinicalDocument {
         this.code = value;
     }
 
-    /**
-     * Gets the value of the title property.
-     *
-     * @return possible object is
-     * {@link ST }
-     */
-    public ST getTitle() {
+    public String getTitle() {
         return title;
     }
 
-    /**
-     * Sets the value of the title property.
-     *
-     * @param value allowed object is
-     *              {@link ST }
-     */
-    public void setTitle(ST value) {
+    public void setTitle(String value) {
         this.title = value;
     }
 

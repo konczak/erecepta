@@ -80,7 +80,7 @@ public class COCTMT230100UVPackagedMedicine {
     protected Id id;
     protected CE code;
     @XmlElement(name = "name")
-    protected List<TN> names;
+    protected List<String> names;
     protected CE formCode;
     protected ST lotNumberText;
     protected PQ capacityQuantity;
@@ -213,28 +213,15 @@ public class COCTMT230100UVPackagedMedicine {
     }
 
     /**
-     * Gets the value of the names property.
-     *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the names property.
-     *
-     * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getNames().add(newItem);
      * </pre>
      *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link TN }
      */
-    public List<TN> getNames() {
+    public List<String> getNames() {
         if (names == null) {
-            names = new ArrayList<TN>();
+            names = new ArrayList<String>();
         }
         return this.names;
     }
