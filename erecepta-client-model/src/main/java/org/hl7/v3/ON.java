@@ -11,6 +11,7 @@ package org.hl7.v3;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 
 
 /**
@@ -40,9 +41,17 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ON")
-public class ON
-        extends EN {
+@XmlType(name = "name")
+public class ON {
 
+    @XmlValue
+    private String value;
 
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(final String value) {
+        this.value = value;
+    }
 }
