@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,11 +74,21 @@ import java.util.List;
         AdxpPostBox.class,
         AdxpPrecinct.class
 })
-public class ADXP
-        extends ST {
+public class ADXP {
+
+    @XmlValue
+    private String value;
 
     @XmlAttribute(name = "partType")
     protected List<String> partTypes;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(final String value) {
+        this.value = value;
+    }
 
     /**
      * Gets the value of the partTypes property.

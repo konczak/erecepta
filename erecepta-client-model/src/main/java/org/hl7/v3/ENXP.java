@@ -55,6 +55,11 @@ public class ENXP {
     @XmlValue
     private String value;
 
+    @XmlAttribute(name = "partType")
+    protected String partType;
+    @XmlAttribute(name = "qualifier")
+    protected List<String> qualifiers;
+
     public String getValue() {
         return value;
     }
@@ -62,11 +67,6 @@ public class ENXP {
     public void setValue(final String value) {
         this.value = value;
     }
-
-    @XmlAttribute(name = "partType")
-    protected String partType;
-    @XmlAttribute(name = "qualifier")
-    protected List<String> qualifiers;
 
     /**
      * Gets the value of the partType property.

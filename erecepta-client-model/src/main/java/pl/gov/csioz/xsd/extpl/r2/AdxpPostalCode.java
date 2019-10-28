@@ -34,6 +34,9 @@ import javax.xml.bind.annotation.XmlType;
 public class AdxpPostalCode
         extends org.hl7.v3.AdxpPostalCode {
 
+    @XmlAttribute(namespace = "http://www.w3.org/2001/XMLSchema-instance")
+    private final String type = "extPL:adxp.postalCode";
+
     @XmlAttribute(name = "postCity")
     protected String postCity;
 
