@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlValue;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,8 +50,18 @@ import java.util.List;
         EnPrefix.class,
         EnSuffix.class
 })
-public class ENXP
-        extends ST {
+public class ENXP {
+
+    @XmlValue
+    private String value;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(final String value) {
+        this.value = value;
+    }
 
     @XmlAttribute(name = "partType")
     protected String partType;
