@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlMixed;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -53,7 +54,11 @@ import java.util.List;
 @XmlType(name = "StrucDoc.Caption", propOrder = {
         "content"
 })
-public class StrucDocCaption {
+@XmlRootElement(name = "caption")
+public class StrucDocCaption
+        implements Serializable {
+
+    private static final long serialVersionUID = -6670944447499847113L;
 
     @XmlElementRefs({
             @XmlElementRef(name = "linkHtml", namespace = "urn:hl7-org:v3", type = JAXBElement.class, required = false),

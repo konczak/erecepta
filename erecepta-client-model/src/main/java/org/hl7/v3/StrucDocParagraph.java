@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlMixed;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
@@ -59,7 +60,11 @@ import java.util.List;
 @XmlType(name = "StrucDoc.Paragraph", propOrder = {
         "content"
 })
-public class StrucDocParagraph {
+@XmlRootElement(name = "paragraph")
+public class StrucDocParagraph
+        implements Serializable {
+
+    private static final long serialVersionUID = 8316237802720975746L;
 
     @XmlElementRefs({
             @XmlElementRef(name = "renderMultiMedia", namespace = "urn:hl7-org:v3", type = JAXBElement.class, required = false),

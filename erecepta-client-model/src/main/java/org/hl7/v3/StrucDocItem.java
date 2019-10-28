@@ -62,7 +62,10 @@ import java.util.List;
 @XmlType(name = "StrucDoc.Item", propOrder = {
         "content"
 })
-public class StrucDocItem {
+public class StrucDocItem
+        implements Serializable {
+
+    private static final long serialVersionUID = 4925562168424817473L;
 
     @XmlElementRefs({
             @XmlElementRef(name = "caption", namespace = "urn:hl7-org:v3", type = JAXBElement.class, required = false),
