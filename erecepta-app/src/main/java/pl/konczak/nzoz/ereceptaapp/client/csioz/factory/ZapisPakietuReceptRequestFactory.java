@@ -1,4 +1,4 @@
-package pl.konczak.nzoz.ereceptaapp;
+package pl.konczak.nzoz.ereceptaapp.client.csioz.factory;
 
 import org.apache.cxf.helpers.IOUtils;
 import pl.gov.csioz.p1.erecepta.mt.v20170510.PakietReceptMT;
