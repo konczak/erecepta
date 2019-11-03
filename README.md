@@ -247,8 +247,8 @@ LOINC - is international database of standarized codes for identification medica
 1. TODO wsparcie dla erecept dla leków typu OTC (bez recepty) - to najpewniej szablon https://www.csioz.gov.pl/HL7POL-1.3.1/plcda-html-1.3.1/plcda-html-1.3.1/tmp-2.16.840.1.113883.3.4424.13.10.1.3-2018-09-30T000000.html
 1. Rejestr_Produktow_Leczniczych_stan_na_dzien_20191009080120.xlsx kolumna opakowanie zawiera wpis "EU/coś/coś" - co to takiego?
 1. Rejestr_Produktow_Leczniczych_stan_na_dzien_20191009080120.xlsx kolumna opakowanie zawiera wpis "Skasowane" - co to takiego?
-1. TODO support case for lek "NZ" = "nie zamieniać" in <text> it will have "NZ" and in code it will use pl.konczak.nzoz.ereceptaapp.client.csioz.factory.template.PlCdaDrugPrescriptionSupplySubstitutionEntryFactory
-1. Wsparcie dla recept na lek narkotyczny pl.konczak.nzoz.ereceptaapp.client.csioz.constant.KategoriaDostepnosciLeku.Rpw
+1. TODO support case for lek "NZ" = "nie zamieniać" in <text> it will have "NZ" and in code it will use pl.konczak.nzoz.ereceptaapp.client.csioz.factory.template.entry.PlCdaDrugPrescriptionSupplySubstitutionEntryFactory
+1. Wsparcie dla recept na lek narkotyczny pl.konczak.nzoz.ereceptaapp.config.constant.KategoriaDostepnosciLeku.Rpw
 1. Zapytać o skróty używane w nazwach plików danych testowych
 1. Ordered priorities to understood:
     - https://www.csioz.gov.pl/HL7POL-1.3.1/plcda-html-1.3.1/plcda-html-1.3.1/voc-2.16.840.1.113883.3.4424.13.11.2-2014-06-06T000000.html
