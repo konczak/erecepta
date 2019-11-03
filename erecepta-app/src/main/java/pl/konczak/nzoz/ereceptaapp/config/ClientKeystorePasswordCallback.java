@@ -1,4 +1,4 @@
-package pl.konczak.nzoz.ereceptaapp;
+package pl.konczak.nzoz.ereceptaapp.config;
 
 import org.apache.wss4j.common.ext.WSPasswordCallback;
 

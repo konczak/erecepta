@@ -54,7 +54,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
                         <entry key="action" value="Signature"/>
                         <entry key="user" value="podmiot_leczniczy_106-uwierzytelnienie danych"/>
                         <entry key="signaturePropFile" value="clientKeystore.properties"/>
-                        <entry key="passwordCallbackClass" value="pl.konczak.nzoz.ereceptaapp.ClientKeystorePasswordCallback"/>
+                        <entry key="passwordCallbackClass" value="pl.konczak.nzoz.ereceptaapp.config.ClientKeystorePasswordCallback"/>
                         <entry key="signatureParts" value="{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body;{Element}{http://csioz.gov.pl/p1/kontekst/mt/v20170510}kontekstWywolania;"/>
                         <entry key="signatureKeyIdentifier" value="DirectReference"/>
                     </map>
