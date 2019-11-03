@@ -13,6 +13,8 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
+ * https://www.csioz.gov.pl/HL7POL-1.3.1/plcda-html-1.3.1/plcda-html-1.3.1/voc-2.16.840.1.113883.1.11.19447-2014-03-26T000000.html
+ *
  * <p>Java class for x_ActRelationshipEntryRelationship.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
