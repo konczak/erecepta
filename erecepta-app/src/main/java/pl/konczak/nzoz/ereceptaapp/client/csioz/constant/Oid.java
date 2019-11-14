@@ -160,6 +160,8 @@ public final class Oid {
 
         public static final String P1_POZIOMY_ODPLATNOSCI_LEKOW = "2.16.840.1.113883.3.4424.11.1.1";
 
+        public static final String P1_KATEGORIE_DOSTEPNOSCI_LEKOW = "2.16.840.1.113883.3.4424.11.1.25";
+
         public static final String P1_KLASYFIKACJA_DOKUMENTOW_WG_PROJEKTU_P1 = "2.16.840.1.113883.3.4424.11.1.32";
 
         public static final String EXTERNAL_UPRAWNIENIA_DODATKOWE_ZWIAZANE_Z_REFUNDACJA_LEKOW = "2.16.840.1.113883.3.4424.11.3.1";

@@ -28,8 +28,8 @@ public class SampleCreateEReceptaDlaLekGotowyInputFactory {
 
     public CreateEReceptaDlaLekGotowyInput createSampleCreateEReceptaDlaLekGotowyInput() {
         // temporarily anchor now to specific date for test and comparision purpose
-        LocalDateTime now = LocalDateTime.now();
-        // LocalDateTime now = LocalDateTime.of(2013, 4, 12, 12, 0, 0, 0);
+        // LocalDateTime now = LocalDateTime.now();
+        LocalDateTime now = LocalDateTime.of(2013, 4, 12, 12, 0, 0, 0);
 
         Address patientHomeAddress = Address.builder()
                 .country("Polska")

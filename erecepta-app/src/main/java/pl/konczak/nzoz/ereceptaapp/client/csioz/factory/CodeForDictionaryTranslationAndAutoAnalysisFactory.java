@@ -74,8 +74,7 @@ public class CodeForDictionaryTranslationAndAutoAnalysisFactory {
         KategoriaDostepnosciLeku kategoriaDostepnosciLeku = createEReceptaDlaLekGotowyInput.getKategoriaDostepnosciLeku();
 
         codedDescription.setCode(kategoriaDostepnosciLeku.getCode());
-        // TODO confirm with CSIOZ what is expected OID here - sample is inconsistent
-        codedDescription.setCodeSystem(Oid.PolskaImplementacjaKrajowaHl7Cda.TypyWartosci.KATEGORIA_DOSTEPNOSCI_LEKU);
+        codedDescription.setCodeSystem(Oid.SlownikiIZbioryWartosci.P1_KATEGORIE_DOSTEPNOSCI_LEKOW);
 
         conceptRoleForKDLEK.setName(codedValue);
         conceptRoleForKDLEK.setValue(codedDescription);
@@ -101,8 +100,8 @@ public class CodeForDictionaryTranslationAndAutoAnalysisFactory {
         RodzajLeku rodzajLeku = createEReceptaDlaLekGotowyInput.getRodzajLeku();
 
         codedDescription.setCode(rodzajLeku.getCode());
-        // TODO confirm with CSIOZ what is expected OID here - sample is inconsistent
-        codedDescription.setCodeSystem(Oid.PolskaImplementacjaKrajowaHl7Cda.TypyWartosci.RODZAJ_LEKU);
+        // WARN logically this code system is wrong but in sample it is like that and server rejects different values
+        codedDescription.setCodeSystem(Oid.PolskaImplementacjaKrajowaHl7Cda.SYSTEMY_KODOWANIA_POLSKIE_KLASYFIKATORY_HL7_V3);
         codedDescription.setDisplayName(rodzajLeku.getDisplayName());
 
         conceptRoleForRLEK.setName(codedValue);
@@ -129,8 +128,8 @@ public class CodeForDictionaryTranslationAndAutoAnalysisFactory {
         TrybWystawieniaRecepty trybWystawieniaRecepty = createEReceptaDlaLekGotowyInput.getTrybWystawieniaRecepty();
 
         codedDescription.setCode(trybWystawieniaRecepty.getCode());
-        // TODO confirm with CSIOZ what is expected OID here - sample is inconsistent
-        codedDescription.setCodeSystem(Oid.PolskaImplementacjaKrajowaHl7Cda.TypyWartosci.TRYB_WYSTAWIENIA_RECEPTY);
+        // WARN logically this code system is wrong but in sample it is like that and server rejects different values
+        codedDescription.setCodeSystem(Oid.PolskaImplementacjaKrajowaHl7Cda.SYSTEMY_KODOWANIA_POLSKIE_KLASYFIKATORY_HL7_V3);
         codedDescription.setDisplayName(trybWystawieniaRecepty.getDisplayName());
 
         conceptRoleForTWREC.setName(codedValue);
@@ -156,8 +155,8 @@ public class CodeForDictionaryTranslationAndAutoAnalysisFactory {
         TrybRealizacjiRecepty trybRealizacjiRecepty = createEReceptaDlaLekGotowyInput.getTrybRealizacjiRecepty();
 
         codedDescription.setCode(trybRealizacjiRecepty.getCode());
-        // TODO confirm with CSIOZ what is expected OID here - sample is inconsistent
-        codedDescription.setCodeSystem(Oid.PolskaImplementacjaKrajowaHl7Cda.TypyWartosci.TRYB_REALIZACJI_RECEPTY);
+        // WARN logically this code system is wrong but in sample it is like that and server rejects different values
+        codedDescription.setCodeSystem(Oid.PolskaImplementacjaKrajowaHl7Cda.SYSTEMY_KODOWANIA_POLSKIE_KLASYFIKATORY_HL7_V3);
         codedDescription.setDisplayName(trybRealizacjiRecepty.getDisplayName());
 
         conceptRoleForTRREC.setName(codedValue);

@@ -2,6 +2,7 @@ package pl.konczak.nzoz.ereceptaapp.client.csioz.factory.common;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import org.hl7.v3.CD;
 import org.hl7.v3.CE;
 import org.hl7.v3.ObjectFactory;
 
@@ -32,6 +33,17 @@ public class CodeFactory {
         ce.setCode(code);
         ce.setDisplayName(displayName);
         return ce;
+    }
+
+    public CD createCD(final String codeSystem, final String code, final String displayName) {
+        Assert.hasLength(codeSystem, "Code codeSystem cannot be null or empty");
+        Assert.hasLength(code, "Code 'code' cannot be null or empty");
+        Assert.hasLength(displayName, "Code displayName cannot be null or empty");
+        CD cd = objectFactoryForHl7V3.createCD();
+        cd.setCodeSystem(codeSystem);
+        cd.setCode(code);
+        cd.setDisplayName(displayName);
+        return cd;
     }
 
     public CE create(final String codeSystem, final String code, final String codeSystemName, final String displayName) {

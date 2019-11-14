@@ -53,7 +53,7 @@ public class PlCdaCoverageActivityEntryFactory {
                 .add(id);
 
         Loinc paymentSources = Loinc.PAYMENT_SOURCES;
-        CD code = codeFactory.create(Oid.SlownikiIZbioryWartosci.EXTERNAL_LOINC, paymentSources.getCode(), paymentSources.getDisplayName());
+        CD code = codeFactory.createCD(Oid.SlownikiIZbioryWartosci.EXTERNAL_LOINC, paymentSources.getCode(), paymentSources.getDisplayName());
         pocdmt000040Act.setCode(code);
 
         // TODO keep this reference ID synchronized with visual text

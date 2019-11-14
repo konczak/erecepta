@@ -79,14 +79,6 @@ public class PlCdaBaseLegalAuthenticatorFactory {
         pocdmt000040AssignedEntity.getIds()
                 .add(numerPrawaWykonywaniaZawoduId);
 
-        CE code = objectFactoryForHl7V3.createCE();
-        ZawodMedyczny zawodMedyczny = medicineDoctor.getZawodMedyczny();
-
-        code.setCode(zawodMedyczny.getCode());
-        code.setCodeSystem(Oid.SlownikiIZbioryWartosci.EXTERNAL_ZAWODY_MEDYCZNE);
-        code.setDisplayName(zawodMedyczny.getDisplayName());
-
-        pocdmt000040AssignedEntity.setCode(code);
         return pocdmt000040AssignedEntity;
     }
 }

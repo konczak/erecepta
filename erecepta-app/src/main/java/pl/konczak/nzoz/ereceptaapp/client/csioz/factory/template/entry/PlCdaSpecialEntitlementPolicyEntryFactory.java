@@ -110,9 +110,9 @@ public class PlCdaSpecialEntitlementPolicyEntryFactory {
 
         UprawnienieDodatkowe uprawnienieDodatkowe = createEReceptaDlaLekGotowyInput.getUprawnienieDodatkowe();
         CD code = objectFactoryForHl7V3.createCD();
-        code.setCode(uprawnienieDodatkowe.toString());
+        code.setCode(uprawnienieDodatkowe.getCode());
         code.setCodeSystem(Oid.SlownikiIZbioryWartosci.EXTERNAL_UPRAWNIENIA_DODATKOWE_ZWIAZANE_Z_REFUNDACJA_LEKOW);
-        code.setDisplayName(uprawnienieDodatkowe.toString());
+        code.setDisplayName(uprawnienieDodatkowe.getCode());
         qualifier.setValue(code);
 
         cd.getQualifiers()

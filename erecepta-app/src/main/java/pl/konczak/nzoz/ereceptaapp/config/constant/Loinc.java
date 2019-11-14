@@ -15,8 +15,7 @@ public enum Loinc {
 
     PAYMENT_SOURCES("48768-6", "Payment sources"),
 
-    // TODO warn "Prescriptions" is used by samples in PL HL7 - but in LOINC dictionary it stands "Prescription list"
-    PRESCRIPTION_LIST("57828-6", "Prescription list"),
+    PRESCRIPTION_LIST("57828-6", "Prescriptions"),
 
     PRESCRIPTION_FOR_MEDICATION("57833-6", "Prescription for medication");
 
