@@ -59,16 +59,16 @@
     </recordTarget>
     <author>
         <templateId root="2.16.840.1.113883.3.4424.13.10.2.79"/>
-        <functionCode code="LEKD" codeSystem="2.16.840.1.113883.3.4424.11.3.18" displayName="Lekarz dentysta"/>
+        <functionCode code="LEK" codeSystem="2.16.840.1.113883.3.4424.11.3.18" displayName="Lekarz"/>
         <time value="20130412"/>
         <assignedAuthor xsi:type="extPL:AssignedAuthor">
             <id displayable="true" extension="2321123" root="2.16.840.1.113883.3.4424.1.6.2"/>
             <assignedPerson>
                 <templateId root="2.16.840.1.113883.3.4424.13.10.2.1"/>
                 <name>
-                    <prefix>lek. dent.</prefix>
-                    <given>Damian</given>
-                    <family>Kowalski</family>
+                    <prefix>lek.</prefix>
+                    <given>Adam106</given>
+                    <family>Leczniczy</family>
                 </name>
             </assignedPerson>
             <representedOrganization>
