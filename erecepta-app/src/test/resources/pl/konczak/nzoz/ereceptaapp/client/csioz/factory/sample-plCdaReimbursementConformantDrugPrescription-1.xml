@@ -1,15 +1,16 @@
-<ClinicalDocument xsi:type="extPL:ClinicalDocument">
-    <!-- Recepta na Enarenal zgodna z profilem IHE PRE -->
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="CDA_PL_IG_1.3.1.xsl" type="text/xsl"?><ClinicalDocument xsi:type="extPL:ClinicalDocument" xmlns="urn:hl7-org:v3" xmlns:extPL="http://www.csioz.gov.pl/xsd/extPL/r2" xmlns:pharm="urn:ihe:pharm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!-- Dokument recepty spełniający wymagania związane z refundacją 2 -->
     <typeId extension="POCD_HD000040" root="2.16.840.1.113883.1.3"/>
     <templateId root="1.3.6.1.4.1.19376.1.9.1.1.1"/>
     <templateId root="1.3.6.1.4.1.19376.1.5.3.1.1.1"/>
     <templateId extension="1.3.1" root="2.16.840.1.113883.3.4424.13.10.1.26"/>
-    <id displayable="true" extension="de343d" root="2.16.840.1.113883.3.4424.2.7.99999.2.1"/>
+    <id displayable="true" extension="aa2321" root="2.16.840.1.113883.3.4424.2.7.201.2.1"/>
     <code code="57833-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prescription for medication Document">
         <translation code="04.01" codeSystem="2.16.840.1.113883.3.4424.11.1.32" codeSystemName="KLAS_DOK_P1" displayName="Recepta">
             <qualifier>
                 <name code="KDLEK" codeSystem="2.16.840.1.113883.3.4424.13.5.1" codeSystemName="PolskieKlasyfikatoryHL7v3" displayName="Kategoria dostępności leku"/>
-                <value code="Rpz" codeSystem="2.16.840.1.113883.3.4424.11.1.25"/>
+                <value code="Rp" codeSystem="2.16.840.1.113883.3.4424.11.1.25"/>
             </qualifier>
             <qualifier>
                 <name code="RLEK" codeSystem="2.16.840.1.113883.3.4424.13.5.1" codeSystemName="PolskieKlasyfikatoryHL7v3" displayName="Rodzaj leku"/>
@@ -29,12 +30,12 @@
     <effectiveTime value="20130412"/>
     <confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25"/>
     <languageCode code="pl-PL"/>
-    <setId extension="ff543" root="2.16.840.1.113883.3.4424.2.7.99999.2.1"/>
+    <setId extension="64324" root="2.16.840.1.113883.3.4424.2.7.201.2.1"/>
     <versionNumber value="1"/>
     <recordTarget>
         <templateId root="2.16.840.1.113883.3.4424.13.10.2.23"/>
         <patientRole>
-            <id displayable="false" extension="12345" root="2.16.840.1.113883.3.4424.2.7.99999.17.1"/>
+            <id displayable="false" extension="12345" root="2.16.840.1.113883.3.4424.2.7.201.17.1"/>
             <id displayable="true" extension="62091599999" root="2.16.840.1.113883.3.4424.1.1.616"/>
             <addr>
                 <country>Polska</country>
@@ -58,46 +59,53 @@
     </recordTarget>
     <author>
         <templateId root="2.16.840.1.113883.3.4424.13.10.2.79"/>
-        <functionCode code="LEK" codeSystem="2.16.840.1.113883.3.4424.11.3.18" displayName="Lekarz"/>
+        <functionCode code="LEKD" codeSystem="2.16.840.1.113883.3.4424.11.3.18" displayName="Lekarz dentysta"/>
         <time value="20130412"/>
         <assignedAuthor xsi:type="extPL:AssignedAuthor">
-            <id displayable="true" extension="7724513" root="2.16.840.1.113883.3.4424.1.6.2"/>
-            <code code="0718_0726" codeSystem="2.16.840.1.113883.3.4424.11.3.3.1" displayName="neurologia, radiologia i diagnostyka obrazowa"/>
+            <id displayable="true" extension="2321123" root="2.16.840.1.113883.3.4424.1.6.2"/>
             <assignedPerson>
                 <templateId root="2.16.840.1.113883.3.4424.13.10.2.1"/>
                 <name>
-                    <prefix>lek.</prefix>
-                    <given>Piotr</given>
-                    <family>Nowak</family>
+                    <prefix>lek. dent.</prefix>
+                    <given>Damian</given>
+                    <family>Kowalski</family>
                 </name>
             </assignedPerson>
             <representedOrganization>
-                <templateId root="2.16.840.1.113883.3.4424.13.10.2.18"/>
-                <id displayable="true" extension="1007-008" root="2.16.840.1.113883.3.4424.2.3.3"/>
-                <name>Poradnia neurologiczna</name>
-                <telecom use="PUB" value="tel:22-1111123"/>
+                <templateId root="2.16.840.1.113883.3.4424.13.10.2.15" />
+                <id extension="000000054325-01" root="2.16.840.1.113883.3.4424.2.4.68.1" />
+                <name>Prywatna praktyka dentystyczna Damian Kowalski</name>
+                <telecom use="PUB" value="tel:22-4325678"/>
                 <addr>
-                    <postalCode>00-950</postalCode>
+                    <country>Polska</country>
+                    <postalCode>03-135</postalCode>
                     <city>Warszawa</city>
-                    <streetName>Marszałkowska</streetName>
-                    <houseNumber>320</houseNumber>
+                    <streetName>Książkowa</streetName>
+                    <houseNumber>9F</houseNumber>
+                    <unitID>1</unitID>
                 </addr>
                 <asOrganizationPartOf>
+                    <code code="L" codeSystem="2.16.840.1.113883.3.4424.11.3.19" codeSystemName="RODZ_PRAKTYKI" displayName="Praktyka lekarska" />
                     <wholeOrganization>
-                        <id displayable="true" extension="12345678901234" root="2.16.840.1.113883.3.4424.2.2.2"/>
-                        <asOrganizationPartOf>
-                            <wholeOrganization>
-                                <id displayable="true" extension="1007" root="2.16.840.1.113883.3.4424.2.3.1"/>
-                                <id displayable="true" extension="123456789" root="2.16.840.1.113883.3.4424.2.2.1"/>
-                            </wholeOrganization>
-                        </asOrganizationPartOf>
+                        <id extension="54325" root="2.16.840.1.113883.3.4424.2.4.68" />
+                        <id extension="987654321" root="2.16.840.1.113883.3.4424.2.2.1" displayable="true"/>
+                        <name>Prywatna praktyka dentystyczna Damian Kowalski</name>
+                        <telecom use="PUB" value="tel:22-4325678"/>
+                        <addr>
+                            <country>Polska</country>
+                            <postalCode>03-135</postalCode>
+                            <city>Warszawa</city>
+                            <streetName>Książkokwa</streetName>
+                            <houseNumber>9F</houseNumber>
+                            <unitID>1</unitID>
+                        </addr>
                     </wholeOrganization>
                 </asOrganizationPartOf>
             </representedOrganization>
             <extPL:boundedBy typeCode="PART">
                 <extPL:templateId root="2.16.840.1.113883.3.4424.13.10.2.44"/>
                 <extPL:reimbursementRelatedContract classCode="CNTRCT" moodCode="EVN">
-                    <extPL:id extension="3329978" root="2.16.840.1.113883.3.4424.8.6.1.7"/>
+                    <extPL:id displayable="false" extension="72419" root="2.16.840.1.113883.3.4424.8.6.1.5"/>
                     <extPL:bounding typeCode="PART">
                         <extPL:reimburser classCode="UNDWRT">
                             <extPL:id displayable="true" extension="07" root="2.16.840.1.113883.3.4424.3.1"/>
@@ -120,8 +128,7 @@
         <time value="20130412"/>
         <signatureCode code="S"/>
         <assignedEntity>
-            <id displayable="false" extension="7724513" root="2.16.840.1.113883.3.4424.1.6.2"/>
-            <code code="LEK" codeSystem="2.16.840.1.113883.3.4424.11.3.18" displayName="Lekarz"/>
+            <id displayable="true" extension="2321123" root="2.16.840.1.113883.3.4424.1.6.2"/>
         </assignedEntity>
     </legalAuthenticator>
     <component>
@@ -131,20 +138,15 @@
                 <section>
                     <templateId root="1.3.6.1.4.1.19376.1.9.1.2.1"/>
                     <templateId root="2.16.840.1.113883.3.4424.13.10.3.4"/>
-                    <id extension="9876" root="2.16.840.1.113883.3.4424.2.7.99999.2.4"/>
+                    <id extension="65432" root="2.16.840.1.113883.3.4424.2.7.201.2.4"/>
                     <code code="57828-6" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Prescriptions"/>
                     <title>Rp. (Cito)</title>
                     <text>
-                        <paragraph ID="SBADM_1">
-                            Rilutek 50mg tabletki (
-                            <content ID="ACT_1">NZ</content>
-                            )
-                            <br/>
-                            1 op. po 56 tabl.
-                            <br/>
-                            D.S. 2 x 1 tabl.
-                            <br/>
-                            <content ID="ACT_2">Odpłatność: 100%</content>
+                        <paragraph ID="SBADM_1"> 
+                            Enarenal 5mg tabletki<br/>
+                            1 op. po 60 tabl.<br/> 
+                            D.S. 2 x 1 tabl.<br/>
+                            <content ID="ACT_1">Odpłatność: R</content>
                         </paragraph>
                     </text>
                     <entry>
@@ -155,14 +157,14 @@
                             <templateId root="1.3.6.1.4.1.19376.1.9.1.3.6"/>
                             <templateId root="1.3.6.1.4.1.19376.1.5.3.1.4.7.1"/>
                             <templateId root="2.16.840.1.113883.3.4424.13.10.4.3"/>
-                            <id extension="de343d-1" root="2.16.840.1.113883.3.4424.2.7.99999.2.3"/>
+                            <id extension="aa2321-1" root="2.16.840.1.113883.3.4424.2.7.201.2.3"/>
                             <text>
                                 <reference value="#SBADM_1"/>
                             </text>
                             <statusCode code="completed"/>
                             <effectiveTime xsi:type="IVL_TS">
                                 <low value="20130412"/>
-                                <high nullFlavor="NA"/>
+                                <high value="20130512"/>
                             </effectiveTime>
                             <repeatNumber value="1"/>
                             <doseQuantity value="1"/>
@@ -173,16 +175,8 @@
                                     <manufacturedMaterial>
                                         <templateId root="1.3.6.1.4.1.19376.1.9.1.3.1"/>
                                         <templateId root="2.16.840.1.113883.3.4424.13.10.4.54"/>
-                                        <code code="7897" codeSystem="2.16.840.1.113883.3.4424.6.1" displayName="Rilutek 50mg tabl. powl."/>
-                                        <name>Rilutek 50mg tabl. powl.; 0,05 g 56 tabl.</name>
-                                        <pharm:asContent classCode="CONT">
-                                            <pharm:containerPackagedMedicine classCode="CONT" determinerCode="INSTANCE">
-                                                <pharm:code code="5909990760619" codeSystem="1.3.160" codeSystemName="GS1"/>
-                                                <pharm:name>Rilutek 50mg tabl. powl. (56 tabl.)</pharm:name>
-                                                <pharm:formCode code="30066000" codeSystem="0.4.0.127.0.16.1.1.2.1" codeSystemName="EDQM" displayName="Tablet container"/>
-                                                <pharm:capacityQuantity value="56"/>
-                                            </pharm:containerPackagedMedicine>
-                                        </pharm:asContent>
+                                        <code code="4321" codeSystem="2.16.840.1.113883.3.4424.6.1" displayName="Enarenal 5mg tabl."/>
+                                        <name>Enarenal 5mg tabletki</name>
                                     </manufacturedMaterial>
                                 </manufacturedProduct>
                             </consumable>
@@ -197,32 +191,31 @@
                                     <product>
                                         <manufacturedProduct>
                                             <manufacturedLabeledDrug>
-                                                <code code="5909990760619" codeSystem="1.3.160" codeSystemName="GS1"/>
+                                                <code code="5909990014958" codeSystem="1.3.160" codeSystemName="GS1"/>
                                             </manufacturedLabeledDrug>
                                         </manufacturedProduct>
                                     </product>
                                     <entryRelationship typeCode="COMP">
                                         <act classCode="ACT" moodCode="DEF">
                                             <templateId root="2.16.840.1.113883.3.4424.13.10.4.57"/>
-                                            <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" displayName="Payment source"/>
+                                            <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" displayName="Payment sources"/>
                                             <text>
-                                                <reference value="#ACT_2"/>
+                                                <reference value="#ACT_1"/>
                                             </text>
                                             <statusCode code="completed"/>
                                             <entryRelationship typeCode="COMP">
                                                 <act classCode="ACT" moodCode="EVN">
                                                     <code code="PUBLICPOL" codeSystem="2.16.840.1.113883.5.4">
                                                         <qualifier>
-                                                            <name code="RLPO" codeSystem="2.16.840.1.113883.3.4424.13.5.1" codeSystemName="PolskieKlasyfikatoryHL7v3"
-                                                                  displayName="Poziomy odpłatności leków refundowanych"/>
-                                                            <value code="100%" codeSystem="2.16.840.1.113883.3.4424.11.1.1" displayName="pełnopłatne"/>
+                                                            <name code="RLPO" codeSystem="2.16.840.1.113883.3.4424.13.5.1" codeSystemName="PolskieKlasyfikatoryHL7v3" displayName="Poziomy odpłatności leków refundowanych"/>
+                                                            <value code="R" codeSystem="2.16.840.1.113883.3.4424.11.1.1" displayName="ryczałt"/>
                                                         </qualifier>
                                                     </code>
                                                     <statusCode code="completed"/>
                                                     <performer typeCode="PRF">
                                                         <!-- Dane ubezpieczyciela/płatnika -->
                                                         <assignedEntity>
-                                                            <id extension="07" root="2.16.840.1.113883.3.4424.3.1" displayable="true"/>
+                                                            <id displayable="true" extension="07" root="2.16.840.1.113883.3.4424.3.1"/>
                                                         </assignedEntity>
                                                     </performer>
                                                 </act>
@@ -230,17 +223,6 @@
                                         </act>
                                     </entryRelationship>
                                 </supply>
-                            </entryRelationship>
-                            <entryRelationship typeCode="COMP">
-                                <act classCode="ACT" moodCode="DEF">
-                                    <templateId root="1.3.6.1.4.1.19376.1.9.1.3.9.1"/>
-                                    <templateId root="2.16.840.1.113883.3.4424.13.10.4.56"/>
-                                    <code code="N" codeSystem="2.16.840.1.113883.5.1070" codeSystemName="HL7 Substance Admin Substitution"/>
-                                    <text>
-                                        <reference value="#ACT_1"/>
-                                    </text>
-                                    <statusCode code="completed"/>
-                                </act>
                             </entryRelationship>
                         </substanceAdministration>
                     </entry>
@@ -254,41 +236,31 @@
                     <code code="48768-6" codeSystem="2.16.840.1.113883.6.1"/>
                     <title>Dane o ubezpieczeniu i uprawnieniach</title>
                     <text>
-                        <paragraph ID="ACT_3">
-                            Oddział NFZ: 07
-                            <br/>
-                            Uprawnienia dodatkowe: ZK (Nr leg.: 238/2015)
-                        </paragraph>
+                        <paragraph ID="ACT_2"> Oddział NFZ: 07 <br/> Uprawnienia dodatkowe: ZK (Nr leg.: 238/2015) </paragraph>
                     </text>
                     <entry>
                         <act classCode="ACT" moodCode="DEF">
                             <templateId root="2.16.840.1.113883.10.20.1.20"/>
                             <templateId root="2.16.840.1.113883.3.4424.13.10.4.51"/>
                             <id nullFlavor="NA"/>
-                            <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" displayName="Payment source"/>
-                            <text>
-                                <reference value="#ACT_3"/>
-                            </text>
+                            <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" displayName="Payment sources"/>
+                            <text><reference value="#ACT_2"/></text>
                             <statusCode code="completed"/>
                             <entryRelationship typeCode="COMP">
-                                <act classCode="ACT" moodCode="EVN">
-                                    <!-- Uprawnienie dodatkowe -->
+                                <act classCode="ACT" moodCode="EVN"> <!-- Uprawnienie dodatkowe -->
                                     <templateId root="2.16.840.1.113883.10.20.1.26"/>
                                     <templateId root="2.16.840.1.113883.3.4424.13.10.4.61"/>
                                     <id nullFlavor="NA"/>
                                     <code code="PUBLICPOL" codeSystem="2.16.840.1.113883.5.4">
                                         <qualifier>
                                             <name code="RLUD" codeSystem="2.16.840.1.113883.3.4424.13.5.1" displayName="Refundacja leków wynikająca z uprawnień dodatkowych"/>
-                                            <value code="IB" codeSystem="2.16.840.1.113883.3.4424.11.3.1" displayName="IB"/>
+                                            <value code="IB" displayName="IB" codeSystem="2.16.840.1.113883.3.4424.11.3.1"/>
                                         </qualifier>
                                     </code>
-                                    <text>
-                                        <reference value="#ACT_3"/>
-                                    </text>
+                                    <text><reference value="#ACT_2"/></text>
                                     <statusCode code="completed"/>
-                                    <performer typeCode="PRF">
-                                        <!-- Dane ubezpieczyciela/płatnika -->
-                                        <assignedEntity>
+                                    <performer typeCode="PRF"> <!-- Dane ubezpieczyciela/płatnika -->
+                                        <assignedEntity>										
                                             <id displayable="true" extension="07" root="2.16.840.1.113883.3.4424.3.1"/>
                                         </assignedEntity>
                                     </performer>
@@ -300,7 +272,7 @@
                                             <code nullFlavor="NA"/>
                                             <entryRelationship typeCode="SUBJ">
                                                 <substanceAdministration classCode="SBADM" moodCode="PRMS">
-                                                    <id extension="de343d-1" root="2.16.840.1.113883.3.4424.2.7.99999.2.3"/>
+                                                    <id extension="aa2321-1" root="2.16.840.1.113883.3.4424.2.7.201.2.3"/>
                                                     <consumable>
                                                         <manufacturedProduct>
                                                             <manufacturedMaterial nullFlavor="NA"/>
@@ -311,8 +283,7 @@
                                         </act>
                                     </entryRelationship>
                                     <reference typeCode="REFR">
-                                        <externalDocument classCode="DOC" moodCode="EVN">
-                                            <!-- Informacja o dokumencie potwierdzającym uprawnienie dodatkowe -->
+                                        <externalDocument classCode="DOC" moodCode="EVN"> <!-- Informacja o dokumencie potwierdzającym uprawnienie dodatkowe -->
                                             <templateId root="2.16.840.1.113883.3.4424.13.10.4.59"/>
                                             <text>Nr leg.: 234/1992</text>
                                         </externalDocument>
