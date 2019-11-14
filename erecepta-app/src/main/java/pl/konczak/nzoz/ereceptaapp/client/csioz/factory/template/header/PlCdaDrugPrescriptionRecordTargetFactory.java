@@ -10,6 +10,7 @@ import org.hl7.v3.PN;
 import org.hl7.v3.POCDMT000040Patient;
 import org.hl7.v3.POCDMT000040PatientRole;
 import org.hl7.v3.POCDMT000040RecordTarget;
+import org.hl7.v3.PersonalAddress;
 import org.hl7.v3.TS;
 import pl.konczak.nzoz.ereceptaapp.client.csioz.constant.Oid;
 import pl.konczak.nzoz.ereceptaapp.client.csioz.factory.common.IdFactory;
@@ -65,9 +66,8 @@ public class PlCdaDrugPrescriptionRecordTargetFactory {
         ids.add(idInUslugodawcaSystem);
         ids.add(displayablePatientId);
 
-        AD address = plCdaBaseAddrFactory.createAD(patient.getHomeAddress());
-        patientRole.getAddrs()
-                .add(address);
+        PersonalAddress personalAddress = plCdaBaseAddrFactory.createPersonalAddress(patient.getHomeAddress());
+        patientRole.setPersonalAddress(personalAddress);
 
         patientRole.setPatient(createPatient(patient));
 

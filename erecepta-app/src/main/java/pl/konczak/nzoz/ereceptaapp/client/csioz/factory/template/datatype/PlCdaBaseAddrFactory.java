@@ -11,6 +11,8 @@ import org.hl7.v3.AdxpHouseNumber;
 import org.hl7.v3.AdxpStreetName;
 import org.hl7.v3.AdxpUnitID;
 import org.hl7.v3.ObjectFactory;
+import org.hl7.v3.PersonalAddress;
+import org.hl7.v3.PostalCode;
 import pl.gov.csioz.xsd.extpl.r2.AdxpPostalCode;
 import pl.konczak.nzoz.ereceptaapp.client.csioz.input.Address;
 
@@ -78,5 +80,24 @@ public class PlCdaBaseAddrFactory {
                 .addAll(addressElements);
 
         return ad;
+    }
+
+    public PersonalAddress createPersonalAddress(final Address address) {
+        PersonalAddress personalAddress = new PersonalAddress();
+
+        personalAddress.setCountry(address.getCountry());
+
+        PostalCode postalCode = new PostalCode();
+        postalCode.setPostCity(address.getPostOffice());
+        postalCode.setValue(address.getPostCode());
+
+        personalAddress.setPostalCode(postalCode);
+        personalAddress.setCity(address.getCity());
+        personalAddress.setStreetName(address.getStreet());
+        personalAddress.setHouseNumber(address.getHouseNumber());
+        personalAddress.setUnitID(address.getApartmentNumber());
+        personalAddress.setCensusTract("TERYT SIMC: " + address.getCensusTractId());
+
+        return personalAddress;
     }
 }
