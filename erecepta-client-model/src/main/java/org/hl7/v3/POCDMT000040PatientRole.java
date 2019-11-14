@@ -49,7 +49,7 @@ import java.util.List;
         "typeId",
         "templateIds",
         "ids",
-        "addrs",
+        "personalAddress",
         "telecoms",
         "patient",
         "providerOrganization"
@@ -64,7 +64,7 @@ public class POCDMT000040PatientRole {
     @XmlElement(name = "id", required = true)
     protected List<II> ids;
     @XmlElement(name = "addr")
-    protected List<AD> addrs;
+    protected PersonalAddress personalAddress;
     @XmlElement(name = "telecom")
     protected List<TEL> telecoms;
     protected POCDMT000040Patient patient;
@@ -175,31 +175,12 @@ public class POCDMT000040PatientRole {
         return this.ids;
     }
 
-    /**
-     * Gets the value of the addrs property.
-     *
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the addrs property.
-     *
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getAddrs().add(newItem);
-     * </pre>
-     *
-     *
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link AD }
-     */
-    public List<AD> getAddrs() {
-        if (addrs == null) {
-            addrs = new ArrayList<AD>();
-        }
-        return this.addrs;
+    public PersonalAddress getPersonalAddress() {
+        return personalAddress;
+    }
+
+    public void setPersonalAddress(final PersonalAddress personalAddress) {
+        this.personalAddress = personalAddress;
     }
 
     /**
