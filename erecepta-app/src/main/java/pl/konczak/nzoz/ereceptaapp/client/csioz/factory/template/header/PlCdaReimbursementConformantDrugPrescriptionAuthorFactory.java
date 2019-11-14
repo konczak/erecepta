@@ -88,14 +88,6 @@ public class PlCdaReimbursementConformantDrugPrescriptionAuthorFactory {
         assignedAuthor.getIds()
                 .add(id);
 
-        CE code = objectFactoryForHl7V3.createCE();
-        SpecjalnoscLekarza specjalnoscLekarza = medicineDoctor.getSpecjalnoscLekarza();
-
-        code.setCode(specjalnoscLekarza.getCode());
-        code.setCodeSystem(Oid.SlownikiIZbioryWartosci.EXTERNAL_SPECJALNOSCI_LEKARSKIE);
-        code.setDisplayName(specjalnoscLekarza.getDisplayName());
-        assignedAuthor.setCode(code);
-
         POCDMT000040Person pocdmt000040Person = plCdaBasePersonFactory.createPOCDMT000040Person(createEReceptaDlaLekGotowyInput.getMedicineDoctor());
 
         assignedAuthor.setAssignedPerson(pocdmt000040Person);

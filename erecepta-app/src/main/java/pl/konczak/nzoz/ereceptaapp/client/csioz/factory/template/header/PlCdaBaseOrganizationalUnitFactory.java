@@ -59,7 +59,7 @@ public class PlCdaBaseOrganizationalUnitFactory {
         pocdmt000040Organization.getTelecoms()
                 .add(tel);
 
-        AD ad = plCdaBaseAddrFactory.createAD(medicalFacility.getAddress());
+        AD ad = plCdaBaseAddrFactory.createCompanyAddress(medicalFacility.getAddress());
 
         pocdmt000040Organization.getAddrs()
                 .add(ad);
