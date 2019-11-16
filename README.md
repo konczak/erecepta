@@ -250,6 +250,7 @@ LOINC - is international database of standarized codes for identification medica
 1. TODO support case for lek "NZ" = "nie zamieniać" in <text> it will have "NZ" and in code it will use pl.konczak.nzoz.ereceptaapp.client.csioz.factory.template.entry.PlCdaDrugPrescriptionSupplySubstitutionEntryFactory
 1. Wsparcie dla recept na lek narkotyczny pl.konczak.nzoz.ereceptaapp.config.constant.KategoriaDostepnosciLeku.Rpw
 1. Zapytać o skróty używane w nazwach plików danych testowych
+1. 7.4.1.5. Reguły biznesowe specyficzne dla recept 
 1. Ordered priorities to understood:
     - https://www.csioz.gov.pl/HL7POL-1.3.1/plcda-html-1.3.1/plcda-html-1.3.1/voc-2.16.840.1.113883.3.4424.13.11.2-2014-06-06T000000.html
     - https://www.csioz.gov.pl/HL7POL-1.3.1/plcda-html-1.3.1/plcda-html-1.3.1/voc-2.16.840.1.113883.3.4424.13.11.75-2017-10-26T000000.html
