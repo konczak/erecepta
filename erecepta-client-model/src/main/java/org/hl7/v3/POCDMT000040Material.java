@@ -111,7 +111,7 @@ public class POCDMT000040Material {
     protected List<COCTMT230100UVDistributedProduct> asDistributedProducts;
     @XmlElement(name = "asMedicineManufacturer", namespace = "urn:ihe:pharm", nillable = true)
     protected List<COCTMT230100UVMedicineManufacturer> asMedicineManufacturers;
-    @XmlElement(namespace = "urn:ihe:pharm", nillable = true)
+    @XmlElement(namespace = "urn:ihe:pharm")
     protected COCTMT230100UVContent asContent;
     @XmlElement(name = "asSpecializedKind", namespace = "urn:ihe:pharm", nillable = true)
     protected List<COCTMT230100UVSpecializedKind> asSpecializedKinds;

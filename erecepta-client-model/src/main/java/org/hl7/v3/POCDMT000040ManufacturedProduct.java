@@ -90,7 +90,7 @@ public class POCDMT000040ManufacturedProduct {
     protected List<COCTMT230100UVSubject22> subjectOf3S;
     @XmlElement(name = "subjectOf4", namespace = "urn:ihe:pharm", nillable = true)
     protected List<COCTMT230100UVSubject3> subjectOf4S;
-    @XmlElement(namespace = "urn:ihe:pharm", nillable = true)
+    @XmlElement(namespace = "urn:ihe:pharm")
     protected COCTMT230100UVSubject7 subjectOf5;
     @XmlAttribute(name = "nullFlavor")
     protected List<String> nullFlavors;
