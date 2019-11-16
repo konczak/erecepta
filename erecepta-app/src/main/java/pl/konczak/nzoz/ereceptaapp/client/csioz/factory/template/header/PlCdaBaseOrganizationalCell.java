@@ -17,14 +17,16 @@ import pl.konczak.nzoz.ereceptaapp.client.csioz.factory.template.datatype.PlCdaB
 import pl.konczak.nzoz.ereceptaapp.client.csioz.input.CreateEReceptaDlaLekGotowyInput;
 import pl.konczak.nzoz.ereceptaapp.client.csioz.input.MedicalFacility;
 
+import java.util.Arrays;
+
 import org.springframework.stereotype.Component;
 
 /**
- * https://www.csioz.gov.pl/HL7POL-1.3.1/plcda-html-1.3.1/plcda-html-1.3.1/tmp-2.16.840.1.113883.3.4424.13.10.2.17-2018-06-30T000000.html
+ * https://www.csioz.gov.pl/HL7POL-1.3.1/plcda-html-1.3.1/plcda-html-1.3.1/tmp-2.16.840.1.113883.3.4424.13.10.2.18-2018-06-30T000000.html
  */
 @Component
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
-public class PlCdaBaseOrganizationalUnitFactory {
+public class PlCdaBaseOrganizationalCell {
 
     private final ObjectFactory objectFactoryForHl7V3;
     private final TemplateIdFactory templateIdFactory;
@@ -35,18 +37,19 @@ public class PlCdaBaseOrganizationalUnitFactory {
         MedicalFacility medicalFacility = createEReceptaDlaLekGotowyInput.getMedicalFacility();
         POCDMT000040Organization pocdmt000040Organization = objectFactoryForHl7V3.createPOCDMT000040Organization();
 
-        II plCdaBaseOrganizationalUnitTemplateId = templateIdFactory.create(Oid.PolskaImplementacjaKrajowaHl7Cda.WzorceCdaElementowNaglowkaDokumentu.BASE_ORGANIZATIONAL_UNIT);
+        II plCdaBaseOrganizationalUnitTemplateId = templateIdFactory.create(Oid.PolskaImplementacjaKrajowaHl7Cda.WzorceCdaElementowNaglowkaDokumentu.BASE_ORGANIZATIONAL_CELL);
 
         pocdmt000040Organization.getTemplateIds()
                 .add(plCdaBaseOrganizationalUnitTemplateId);
 
-        II idJednostkiOrganizacyjnej = idFactory.create(
-                Oid.IdentyfikatoryPrzedsiebiorstw.RPWDL_PODMIOT_CZ_I_I_V_KODU_RESORTOWEGO,
-                medicalFacility.getNumerKsiegiRejestrowejRpwdlJednostkiOrganizacyjne() + "-" + medicalFacility.getKodIdentyfikujacyJednostke()
+        II idPodmiotuIKomorki = idFactory.create(
+                Oid.IdentyfikatoryPrzedsiebiorstw.KOMORKI_ORGANIZACYJNE_CZ_I_I_VII_KODU_RESORTOWEGO,
+                medicalFacility.getRpwdlPodmiotNumerKsiegiRejestrowej() + "-" + medicalFacility.getRpwdlKomorkaKodIdentyfikujacyKomorke(),
+                true
         );
 
         pocdmt000040Organization.getIds()
-                .add(idJednostkiOrganizacyjnej);
+                .add(idPodmiotuIKomorki);
 
         ON organizationName = createOrganizationName(medicalFacility);
 
@@ -58,7 +61,7 @@ public class PlCdaBaseOrganizationalUnitFactory {
         pocdmt000040Organization.getTelecoms()
                 .add(tel);
 
-        AD ad = plCdaBaseAddrFactory.createCompanyAddress(medicalFacility.getAddress());
+        AD ad = plCdaBaseAddrFactory.createCompanyAddress(medicalFacility.getRpwdlKomorkaAddress());
 
         pocdmt000040Organization.getAddrs()
                 .add(ad);
@@ -71,7 +74,7 @@ public class PlCdaBaseOrganizationalUnitFactory {
 
     private ON createOrganizationName(final MedicalFacility medicalFacility) {
         ON organizationName = objectFactoryForHl7V3.createON();
-        organizationName.setValue(medicalFacility.getName());
+        organizationName.setValue(medicalFacility.getRpwdlKomorkaName());
         return organizationName;
     }
 
@@ -88,7 +91,7 @@ public class PlCdaBaseOrganizationalUnitFactory {
 
         POCDMT000040Organization pocdmt000040Organization = objectFactoryForHl7V3.createPOCDMT000040Organization();
 
-        II regonPrzedsiebiorstwa = idFactory.create(Oid.IdentyfikatoryPrzedsiebiorstw.REGON_14_ZNAKOWY, medicalFacility.getRegon14());
+        II regonPrzedsiebiorstwa = idFactory.create(Oid.IdentyfikatoryPrzedsiebiorstw.REGON_14_ZNAKOWY, medicalFacility.getRpwdlRegonZakladuMedycznego14Znakow(), true);
         pocdmt000040Organization.getIds()
                 .add(regonPrzedsiebiorstwa);
 
@@ -105,14 +108,20 @@ public class PlCdaBaseOrganizationalUnitFactory {
         POCDMT000040OrganizationPartOf podmiotPocdmt000040OrganizationPartOf = objectFactoryForHl7V3.createPOCDMT000040OrganizationPartOf();
         POCDMT000040Organization podmiotPocdmt000040Organization = objectFactoryForHl7V3.createPOCDMT000040Organization();
 
-        II podmiotRpwdl = idFactory.create(
+        II numerKsiegiRpwdl = idFactory.create(
                 Oid.IdentyfikatoryPrzedsiebiorstw.RPWDL_PODMIOT_CZ_I_KODU_RESORTOWEGO,
-                medicalFacility.getNumerKsiegiRejestrowejRpwdlPodmiotu(),
+                medicalFacility.getRpwdlPodmiotNumerKsiegiRejestrowej(),
+                true
+        );
+
+        II regonPodmiotu = idFactory.create(
+                Oid.IdentyfikatoryPrzedsiebiorstw.REGON_9_ZNAKOWY,
+                medicalFacility.getRpwdlRegonPodmiotu9Znakow(),
                 true
         );
 
         podmiotPocdmt000040Organization.getIds()
-                .add(podmiotRpwdl);
+                .addAll(Arrays.asList(numerKsiegiRpwdl, regonPodmiotu));
 
         podmiotPocdmt000040OrganizationPartOf.setWholeOrganization(podmiotPocdmt000040Organization);
         return podmiotPocdmt000040OrganizationPartOf;

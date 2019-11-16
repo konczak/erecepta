@@ -12,7 +12,6 @@ import org.hl7.v3.TS;
 import pl.gov.csioz.xsd.extpl.r2.AssignedAuthor;
 import pl.gov.csioz.xsd.extpl.r2.BoundedByParticipation;
 import pl.konczak.nzoz.ereceptaapp.client.csioz.constant.Oid;
-import pl.konczak.nzoz.ereceptaapp.config.constant.SpecjalnoscLekarza;
 import pl.konczak.nzoz.ereceptaapp.config.constant.ZawodMedyczny;
 import pl.konczak.nzoz.ereceptaapp.client.csioz.factory.common.IdFactory;
 import pl.konczak.nzoz.ereceptaapp.client.csioz.factory.common.TemplateIdFactory;
@@ -35,7 +34,7 @@ public class PlCdaReimbursementConformantDrugPrescriptionAuthorFactory {
     private final TemplateIdFactory templateIdFactory;
     private final IdFactory idFactory;
     private final PlCdaBasePersonFactory plCdaBasePersonFactory;
-    private final PlCdaBaseOrganizationalUnitFactory plCdaBaseOrganizationalUnitFactory;
+    private final PlCdaBaseOrganizationalCell plCdaBaseOrganizationalCell;
     private final pl.gov.csioz.xsd.extpl.r2.ObjectFactory objectFactoryForExtPl;
     private final PlExtReimbursementRelatedContractFactory plExtReimbursementRelatedContractFactory;
 
@@ -92,7 +91,7 @@ public class PlCdaReimbursementConformantDrugPrescriptionAuthorFactory {
 
         assignedAuthor.setAssignedPerson(pocdmt000040Person);
 
-        POCDMT000040Organization pocdmt000040Organization = plCdaBaseOrganizationalUnitFactory.createPOCDMT000040Organization(createEReceptaDlaLekGotowyInput);
+        POCDMT000040Organization pocdmt000040Organization = plCdaBaseOrganizationalCell.createPOCDMT000040Organization(createEReceptaDlaLekGotowyInput);
         assignedAuthor.setRepresentedOrganization(pocdmt000040Organization);
 
         BoundedByParticipation boundedByParticipation = plExtReimbursementRelatedContractFactory.createBoundedByParticipation(createEReceptaDlaLekGotowyInput);

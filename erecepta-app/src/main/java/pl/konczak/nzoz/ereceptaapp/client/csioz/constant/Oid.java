@@ -94,11 +94,17 @@ public final class Oid {
     // 2.16.840.1.113883.3.4424.2
     public static final class IdentyfikatoryPrzedsiebiorstw {
 
+
+        public static final String REGON_9_ZNAKOWY = "2.16.840.1.113883.3.4424.2.2.1";
+
         public static final String REGON_14_ZNAKOWY = "2.16.840.1.113883.3.4424.2.2.2";
 
         public static final String RPWDL_PODMIOT_CZ_I_KODU_RESORTOWEGO = "2.16.840.1.113883.3.4424.2.3.1";
 
         public static final String RPWDL_PODMIOT_CZ_I_I_V_KODU_RESORTOWEGO = "2.16.840.1.113883.3.4424.2.3.2";
+
+        public static final String KOMORKI_ORGANIZACYJNE_CZ_I_I_VII_KODU_RESORTOWEGO = "2.16.840.1.113883.3.4424.2.3.3";
+
 
         // 2.16.840.1.113883.3.4424.2.7.{x}
         // 2.16.840.1.113883.3.4424.2.7.201
@@ -207,6 +213,9 @@ public final class Oid {
 
             // https://www.csioz.gov.pl/HL7POL-1.3.1/plcda-html-1.3.1/plcda-html-1.3.1/tmp-2.16.840.1.113883.3.4424.13.10.2.17-2018-06-30T000000.html
             public static final String BASE_ORGANIZATIONAL_UNIT = "2.16.840.1.113883.3.4424.13.10.2.17";
+
+            // https://www.csioz.gov.pl/HL7POL-1.3.1/plcda-html-1.3.1/plcda-html-1.3.1/tmp-2.16.840.1.113883.3.4424.13.10.2.18-2018-06-30T000000.html
+            public static final String BASE_ORGANIZATIONAL_CELL = "2.16.840.1.113883.3.4424.13.10.2.18";
 
             public static final String CUSTODIAN = "2.16.840.1.113883.3.4424.13.10.2.20";
 

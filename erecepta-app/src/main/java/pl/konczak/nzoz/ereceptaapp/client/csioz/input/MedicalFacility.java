@@ -7,18 +7,12 @@ import lombok.Getter;
 @Getter
 public class MedicalFacility {
 
-    // Numery księgi rejestrowej RPWDL - Podmiot (cz. I kodu resortowego)
-    private final String numerKsiegiRejestrowejRpwdlPodmiotu;
-    // Numery księgi rejestrowej RPWDL - Jednostki organizacyjne (cz. I i V kodu resortowego)
-    private final String numerKsiegiRejestrowejRpwdlJednostkiOrganizacyjne; // I
-    private final String kodIdentyfikujacyJednostke;    // V
-    // Numery księgi rejestrowej RPWDL - Komórki organizacyjne (cz. I i VII kodu resortowego)
-    private final String numerKsiegiRejestrowejRpwdlKomorkiOrganizacyjne;   // I
-    private final String kodIdentyfikujacyKomorke;  // VII
-    private final String regon9;
-    private final String regon14;
-    private final String name;
-    private final Address address;
+    private final Address rpwdlKomorkaAddress;
     private final String receptionPhoneNumber;
+    private final String rpwdlPodmiotNumerKsiegiRejestrowej;
+    private final String rpwdlRegonPodmiotu9Znakow;
+    private final String rpwdlRegonZakladuMedycznego14Znakow;
+    private final String rpwdlKomorkaKodIdentyfikujacyKomorke;
+    private final String rpwdlKomorkaName;
 
 }

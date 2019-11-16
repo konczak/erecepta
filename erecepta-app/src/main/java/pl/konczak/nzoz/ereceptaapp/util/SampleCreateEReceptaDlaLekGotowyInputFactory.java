@@ -62,29 +62,22 @@ public class SampleCreateEReceptaDlaLekGotowyInputFactory {
                 .zawodMedyczny(ZawodMedyczny.LEKARZ)
                 .build();
 
-        Address medicalFacilityAddress = Address.builder()
+        Address rpwdlKomorkaAddress = Address.builder()
                 .country("Polska")
                 .city("Warszawa")
                 .street("ul. Dubois")
                 .houseNumber("5A")
-                .apartmentNumber("12")
                 .postCode("00-184")
-                // TODO occured that organization address does not have neither post office and censusTract
-                .postOffice("Warszawa")
-                .censusTractId("1464011")
                 .build();
 
         MedicalFacility medicalFacility = MedicalFacility.builder()
-                .regon9("840947835")
-                .regon14("84094783500004")
-                .name("Poradnia POZ")
-                .address(medicalFacilityAddress)
+                .rpwdlKomorkaAddress(rpwdlKomorkaAddress)
                 .receptionPhoneNumber("22-1111123")
-                .numerKsiegiRejestrowejRpwdlPodmiotu("000000926578")
-                .numerKsiegiRejestrowejRpwdlJednostkiOrganizacyjne("84094782100004")
-                .kodIdentyfikujacyJednostke("01")
-                .numerKsiegiRejestrowejRpwdlKomorkiOrganizacyjne("84094782100004")
-                .kodIdentyfikujacyKomorke("001")
+                .rpwdlPodmiotNumerKsiegiRejestrowej("000000926578")
+                .rpwdlRegonPodmiotu9Znakow("840947835")
+                .rpwdlRegonZakladuMedycznego14Znakow("84094783500004")
+                .rpwdlKomorkaName("Ogólna izba przyjęć")
+                .rpwdlKomorkaKodIdentyfikujacyKomorke("001")
                 .build();
 
         PrescribedDrug prescribedDrug = PrescribedDrug.builder()
