@@ -63,7 +63,7 @@ public class PlCdaReimbursementConformantDrugPrescriptionFactory {
                 .addAll(templateIds);
 
         II identyfikatoryInstancjiReceptyUUslugodawcy = idFactory
-                .create(Oid.IdentyfikatoryPrzedsiebiorstw.WezelUslugodawcy.IDENTYFIKATORY_INSTANCJI_RECEPT_U_USLUGODAWCY, createEReceptaDlaLekGotowyInput.getUniqueId(), true);
+                .create(Oid.IdentyfikatoryPrzedsiebiorstw.WezelUslugodawcy.IDENTYFIKATORY_INSTANCJI_RECEPT_U_USLUGODAWCY, createEReceptaDlaLekGotowyInput.getId());
         clinicalDocument.setId(identyfikatoryInstancjiReceptyUUslugodawcy);
 
         CE codeForDictionaryTranslationAndDisplay = codeForDictionaryTranslationAndAutoAnalysisFactory.createCodeForDictionaryTranslationAndAutoAnalysis(createEReceptaDlaLekGotowyInput);
@@ -82,7 +82,7 @@ public class PlCdaReimbursementConformantDrugPrescriptionFactory {
         clinicalDocument.setLanguageCode(languageCode);
 
         II setId = idFactory
-                .create(Oid.IdentyfikatoryPrzedsiebiorstw.WezelUslugodawcy.IDENTYFIKATORY_INSTANCJI_RECEPT_U_USLUGODAWCY, createEReceptaDlaLekGotowyInput.getId());
+                .create(Oid.IdentyfikatoryNadawanePrzezP1.RECEPTY_IDENTYFIKATORY_ZBIOROW_WERSJI, createEReceptaDlaLekGotowyInput.getSetId());
         clinicalDocument.setSetId(setId);
 
         INT versionNumber = createVersionNumber();

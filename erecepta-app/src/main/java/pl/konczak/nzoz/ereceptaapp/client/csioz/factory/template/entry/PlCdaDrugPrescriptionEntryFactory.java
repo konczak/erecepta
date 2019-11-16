@@ -57,7 +57,7 @@ public class PlCdaDrugPrescriptionEntryFactory {
                 .addAll(templateIds);
 
         // this ID requires mandatory position - however PL IG allows only for single drug prescription in one ClinicalDocument so it will be always "-1"
-        II idPozycjiRecepty = idFactory.create(Oid.IdentyfikatoryPrzedsiebiorstw.WezelUslugodawcy.IDENTYFIKATORY_POZYCJI_RECEPTY_U_USLUGODAWCY, createEReceptaDlaLekGotowyInput.getUniqueId() + "-1");
+        II idPozycjiRecepty = idFactory.create(Oid.IdentyfikatoryPrzedsiebiorstw.WezelUslugodawcy.IDENTYFIKATORY_POZYCJI_RECEPTY_U_USLUGODAWCY, createEReceptaDlaLekGotowyInput.getId() + "-1");
         pocdmt000040SubstanceAdministration.getIds()
                 .add(idPozycjiRecepty);
 

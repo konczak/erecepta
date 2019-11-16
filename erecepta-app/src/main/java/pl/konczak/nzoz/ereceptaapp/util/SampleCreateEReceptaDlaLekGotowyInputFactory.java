@@ -1,5 +1,12 @@
 package pl.konczak.nzoz.ereceptaapp.util;
 
+import pl.konczak.nzoz.ereceptaapp.client.csioz.input.Address;
+import pl.konczak.nzoz.ereceptaapp.client.csioz.input.CreateEReceptaDlaLekGotowyInput;
+import pl.konczak.nzoz.ereceptaapp.client.csioz.input.Gender;
+import pl.konczak.nzoz.ereceptaapp.client.csioz.input.MedicalFacility;
+import pl.konczak.nzoz.ereceptaapp.client.csioz.input.MedicineDoctor;
+import pl.konczak.nzoz.ereceptaapp.client.csioz.input.Patient;
+import pl.konczak.nzoz.ereceptaapp.client.csioz.input.PrescribedDrug;
 import pl.konczak.nzoz.ereceptaapp.config.constant.KategoriaDostepnosciLeku;
 import pl.konczak.nzoz.ereceptaapp.config.constant.Nfz;
 import pl.konczak.nzoz.ereceptaapp.config.constant.PostacOpakowaniaLeku;
@@ -10,13 +17,6 @@ import pl.konczak.nzoz.ereceptaapp.config.constant.TrybRealizacjiRecepty;
 import pl.konczak.nzoz.ereceptaapp.config.constant.TrybWystawieniaRecepty;
 import pl.konczak.nzoz.ereceptaapp.config.constant.UprawnienieDodatkowe;
 import pl.konczak.nzoz.ereceptaapp.config.constant.ZawodMedyczny;
-import pl.konczak.nzoz.ereceptaapp.client.csioz.input.Address;
-import pl.konczak.nzoz.ereceptaapp.client.csioz.input.CreateEReceptaDlaLekGotowyInput;
-import pl.konczak.nzoz.ereceptaapp.client.csioz.input.Gender;
-import pl.konczak.nzoz.ereceptaapp.client.csioz.input.MedicalFacility;
-import pl.konczak.nzoz.ereceptaapp.client.csioz.input.MedicineDoctor;
-import pl.konczak.nzoz.ereceptaapp.client.csioz.input.Patient;
-import pl.konczak.nzoz.ereceptaapp.client.csioz.input.PrescribedDrug;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -98,8 +98,8 @@ public class SampleCreateEReceptaDlaLekGotowyInputFactory {
                 .build();
 
         return CreateEReceptaDlaLekGotowyInput.builder()
-                .id("RECEPTA_ID_1234")
-                .version("v1")
+                .setId("123456789012345678901234")
+                .id("1234567890ABCDEFGHIJKL")
                 .createdAt(now)
                 .patient(patient)
                 .medicineDoctor(medicineDoctor)

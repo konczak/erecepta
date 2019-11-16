@@ -81,7 +81,7 @@ public class PlCdaAuthorizationActivityEntryFactory {
         pocdmt000040SubstanceAdministration.setMoodCode(XDocumentSubstanceMood.PRMS);
 
         // this ID requires mandatory position - however PL IG allows only for single drug prescription in one ClinicalDocument so it will be always "-1"
-        II id = idFactory.create(Oid.IdentyfikatoryPrzedsiebiorstw.WezelUslugodawcy.IDENTYFIKATORY_POZYCJI_RECEPTY_U_USLUGODAWCY, createEReceptaDlaLekGotowyInput.getUniqueId() + "-1");
+        II id = idFactory.create(Oid.IdentyfikatoryPrzedsiebiorstw.WezelUslugodawcy.IDENTYFIKATORY_POZYCJI_RECEPTY_U_USLUGODAWCY, createEReceptaDlaLekGotowyInput.getId() + "-1");
 
         pocdmt000040SubstanceAdministration.getIds()
                 .add(id);

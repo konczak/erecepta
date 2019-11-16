@@ -16,9 +16,10 @@ import java.time.LocalDateTime;
 @Getter
 public class CreateEReceptaDlaLekGotowyInput {
 
-    // TODO what length is allowed? min-max? also it has to be unique for backward reference
+    // in sample 24 characters long has passed SoapUI; it had only [0-9] characters
+    private final String setId;
+    // keep it exactly 22 characters long; it can be only [A-Z0-9]
     private final String id;
-    private final String version;
     private final LocalDateTime createdAt;
     private final Patient patient;
     private final MedicineDoctor medicineDoctor;
@@ -35,9 +36,5 @@ public class CreateEReceptaDlaLekGotowyInput {
     private final TrybWystawieniaRecepty trybWystawieniaRecepty;
     private final TrybRealizacjiRecepty trybRealizacjiRecepty;
     private final PoziomOdplatnosciZaLeki poziomOdplatnosciZaLeki;
-
-    public String getUniqueId() {
-        return id + version;
-    }
 
 }
