@@ -82,7 +82,7 @@ public class PlCdaReimbursementConformantDrugPrescriptionFactory {
         clinicalDocument.setLanguageCode(languageCode);
 
         II setId = idFactory
-                .create(Oid.IdentyfikatoryPrzedsiebiorstw.WezelUslugodawcy.IDENTYFIKATORY_INSTANCJI_RECEPT_U_USLUGODAWCY, createEReceptaDlaLekGotowyInput.getId(), false);
+                .create(Oid.IdentyfikatoryPrzedsiebiorstw.WezelUslugodawcy.IDENTYFIKATORY_INSTANCJI_RECEPT_U_USLUGODAWCY, createEReceptaDlaLekGotowyInput.getId());
         clinicalDocument.setSetId(setId);
 
         INT versionNumber = createVersionNumber();

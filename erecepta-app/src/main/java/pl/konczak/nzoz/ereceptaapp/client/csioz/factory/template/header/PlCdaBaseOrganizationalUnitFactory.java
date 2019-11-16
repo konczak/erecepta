@@ -42,8 +42,7 @@ public class PlCdaBaseOrganizationalUnitFactory {
 
         II idJednostkiOrganizacyjnej = idFactory.create(
                 Oid.IdentyfikatoryPrzedsiebiorstw.RPWDL_PODMIOT_CZ_I_I_V_KODU_RESORTOWEGO,
-                medicalFacility.getNumerKsiegiRejestrowejRpwdlJednostkiOrganizacyjne() + "-" + medicalFacility.getKodIdentyfikujacyJednostke(),
-                true
+                medicalFacility.getNumerKsiegiRejestrowejRpwdlJednostkiOrganizacyjne() + "-" + medicalFacility.getKodIdentyfikujacyJednostke()
         );
 
         pocdmt000040Organization.getIds()
@@ -89,7 +88,7 @@ public class PlCdaBaseOrganizationalUnitFactory {
 
         POCDMT000040Organization pocdmt000040Organization = objectFactoryForHl7V3.createPOCDMT000040Organization();
 
-        II regonPrzedsiebiorstwa = idFactory.create(Oid.IdentyfikatoryPrzedsiebiorstw.REGON_14_ZNAKOWY, medicalFacility.getRegon14(), true);
+        II regonPrzedsiebiorstwa = idFactory.create(Oid.IdentyfikatoryPrzedsiebiorstw.REGON_14_ZNAKOWY, medicalFacility.getRegon14());
         pocdmt000040Organization.getIds()
                 .add(regonPrzedsiebiorstwa);
 
