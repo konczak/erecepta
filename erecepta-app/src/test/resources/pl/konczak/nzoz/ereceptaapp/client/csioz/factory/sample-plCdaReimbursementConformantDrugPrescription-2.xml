@@ -198,7 +198,7 @@
                                     <entryRelationship typeCode="COMP">
                                         <act classCode="ACT" moodCode="DEF">
                                             <templateId root="2.16.840.1.113883.3.4424.13.10.4.57"/>
-                                            <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" displayName="Payment sources"/>
+                                            <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" displayName="Payment source"/>
                                             <text>
                                                 <reference value="#ACT_1"/>
                                             </text>
@@ -243,7 +243,7 @@
                             <templateId root="2.16.840.1.113883.10.20.1.20"/>
                             <templateId root="2.16.840.1.113883.3.4424.13.10.4.51"/>
                             <id nullFlavor="NA"/>
-                            <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" displayName="Payment sources"/>
+                            <code code="48768-6" codeSystem="2.16.840.1.113883.6.1" displayName="Payment source"/>
                             <text><reference value="#ACT_2"/></text>
                             <statusCode code="completed"/>
                             <entryRelationship typeCode="COMP">
@@ -254,7 +254,7 @@
                                     <code code="PUBLICPOL" codeSystem="2.16.840.1.113883.5.4">
                                         <qualifier>
                                             <name code="RLUD" codeSystem="2.16.840.1.113883.3.4424.13.5.1" displayName="Refundacja leków wynikająca z uprawnień dodatkowych"/>
-                                            <value code="IB" displayName="IB" codeSystem="2.16.840.1.113883.3.4424.11.3.1"/>
+                                            <value code="IB" codeSystem="2.16.840.1.113883.3.4424.11.3.1" displayName="IB"/>
                                         </qualifier>
                                     </code>
                                     <text><reference value="#ACT_2"/></text>

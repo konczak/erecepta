@@ -49,7 +49,7 @@ public class ClinicalDocumentFactoryTest {
         String result = xmlSerializer.clinicalDocumentToXml(clinicalDocument);
 
         // then
-        Path path = Paths.get(ClassLoader.getSystemResource("pl/konczak/nzoz/ereceptaapp/client/csioz/factory/sample-plCdaReimbursementConformantDrugPrescription-1.xml").toURI());
+        Path path = Paths.get(ClassLoader.getSystemResource("pl/konczak/nzoz/ereceptaapp/client/csioz/factory/sample-plCdaReimbursementConformantDrugPrescription-2.xml").toURI());
         byte[] bytes = Files.readAllBytes(path);
         String expectedContent = new String(bytes);
 
