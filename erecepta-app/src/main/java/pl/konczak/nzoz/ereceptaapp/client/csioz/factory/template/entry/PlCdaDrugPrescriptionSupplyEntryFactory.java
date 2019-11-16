@@ -121,7 +121,6 @@ public class PlCdaDrugPrescriptionSupplyEntryFactory {
         code.setCode(prescribedDrug.getEanOfPackage());
         code.setCodeSystem(Oid.Leki.IDENTYFIKATOR_GLOBALNY_ZGODNY_Z_SYSTEMEM_GS_1);
         code.setCodeSystemName("GS1");
-        code.setDisplayName(prescribedDrug.getNazwaProduktuLeczniczego());
 
         pocdmt000040LabeledDrug.setCode(code);
 
