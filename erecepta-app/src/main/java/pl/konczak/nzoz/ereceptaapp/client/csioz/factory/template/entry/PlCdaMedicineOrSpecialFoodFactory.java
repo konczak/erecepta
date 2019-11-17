@@ -32,6 +32,7 @@ public class PlCdaMedicineOrSpecialFoodFactory {
 
     private final ObjectFactory objectFactoryForHl7V3;
     private final TemplateIdFactory templateIdFactory;
+    private final ihe.pharm.ObjectFactory objectFactoryForIhePharm;
     private final CodeFactory codeFactory;
 
     public POCDMT000040Material createPocdmt000040Material(final PrescribedDrug prescribedDrug) {
@@ -53,6 +54,9 @@ public class PlCdaMedicineOrSpecialFoodFactory {
 
         pocdmt000040Material.setName(codeValue);
 
+        COCTMT230100UVContent coctmt230100UVContent = createCoctmt230100UVContent(prescribedDrug);
+        pocdmt000040Material.setAsContent(coctmt230100UVContent);
+
         return pocdmt000040Material;
     }
 
@@ -68,6 +72,60 @@ public class PlCdaMedicineOrSpecialFoodFactory {
                 + prescribedDrug.getMoc()
                 + " "
                 + prescribedDrug.getPostacFarmaceutyczna();
+    }
+
+    private COCTMT230100UVContent createCoctmt230100UVContent(final PrescribedDrug prescribedDrug) {
+        COCTMT230100UVContent coctmt230100UVContent = objectFactoryForIhePharm.createCOCTMT230100UVContent();
+        coctmt230100UVContent.setClassCode(RoleClassContent.CONT);
+
+        COCTMT230100UVPackagedMedicine coctmt230100UVPackagedMedicine = objectFactoryForIhePharm.createCOCTMT230100UVPackagedMedicine();
+        // those 2 values are fixed
+        coctmt230100UVPackagedMedicine.setClassCode(EntityClassContainer.CONT);
+        coctmt230100UVPackagedMedicine.setDeterminerCode("INSTANCE");
+
+        ihe.pharm.CE gs1Code = createGs1Code(prescribedDrug);
+        coctmt230100UVPackagedMedicine.setCode(gs1Code);
+
+        String drugName = createDrugName(prescribedDrug);
+        coctmt230100UVPackagedMedicine.getNames()
+                .add(drugName + " (" + prescribedDrug.getZawartoscOpakowania() + ")");
+
+        PostacOpakowaniaLeku postacOpakowaniaLeku = prescribedDrug.getPostacOpakowaniaLeku();
+        ihe.pharm.CE formCode = createFormCode(postacOpakowaniaLeku);
+        coctmt230100UVPackagedMedicine.setFormCode(formCode);
+
+        PQ quantity = createQuantityPq(prescribedDrug);
+        coctmt230100UVPackagedMedicine.setCapacityQuantity(quantity);
+
+        coctmt230100UVContent.setContainerPackagedMedicine(coctmt230100UVPackagedMedicine);
+        return coctmt230100UVContent;
+    }
+
+    private ihe.pharm.CE createGs1Code(final PrescribedDrug prescribedDrug) {
+        ihe.pharm.CE gs1Code = objectFactoryForIhePharm.createCE();
+        gs1Code.setCode(prescribedDrug.getEanOfPackage());
+        gs1Code.setCodeSystem(Oid.Leki.IDENTYFIKATOR_GLOBALNY_ZGODNY_Z_SYSTEMEM_GS_1);
+        gs1Code.setCodeSystemName("GS1");
+        return gs1Code;
+    }
+
+    private ihe.pharm.CE createFormCode(final PostacOpakowaniaLeku postacOpakowaniaLeku) {
+        ihe.pharm.CE formCode = objectFactoryForIhePharm.createCE();
+
+        formCode.setCode(postacOpakowaniaLeku.getCode());
+        formCode.setCodeSystem(Oid.POSTAC_OPAKOWANIA_LEKU);
+        formCode.setCodeSystemName("EDQM");
+        formCode.setDisplayName(postacOpakowaniaLeku.getDisplayName());
+        return formCode;
+    }
+
+    private PQ createQuantityPq(final PrescribedDrug prescribedDrug) {
+        PQ quantity = objectFactoryForIhePharm.createPQ();
+        quantity.setValue(prescribedDrug.getPackageQuantity());
+
+        log.warn("Actual quantity of package should be somehow extract from zawartoscOpakowania");
+
+        return quantity;
     }
 
 }
