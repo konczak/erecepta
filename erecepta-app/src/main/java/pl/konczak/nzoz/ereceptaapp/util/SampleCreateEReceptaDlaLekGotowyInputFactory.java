@@ -28,8 +28,8 @@ public class SampleCreateEReceptaDlaLekGotowyInputFactory {
 
     public CreateEReceptaDlaLekGotowyInput createSampleCreateEReceptaDlaLekGotowyInput() {
         // temporarily anchor now to specific date for test and comparision purpose
-        // LocalDateTime now = LocalDateTime.now();
-        LocalDateTime now = LocalDateTime.of(2013, 4, 12, 12, 0, 0, 0);
+        LocalDateTime now = LocalDateTime.now();
+        // LocalDateTime now = LocalDateTime.of(2013, 4, 12, 12, 0, 0, 0);
 
         Address patientHomeAddress = Address.builder()
                 .country("Polska")
@@ -84,14 +84,14 @@ public class SampleCreateEReceptaDlaLekGotowyInputFactory {
                 .id("PRESCRIBED_DRUG_ID_12345")
                 .validFrom(now.toLocalDate())
                 .validTo(now.plusDays(30).toLocalDate())
-                .idInRejestrProduktowLeczniczych("100021973")
-                .eanOfPackage("05909990014958")
+                .idInRejestrProduktowLeczniczych("100173074")
+                .eanOfPackage("05909990017454")
                 .postacOpakowaniaLeku(PostacOpakowaniaLeku.TABLET_CONTAINER)
                 .packageQuantity("1")
-                .nazwaProduktuLeczniczego("Enarenal")
+                .nazwaProduktuLeczniczego("Ramistad 5")
                 .moc("5 mg")
                 .postacFarmaceutyczna("tabletki")
-                .zawartoscOpakowania("60 tabl.")
+                .zawartoscOpakowania("28 szt. (2 blist.po 14 szt.)")
                 .packageCount("1")
                 // TODO this is quite questionable
                 .dawkaStosowania("D.S. 2 x 1 tabl.")
