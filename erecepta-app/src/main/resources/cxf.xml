@@ -17,7 +17,7 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 
     <jaxws:client id="obslugaReceptyWSClient"
                   serviceClass="pl.gov.csioz.p1.erecepta.ws.v20170510.ObslugaReceptyWS"
-                  address="https://ws-int-p1.csioz.gov.pl/services/ObslugaReceptyWS">
+                  address="https://isus.ezdrowie.gov.pl/services/ObslugaReceptyWS">
         <jaxws:properties>
             <entry key="soap.env.ns.map">
                 <map>
@@ -73,11 +73,11 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
                               type="PKCS12"
                               password="UXG9DxASCm"/>
             </sec:keyManagers>
-            <sec:trustManagers>
-                <sec:keyStore file="d:\programowanie\zarnow\nzoz\e-recepty\docs\KOMPLET_DANYCH_SZPL_NR_106\csiozTrustStore2.jks"
-                              type="JKS"
-                              password="changeit"/>
-            </sec:trustManagers>
+<!--            <sec:trustManagers>-->
+<!--                <sec:keyStore file="d:\programowanie\zarnow\nzoz\e-recepty\docs\KOMPLET_DANYCH_SZPL_NR_106\csiozTrustStore4.jks"-->
+<!--                              type="JKS"-->
+<!--                              password="changeit"/>-->
+<!--            </sec:trustManagers>-->
         </http:tlsClientParameters>
     </http:conduit>
 
