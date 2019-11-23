@@ -24,6 +24,19 @@
         <module>erecepta-client-model</module>
     </modules>
 
+    <repositories>
+        <repository>
+            <id>Maven Central</id>
+            <name>Maven Central Repository</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>cefdigital</id>
+            <name>cefdigital</name>
+            <url>https://ec.europa.eu/cefdigital/artifact/content/repositories/esignaturedss/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

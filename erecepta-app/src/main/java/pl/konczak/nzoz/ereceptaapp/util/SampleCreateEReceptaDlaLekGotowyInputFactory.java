@@ -98,8 +98,8 @@ public class SampleCreateEReceptaDlaLekGotowyInputFactory {
                 .build();
 
         return CreateEReceptaDlaLekGotowyInput.builder()
-                .setId("123456789012345678901234")
-                .id("1234567890ABCDEFGHIJKL")
+                .setId("123456789012345678901235")
+                .id("1234567890ABCDEFGHIJKM")
                 .createdAt(now)
                 .patient(patient)
                 .medicineDoctor(medicineDoctor)
